@@ -759,6 +759,70 @@ def returns():
     }
 
 
+def dcms_file(slug, key):
+    page = get("https://www.gov.uk/api/content/" + slug, key)
+    m = re.search(r'https://assets\.publishing\.service\.gov\.uk/media/[A-Za-z0-9]+/[^"\\ ]+?\.ods', page)
+    if not m:
+        raise RuntimeError(f"no data file on {slug}")
+    return m.group(0)
+
+
+@metric
+def cohesion():
+    mid = "cohesion"
+    # Two releases, because each file carries its own year and the one before it. The Community Life Survey was
+    # replaced by the Community and Engagement Survey, but the overlapping year is identical in both files
+    # (80.55% for 2024-25), so the series joins cleanly rather than being spliced.
+    ces_url = dcms_file("government/statistics/community-and-engagement-survey-202526-neighbourhood", "dcms_ces")
+    cls_url = dcms_file("government/statistics/community-life-survey-202425-annual-publication", "dcms_cls")
+
+    def pair(blob, sheet, latest_fy):
+        for r in ods_table(blob, sheet, max_repeat=22):
+            if len(r) > 8 and r[1] == "GROUPED: Agree":
+                end = int(latest_fy[:4]) + 1
+                return {f"{end}-03-31": round(float(r[3]), 1), f"{end - 1}-03-31": round(float(r[8]), 1)}
+        raise RuntimeError(f"no grouped agree row in {sheet}")
+
+    vals = pair(get(cls_url, binary=True), "B6a", "2024")
+    vals.update(pair(get(ces_url, binary=True), "D13", "2025"))
+    points = [[iso, v] for iso, v in sorted(vals.items())]
+    d, v = points[-1]
+    check_fresh(mid, d, 620)
+    check_range(mid, "agree people from different backgrounds get on well", v, 0, 100)
+    base = at(points, BASE_Q)
+    return {
+        "id": mid, "section": "cohesion", "title": "Do communities get on?",
+        "question": "Do people think their area is one where different backgrounds get on well together?",
+        "headline": {"value": v, "unit": "%", "decimals": 1, "period": fy_label(d),
+                     "caption": "agree their local area is a place where people from different backgrounds get on well together"},
+        "benchmark": {"label": "Before the election", "text": f"{base[1]}%"},
+        "baseline": {"label": fy_label(base[0]), "value": base[1], "unit": "%"},
+        "context": [
+            f"{v}% agreed in {fy_label(d)}, against {base[1]}% in {fy_label(base[0])}, the last full year before the election.",
+            f"The fall in the latest year, {points[-2][1]}% to {v}%, is the sharpest of the three.",
+            "This is the government's own headline measure of community cohesion, asked of more than 175,000 people in England.",
+            "The Community Life Survey was replaced by the Community and Engagement Survey during this period. The overlapping "
+            "year is identical in both, so the series is comparable, but the question is now asked over October to March rather "
+            "than across a full year.",
+            "It measures what people say about their own area, which is consistently more positive than what they say about the country.",
+        ],
+        "chart": {"kind": "bar", "unit": "%", "decimals": 1, "freq": "fy", "band": [0, 100],
+                  "series": [{"name": "Agree people from different backgrounds get on well together", "role": "primary", "points": points}],
+                  "note": "England, adults aged 16 and over. Community Life Survey to 2024–25, Community and Engagement Survey from 2025–26."},
+        "sources": [{"publisher": "Department for Culture, Media and Sport", "title": "Community and Engagement Survey 2025/26: neighbourhood (table D13)",
+                     "url": "https://www.gov.uk/government/statistics/community-and-engagement-survey-202526-neighbourhood",
+                     "data_url": ces_url, "series": ["Extent of agreement that your local area is a place where people from different backgrounds get on well together"],
+                     "retrieved_at": NOW.isoformat(timespec="seconds"), "automated": True},
+                    {"publisher": "Department for Culture, Media and Sport", "title": "Community Life Survey 2024/25 annual publication (table B6a)",
+                     "url": "https://www.gov.uk/government/statistics/community-life-survey-202425-annual-publication",
+                     "data_url": cls_url, "series": ["Extent of agreement that your local area is a place where people from different backgrounds get on well together"],
+                     "retrieved_at": NOW.isoformat(timespec="seconds"), "automated": True}],
+        "method": "Share of adults in England answering 'definitely agree' or 'tend to agree' that their local area is a place where people from different backgrounds get on well together. Taken from the Community and Engagement Survey for 2025–26 and the Community Life Survey for earlier years; each release publishes its own year and the one before it, and the overlapping year matches.",
+        "explainer": {"what": "How many people say the place they live is one where people from different backgrounds get on well together.",
+                      "why": "It is the closest thing the government has to a direct measure of whether communities are holding together, and it is asked the same way every year of a very large sample."},
+    }
+
+
 @metric
 def asylum_backlog():
     mid = "asylum_backlog"

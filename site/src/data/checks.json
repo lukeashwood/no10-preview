@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T18:34:07+00:00",
+ "generated_at": "2026-09-20T18:38:55+00:00",
  "checks": [
   {
    "metric": "inflation",
@@ -132,6 +132,20 @@
    "check": "plausible range",
    "status": "pass",
    "detail": "returns over 12 months = 40605 within [0, 500000]",
+   "critical": false
+  },
+  {
+   "metric": "cohesion",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-03-31 (174 days old)",
+   "critical": false
+  },
+  {
+   "metric": "cohesion",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "agree people from different backgrounds get on well = 78.5 within [0, 100]",
    "critical": false
   },
   {
