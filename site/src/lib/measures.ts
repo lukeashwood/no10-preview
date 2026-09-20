@@ -73,36 +73,10 @@ function direction(m: RawMetric): Direction | null {
   };
 }
 
-/* Some measures are published as a handful of periods rather than a running series (a bar chart, not a line). They
-   still have a stated starting point at the election, so the comparison is real — it just can't be read off a series.
-   Where the hand-checked figure supplies one, use it, and label both ends with the periods the source itself names. */
-function sinceElectionFromBaseline(m: RawMetric) {
-  const ed = EDITORIAL[m.id];
-  const base = m.baseline;
-  // Opt-in only. Most hand-checked measures carry a baseline that is simply the previous year, which is not the same
-  // thing as the position at the election: 2023-24 ended before polling day. Labelling one of those "since the
-  // government took office" would be plainly wrong, so a measure has to declare that its baseline IS the election.
-  if (!ed?.sinceFromBaseline) return null;
-  if (!base || typeof base.value !== 'number' || !Number.isFinite(base.value) || base.value === 0) return null;
-  const unit = base.unit ?? m.headline.unit ?? '';
-  const isRate = unit === '%' || unit === 'pts', isMoney = isMoneyUnit(unit);
-  const to = m.headline.value, from = base.value;
-  const change = isRate || isMoney ? to - from : ((to - from) / Math.abs(from)) * 100;
-  const band = isRate ? 0.2 : isMoney ? Math.max(0.5, Math.abs(from) * 0.01) : 1;
-  const trend: Trend = Math.abs(change) < band ? 'steady' : change > 0 ? 'up' : 'down';
-  const tone = trend === 'steady' || ed.better === 'none' ? 'neutral' : (trend === 'up') === (ed.better === 'higher') ? 'good' : 'bad';
-  const label = isRate ? `${signed(change, 1)} pts` : isMoney ? withUnit(change, unit, 1, { signed: true }) : `${signed(change, 1)}%`;
-  return {
-    from: [base.label ?? '', from] as Point, to: [m.headline.period ?? '', to] as Point,
-    change, trend, tone, label,
-    periodLabel: `${base.label ?? 'at the election'} → ${m.headline.period ?? 'latest'}`,
-  };
-}
-
 function sinceElection(m: RawMetric) {
   const ed = EDITORIAL[m.id]; const rs = ratedSeries(m);
   if (!ed || ed.group === 'context' || ed.noSince) return null;
-  if (!rs) return sinceElectionFromBaseline(m);
+  if (!rs) return null;
   let pts = actuals(m, rs.points);
   // Seasonal monthly counts are compared as rolling totals, so a summer month is never set against a winter one.
   if (ed.rollingSince && pts.length > ed.rollingSince) {

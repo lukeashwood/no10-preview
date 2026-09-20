@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T18:42:46+00:00",
+ "generated_at": "2026-09-20T18:45:34+00:00",
  "checks": [
   {
    "metric": "inflation",
@@ -135,18 +135,25 @@
    "critical": false
   },
   {
-   "metric": "trust_government",
+   "metric": "net_migration",
    "check": "freshness",
    "status": "pass",
-   "detail": "latest observation 2026-06-28 (85 days old)",
+   "detail": "latest observation 2025-12-31 (264 days old)",
+   "critical": false
+  },
+  {
+   "metric": "net_migration",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "net migration = 171000 within [-500000, 2000000]",
    "critical": false
   },
   {
    "metric": "trust_government",
-   "check": "plausible range",
-   "status": "pass",
-   "detail": "trust in the UK government = 25.1 within [0, 100]",
-   "critical": false
+   "check": "fetch",
+   "status": "fail",
+   "detail": "could not fetch https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/wellbeing/datasets/beyondgdpinsightsukheadlinemeasuresofnationalwellbeing/september2026/ukheadlinemeasuresofnationalwellbe",
+   "critical": true
   },
   {
    "metric": "cohesion",

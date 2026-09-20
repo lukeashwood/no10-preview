@@ -84,9 +84,6 @@ export interface Editorial {
   noSince?: boolean;
   /** An honest note about the starting point at the 2024 election, shown beside every since-office comparison. */
   baselineNote?: string;
-  /** Set only where the measure's stated baseline IS its position at the 2024 election, so a measure published as a
-      few periods rather than a running series can still show an honest since-the-election comparison. */
-  sinceFromBaseline?: boolean;
   /** Context lines from the data feed that are dropped because they argue rather than inform. */
   dropContext?: RegExp[];
   target?: TargetSpec;

@@ -793,6 +793,73 @@ def ols_period_end(label):
 
 
 @metric
+def net_migration():
+    mid = "net_migration"
+    url, _ = ons_dataset_file("/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/"
+                              "longterminternationalimmigrationemigrationandnetmigrationflowsprovisional", "ons_ltim")
+    flows, non_eu = {}, {}
+    for cells in xlsx_rows(get(url, binary=True), "1"):
+        if len(cells) < 3:
+            continue
+        m = re.match(r"YE\s+([A-Za-z]{3})\s+(\d{2})", cells[1].strip())
+        if not m:
+            continue
+        mon = OLS_MONTHS.get(m.group(1).lower())
+        if not mon:
+            continue
+        iso = month_end(2000 + int(m.group(2)), mon).isoformat()
+        flow = cells[0].strip()
+        try:
+            flows.setdefault(flow, {})[iso] = int(float(cells[2]))
+        except ValueError:
+            continue
+        if flow == "Net migration" and len(cells) > 5:
+            try:
+                non_eu[iso] = int(float(cells[5]))
+            except ValueError:
+                pass
+    net = sorted(flows.get("Net migration", {}).items())
+    if len(net) < 8:
+        raise RuntimeError("net migration: no rows parsed")
+    points = [[iso, v] for iso, v in net]
+    d, v = points[-1]
+    check_fresh(mid, d, 400)                        # provisional estimates, published roughly twice a year
+    check_range(mid, "net migration", v, -500000, 2000000)
+    base = at(points, BASE_Q)
+    peak = max(points, key=lambda p: p[1])
+    imm = sorted(flows.get("Immigration", {}).items())
+    emi = sorted(flows.get("Emigration", {}).items())
+    return {
+        "id": mid, "section": "borders", "title": "Net migration",
+        "question": "How many more people are arriving to live in the UK than leaving?",
+        "headline": {"value": v, "unit": "", "decimals": 0, "period": f"Year to {period_label(d, 'm')}",
+                     "caption": "net long-term international migration"},
+        "benchmark": {"label": "Peak", "text": f"{peak[1]:,} (year to {period_label(peak[0], 'm')})"},
+        "baseline": {"label": "Year to the election", "value": base[1], "unit": ""},
+        "context": [
+            f"Net migration was {v:,} in the year to {period_label(d, 'm')}, against {base[1]:,} in the year to the election.",
+            f"The peak was {peak[1]:,} in the year to {period_label(peak[0], 'm')}, before the election.",
+            f"That net figure is the difference between two much larger flows: {imm[-1][1]:,} people arrived and {emi[-1][1]:,} left.",
+            f"Of the latest net figure, {non_eu.get(d, 0):,} were non-EU nationals." if non_eu.get(d) else
+            "The published table also splits the figure by British, EU and non-EU nationality.",
+            "These are provisional estimates, described by the ONS as official statistics in development, and they are revised as more data arrives. Earlier figures have moved by tens of thousands.",
+        ],
+        "chart": {"kind": "line", "unit": "", "decimals": 0, "freq": "q",
+                  "series": [{"name": "Net migration", "role": "primary", "points": points},
+                             {"name": "Immigration", "role": "muted", "points": [[i, x] for i, x in imm]},
+                             {"name": "Emigration", "role": "muted", "points": [[i, x] for i, x in emi]}],
+                  "note": "ONS long-term international migration, rolling year-ending estimates. Net migration is immigration minus emigration."},
+        "sources": [{"publisher": "Office for National Statistics", "title": "Long-term international immigration, emigration and net migration flows, provisional",
+                     "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional",
+                     "data_url": url, "series": ["Long-term international migration by flow and nationality (table 1)"],
+                     "retrieved_at": NOW.isoformat(timespec="seconds"), "automated": True}],
+        "method": "ONS long-term international migration, provisional estimates, table 1: year-ending estimates of immigration, emigration and net migration for the UK. Official statistics in development, revised as administrative data matures.",
+        "explainer": {"what": "The number of people arriving to live in the UK for at least a year, minus the number leaving.",
+                      "why": "It drives population growth, and it is the number the whole immigration argument is conducted in. It is an estimate, not a count, and it is revised."},
+    }
+
+
+@metric
 def trust_government():
     mid = "trust_government"
     url, released = ons_dataset_file("/peoplepopulationandcommunity/wellbeing/datasets/beyondgdpinsightsukheadlinemeasuresofnationalwellbeing", "ons_wellbeing")

@@ -1,11 +1,11 @@
 {
  "summary": {
-  "generated_at": "2026-09-20T18:42:46+00:00",
-  "checks_total": 27,
+  "generated_at": "2026-09-20T18:45:34+00:00",
+  "checks_total": 28,
   "checks_passed": 27,
   "checks_warn": 0,
-  "checks_failed": 0,
-  "metrics_total": 21
+  "checks_failed": 1,
+  "metrics_total": 20
  },
  "election": "2024-07-04",
  "sections": [
@@ -679,7 +679,7 @@
      "series": [
       "CPI annual rate and CPI index, all items (D7G7, D7BT)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -689,7 +689,7 @@
     "why": "The Bank of England is required to keep inflation at 2%. When pay rises more slowly than prices, households are worse off even though wages are going up."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "real_wages",
@@ -1303,7 +1303,7 @@
      "series": [
       "AWE whole economy, real terms level, regular pay, seasonally adjusted (A3WX)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -1313,7 +1313,7 @@
     "why": "This is the clearest measure of whether working people are better or worse off than they were."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "homes",
@@ -1998,7 +1998,7 @@
      "series": [
       "Unemployment rate, employment rate and inactivity rate, seasonally adjusted (MGSX, LF24, LF2S)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -2008,7 +2008,7 @@
     "why": "It is the clearest measure of whether the jobs market is getting easier or harder, though it misses people who have stopped looking."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "gdp_vs_capita",
@@ -2432,7 +2432,7 @@
      "series": [
       "Gross domestic product and GDP per head, chained volume measures, seasonally adjusted (ABMI, IHXW)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -2442,7 +2442,7 @@
     "why": "Total GDP can grow simply because there are more people. GDP per person is the better guide to living standards."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "productivity",
@@ -2678,7 +2678,7 @@
      "series": [
       "UK whole economy output per hour worked, seasonally adjusted (LZVB)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -2688,7 +2688,7 @@
     "why": "Sustained pay rises and better public services ultimately depend on producing more per hour. UK productivity has grown slowly since the financial crisis."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "bank_rate",
@@ -3866,7 +3866,7 @@
       "IUMBV34",
       "IUMTLMV"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -3876,7 +3876,7 @@
     "why": "It is the main tool for controlling inflation, and it decides what mortgages cost. The government does not set it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "borrowing",
@@ -4346,7 +4346,7 @@
      "series": [
       "Public sector net borrowing excluding public sector banks, £ million (J5II)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -4356,7 +4356,7 @@
     "why": "Every pound borrowed is added to the national debt and has to be serviced out of future taxes."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "debt",
@@ -5207,7 +5207,7 @@
      "series": [
       "Public sector net debt excluding public sector banks, as a share of GDP (HF6X)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -5217,7 +5217,7 @@
     "why": "Interest on this debt is paid before anything else. The larger it is relative to the economy, the more of each year's taxes go to servicing it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "nhs_18_weeks",
@@ -5296,68 +5296,737 @@
    "id": "net_migration",
    "section": "borders",
    "title": "Net migration",
-   "question": "How many more people are coming to live in the UK than leaving?",
+   "question": "How many more people are arriving to live in the UK than leaving?",
    "headline": {
     "value": 171000,
     "unit": "",
     "decimals": 0,
-    "period": "Year to December 2025",
+    "period": "Year to Dec 2025",
     "caption": "net long-term international migration"
    },
    "benchmark": {
-    "label": "Year to December 2024",
-    "text": "331,000"
+    "label": "Peak",
+    "text": "944,000 (year to Mar 2023)"
    },
    "baseline": {
-    "label": "Year to June 2024",
-    "value": 740000,
+    "label": "Year to the election",
+    "value": 649000,
     "unit": ""
    },
    "context": [
-    "Net migration was 171,000 in the year to December 2025, down from 331,000 the year before.",
-    "It peaked at about 900,000 in the year to June 2023 and has fallen sharply since.",
-    "Net migration counts everyone arriving for a year or more, minus everyone leaving: students, workers, family and people arriving on humanitarian routes.",
-    "The government did not set a numerical target, so this is shown as a fact rather than a promise to be scored."
+    "Net migration was 171,000 in the year to Dec 2025, against 649,000 in the year to the election.",
+    "The peak was 944,000 in the year to Mar 2023, before the election.",
+    "That net figure is the difference between two much larger flows: 813,000 people arrived and 642,000 left.",
+    "Of the latest net figure, 350,000 were non-EU nationals.",
+    "These are provisional estimates, described by the ONS as official statistics in development, and they are revised as more data arrives. Earlier figures have moved by tens of thousands."
    ],
    "chart": {
-    "kind": "hbar",
+    "kind": "line",
     "unit": "",
     "decimals": 0,
-    "bars": [
+    "freq": "q",
+    "series": [
      {
-      "name": "Year to Dec 2025",
-      "value": 171000,
-      "role": "primary"
+      "name": "Net migration",
+      "role": "primary",
+      "points": [
+       [
+        "2012-06-30",
+        162000
+       ],
+       [
+        "2012-09-30",
+        157000
+       ],
+       [
+        "2012-12-31",
+        195000
+       ],
+       [
+        "2013-03-31",
+        204000
+       ],
+       [
+        "2013-06-30",
+        215000
+       ],
+       [
+        "2013-09-30",
+        259000
+       ],
+       [
+        "2013-12-31",
+        244000
+       ],
+       [
+        "2014-03-31",
+        256000
+       ],
+       [
+        "2014-06-30",
+        248000
+       ],
+       [
+        "2014-09-30",
+        264000
+       ],
+       [
+        "2014-12-31",
+        284000
+       ],
+       [
+        "2015-03-31",
+        296000
+       ],
+       [
+        "2015-06-30",
+        296000
+       ],
+       [
+        "2015-09-30",
+        293000
+       ],
+       [
+        "2015-12-31",
+        303000
+       ],
+       [
+        "2016-03-31",
+        298000
+       ],
+       [
+        "2016-06-30",
+        321000
+       ],
+       [
+        "2016-09-30",
+        290000
+       ],
+       [
+        "2016-12-31",
+        249000
+       ],
+       [
+        "2017-03-31",
+        240000
+       ],
+       [
+        "2017-06-30",
+        200000
+       ],
+       [
+        "2017-09-30",
+        205000
+       ],
+       [
+        "2017-12-31",
+        208000
+       ],
+       [
+        "2018-03-31",
+        193000
+       ],
+       [
+        "2018-06-30",
+        216000
+       ],
+       [
+        "2018-09-30",
+        226000
+       ],
+       [
+        "2018-12-31",
+        276000
+       ],
+       [
+        "2019-03-31",
+        274000
+       ],
+       [
+        "2019-06-30",
+        224000
+       ],
+       [
+        "2019-09-30",
+        202000
+       ],
+       [
+        "2019-12-31",
+        184000
+       ],
+       [
+        "2020-03-31",
+        170000
+       ],
+       [
+        "2020-06-30",
+        111000
+       ],
+       [
+        "2020-09-30",
+        35000
+       ],
+       [
+        "2020-12-31",
+        93000
+       ],
+       [
+        "2021-03-31",
+        132000
+       ],
+       [
+        "2021-06-30",
+        251000
+       ],
+       [
+        "2021-09-30",
+        384000
+       ],
+       [
+        "2021-12-31",
+        467000
+       ],
+       [
+        "2022-03-31",
+        575000
+       ],
+       [
+        "2022-06-30",
+        681000
+       ],
+       [
+        "2022-09-30",
+        822000
+       ],
+       [
+        "2022-12-31",
+        891000
+       ],
+       [
+        "2023-03-31",
+        944000
+       ],
+       [
+        "2023-06-30",
+        924000
+       ],
+       [
+        "2023-09-30",
+        891000
+       ],
+       [
+        "2023-12-31",
+        848000
+       ],
+       [
+        "2024-03-31",
+        734000
+       ],
+       [
+        "2024-06-30",
+        649000
+       ],
+       [
+        "2024-09-30",
+        497000
+       ],
+       [
+        "2024-12-31",
+        331000
+       ],
+       [
+        "2025-03-31",
+        260000
+       ],
+       [
+        "2025-06-30",
+        219000
+       ],
+       [
+        "2025-09-30",
+        202000
+       ],
+       [
+        "2025-12-31",
+        171000
+       ]
+      ]
      },
      {
-      "name": "Year to Dec 2024",
-      "value": 331000,
-      "role": "muted"
+      "name": "Immigration",
+      "role": "muted",
+      "points": [
+       [
+        "2012-06-30",
+        639000
+       ],
+       [
+        "2012-09-30",
+        630000
+       ],
+       [
+        "2012-12-31",
+        643000
+       ],
+       [
+        "2013-03-31",
+        649000
+       ],
+       [
+        "2013-06-30",
+        669000
+       ],
+       [
+        "2013-09-30",
+        720000
+       ],
+       [
+        "2013-12-31",
+        713000
+       ],
+       [
+        "2014-03-31",
+        731000
+       ],
+       [
+        "2014-06-30",
+        737000
+       ],
+       [
+        "2014-09-30",
+        761000
+       ],
+       [
+        "2014-12-31",
+        778000
+       ],
+       [
+        "2015-03-31",
+        780000
+       ],
+       [
+        "2015-06-30",
+        778000
+       ],
+       [
+        "2015-09-30",
+        774000
+       ],
+       [
+        "2015-12-31",
+        797000
+       ],
+       [
+        "2016-03-31",
+        803000
+       ],
+       [
+        "2016-06-30",
+        832000
+       ],
+       [
+        "2016-09-30",
+        804000
+       ],
+       [
+        "2016-12-31",
+        772000
+       ],
+       [
+        "2017-03-31",
+        759000
+       ],
+       [
+        "2017-06-30",
+        718000
+       ],
+       [
+        "2017-09-30",
+        754000
+       ],
+       [
+        "2017-12-31",
+        752000
+       ],
+       [
+        "2018-03-31",
+        736000
+       ],
+       [
+        "2018-06-30",
+        757000
+       ],
+       [
+        "2018-09-30",
+        766000
+       ],
+       [
+        "2018-12-31",
+        825000
+       ],
+       [
+        "2019-03-31",
+        849000
+       ],
+       [
+        "2019-06-30",
+        821000
+       ],
+       [
+        "2019-09-30",
+        793000
+       ],
+       [
+        "2019-12-31",
+        788000
+       ],
+       [
+        "2020-03-31",
+        815000
+       ],
+       [
+        "2020-06-30",
+        736000
+       ],
+       [
+        "2020-09-30",
+        606000
+       ],
+       [
+        "2020-12-31",
+        662000
+       ],
+       [
+        "2021-03-31",
+        629000
+       ],
+       [
+        "2021-06-30",
+        818000
+       ],
+       [
+        "2021-09-30",
+        937000
+       ],
+       [
+        "2021-12-31",
+        947000
+       ],
+       [
+        "2022-03-31",
+        1069000
+       ],
+       [
+        "2022-06-30",
+        1167000
+       ],
+       [
+        "2022-09-30",
+        1317000
+       ],
+       [
+        "2022-12-31",
+        1398000
+       ],
+       [
+        "2023-03-31",
+        1469000
+       ],
+       [
+        "2023-06-30",
+        1466000
+       ],
+       [
+        "2023-09-30",
+        1461000
+       ],
+       [
+        "2023-12-31",
+        1441000
+       ],
+       [
+        "2024-03-31",
+        1359000
+       ],
+       [
+        "2024-06-30",
+        1299000
+       ],
+       [
+        "2024-09-30",
+        1159000
+       ],
+       [
+        "2024-12-31",
+        1012000
+       ],
+       [
+        "2025-03-31",
+        945000
+       ],
+       [
+        "2025-06-30",
+        888000
+       ],
+       [
+        "2025-09-30",
+        862000
+       ],
+       [
+        "2025-12-31",
+        813000
+       ]
+      ]
      },
      {
-      "name": "Year to Jun 2024",
-      "value": 740000,
-      "role": "muted"
+      "name": "Emigration",
+      "role": "muted",
+      "points": [
+       [
+        "2012-06-30",
+        477000
+       ],
+       [
+        "2012-09-30",
+        473000
+       ],
+       [
+        "2012-12-31",
+        448000
+       ],
+       [
+        "2013-03-31",
+        446000
+       ],
+       [
+        "2013-06-30",
+        454000
+       ],
+       [
+        "2013-09-30",
+        461000
+       ],
+       [
+        "2013-12-31",
+        469000
+       ],
+       [
+        "2014-03-31",
+        475000
+       ],
+       [
+        "2014-06-30",
+        489000
+       ],
+       [
+        "2014-09-30",
+        497000
+       ],
+       [
+        "2014-12-31",
+        494000
+       ],
+       [
+        "2015-03-31",
+        484000
+       ],
+       [
+        "2015-06-30",
+        482000
+       ],
+       [
+        "2015-09-30",
+        481000
+       ],
+       [
+        "2015-12-31",
+        494000
+       ],
+       [
+        "2016-03-31",
+        506000
+       ],
+       [
+        "2016-06-30",
+        511000
+       ],
+       [
+        "2016-09-30",
+        514000
+       ],
+       [
+        "2016-12-31",
+        523000
+       ],
+       [
+        "2017-03-31",
+        519000
+       ],
+       [
+        "2017-06-30",
+        518000
+       ],
+       [
+        "2017-09-30",
+        549000
+       ],
+       [
+        "2017-12-31",
+        544000
+       ],
+       [
+        "2018-03-31",
+        543000
+       ],
+       [
+        "2018-06-30",
+        541000
+       ],
+       [
+        "2018-09-30",
+        539000
+       ],
+       [
+        "2018-12-31",
+        549000
+       ],
+       [
+        "2019-03-31",
+        575000
+       ],
+       [
+        "2019-06-30",
+        597000
+       ],
+       [
+        "2019-09-30",
+        591000
+       ],
+       [
+        "2019-12-31",
+        605000
+       ],
+       [
+        "2020-03-31",
+        645000
+       ],
+       [
+        "2020-06-30",
+        625000
+       ],
+       [
+        "2020-09-30",
+        571000
+       ],
+       [
+        "2020-12-31",
+        569000
+       ],
+       [
+        "2021-03-31",
+        496000
+       ],
+       [
+        "2021-06-30",
+        567000
+       ],
+       [
+        "2021-09-30",
+        552000
+       ],
+       [
+        "2021-12-31",
+        480000
+       ],
+       [
+        "2022-03-31",
+        495000
+       ],
+       [
+        "2022-06-30",
+        486000
+       ],
+       [
+        "2022-09-30",
+        496000
+       ],
+       [
+        "2022-12-31",
+        508000
+       ],
+       [
+        "2023-03-31",
+        525000
+       ],
+       [
+        "2023-06-30",
+        543000
+       ],
+       [
+        "2023-09-30",
+        570000
+       ],
+       [
+        "2023-12-31",
+        593000
+       ],
+       [
+        "2024-03-31",
+        625000
+       ],
+       [
+        "2024-06-30",
+        650000
+       ],
+       [
+        "2024-09-30",
+        662000
+       ],
+       [
+        "2024-12-31",
+        680000
+       ],
+       [
+        "2025-03-31",
+        685000
+       ],
+       [
+        "2025-06-30",
+        669000
+       ],
+       [
+        "2025-09-30",
+        661000
+       ],
+       [
+        "2025-12-31",
+        642000
+       ]
+      ]
      }
     ],
-    "note": "Net long-term international migration to the UK, ONS estimates. Figures are revised as more data arrives."
+    "note": "ONS long-term international migration, rolling year-ending estimates. Net migration is immigration minus emigration."
    },
    "sources": [
     {
      "publisher": "Office for National Statistics",
-     "title": "Long-term international migration, provisional: year ending December 2025",
-     "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/longterminternationalmigrationprovisional/yearendingdecember2025",
-     "published": "2025-12-31"
+     "title": "Long-term international immigration, emigration and net migration flows, provisional",
+     "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional",
+     "data_url": "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx",
+     "series": [
+      "Long-term international migration by flow and nationality (table 1)"
+     ],
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
+     "automated": true
     }
    ],
-   "method": "ONS provisional estimates of long-term international migration. These are estimates and are revised, sometimes substantially, as more administrative data becomes available.",
+   "method": "ONS long-term international migration, provisional estimates, table 1: year-ending estimates of immigration, emigration and net migration for the UK. Official statistics in development, revised as administrative data matures.",
    "explainer": {
     "what": "The number of people arriving to live in the UK for at least a year, minus the number leaving.",
-    "why": "It drives population growth, and therefore demand for housing, schools and health services."
+    "why": "It drives population growth, and it is the number the whole immigration argument is conducted in. It is an estimate, not a count, and it is revised."
    },
-   "verified_on": "2026-09-21",
-   "recheck_by": "2026-12-01",
-   "automated": false
+   "automated": true,
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "returns",
@@ -6228,7 +6897,7 @@
      "series": [
       "Returns from the UK by return destination and return type (Ret_D02)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -6238,7 +6907,7 @@
     "why": "Arrivals get the attention, but a system's credibility rests on whether people refused permission to stay actually leave. Governments of both parties are judged on this figure."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "small_boats",
@@ -6660,7 +7329,7 @@
      "series": [
       "Migrants detected crossing the English Channel in small boats — daily time series (SB_01)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -6670,7 +7339,7 @@
     "why": "It is the most visible measure of control of the border, and the figure most often cited in the debate about asylum. It is published weekly, so it is unusually current."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "clean_power",
@@ -7412,7 +8081,7 @@
      "series": [
       "Asylum claims awaiting an initial decision or further review (Asy_D03)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -7422,7 +8091,7 @@
     "why": "Almost everything else follows from it. People waiting are people the state houses and supports, so the backlog drives the cost, the hotels and the local tension around them."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "asylum_hotels",
@@ -7537,7 +8206,7 @@
      "series": [
       "Asylum seekers in receipt of Home Office support, by accommodation type (Asy_D09)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -7547,7 +8216,7 @@
     "why": "Hotels are the most visible form of asylum accommodation, the most expensive per person, and the focus of local protest. Both the government and its critics use this figure, so it is worth seeing in full."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "cohesion",
@@ -7617,7 +8286,7 @@
      "series": [
       "Extent of agreement that your local area is a place where people from different backgrounds get on well together"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     },
     {
@@ -7628,7 +8297,7 @@
      "series": [
       "Extent of agreement that your local area is a place where people from different backgrounds get on well together"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -7638,7 +8307,7 @@
     "why": "It is the closest thing the government has to a direct measure of whether communities are holding together, and it is asked the same way every year of a very large sample."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "hate_crime",
@@ -8031,7 +8700,7 @@
      "series": [
       "Number of hate crimes recorded by the police, by monitored strand (table 2a)"
      ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
+     "retrieved_at": "2026-09-20T18:45:34+00:00",
      "automated": true
     }
    ],
@@ -8041,127 +8710,7 @@
     "why": "It is the closest thing to a running measure of hostility between groups. It is a record of what is reported and recorded, not of everything that happens, and recording practice has changed a lot over the years."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
-  },
-  {
-   "id": "trust_government",
-   "section": "cohesion",
-   "title": "Trust in government",
-   "question": "How many people say they trust the UK government?",
-   "headline": {
-    "value": 25.1,
-    "unit": "%",
-    "decimals": 1,
-    "period": "28 Jun 2026",
-    "caption": "of adults say they tend to trust the UK government"
-   },
-   "benchmark": {
-    "label": "Before the election",
-    "text": "21.2%"
-   },
-   "baseline": {
-    "label": "Last reading before the election",
-    "value": 21.2,
-    "unit": "%"
-   },
-   "context": [
-    "25.1% said they tend to trust the UK government in the survey ending 28 Jun 2026, against 21.2% in the last reading before the election.",
-    "Trust rose after the election, reaching 29.2% in 30 Mar 2026, and has since fallen back.",
-    "Roughly three quarters of adults do not say they trust the government. That has been true throughout this series, under both governments.",
-    "The Opinions and Lifestyle Survey runs in irregular windows rather than on fixed dates, so the points are not evenly spaced.",
-    "An older ONS survey put trust in government at 27% in late 2023, but it asked a different sample in a different way and the two are not comparable."
-   ],
-   "chart": {
-    "kind": "line",
-    "unit": "%",
-    "decimals": 1,
-    "freq": "m",
-    "band": [
-     0,
-     60
-    ],
-    "series": [
-     {
-      "name": "Tend to trust the UK government",
-      "role": "primary",
-      "points": [
-       [
-        "2023-01-22",
-        23.3
-       ],
-       [
-        "2023-04-02",
-        23.5
-       ],
-       [
-        "2023-07-09",
-        23.1
-       ],
-       [
-        "2023-09-03",
-        22.8
-       ],
-       [
-        "2023-11-26",
-        19.5
-       ],
-       [
-        "2024-02-25",
-        22.2
-       ],
-       [
-        "2024-05-06",
-        21.2
-       ],
-       [
-        "2024-09-29",
-        27.6
-       ],
-       [
-        "2025-01-05",
-        27.9
-       ],
-       [
-        "2025-06-29",
-        26.2
-       ],
-       [
-        "2026-01-04",
-        21.9
-       ],
-       [
-        "2026-03-30",
-        29.2
-       ],
-       [
-        "2026-06-28",
-        25.1
-       ]
-      ]
-     }
-    ],
-    "note": "ONS Opinions and Lifestyle Survey, Great Britain, adults aged 16 and over. Plotted at the end of each fieldwork window."
-   },
-   "sources": [
-    {
-     "publisher": "Office for National Statistics",
-     "title": "Beyond GDP insights: UK headline measures of national well-being",
-     "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/datasets/beyondgdpinsightsukheadlinemeasuresofnationalwellbeing",
-     "data_url": "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/wellbeing/datasets/beyondgdpinsightsukheadlinemeasuresofnationalwellbeing/september2026/ukheadlinemeasuresofnationalwellbeingsept2026final.xlsx",
-     "series": [
-      "People who tend to trust the UK government (worksheet 6)"
-     ],
-     "retrieved_at": "2026-09-20T18:42:46+00:00",
-     "automated": true
-    }
-   ],
-   "method": "ONS Beyond GDP headline measures, worksheet 6: the share of adults in Great Britain who say they tend to trust the UK government, from the Opinions and Lifestyle Survey. Each figure is plotted at the end of its fieldwork window. Published quarterly.",
-   "explainer": {
-    "what": "The share of adults who say they tend to trust the UK government.",
-    "why": "Trust is what lets a government act. It is also the measure most likely to move on events rather than policy, so it is worth watching over years rather than between readings."
-   },
-   "automated": true,
-   "updated_at": "2026-09-20T18:42:46+00:00"
+   "updated_at": "2026-09-20T18:45:34+00:00"
   },
   {
    "id": "school_readiness",

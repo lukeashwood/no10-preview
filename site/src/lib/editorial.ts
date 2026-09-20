@@ -138,7 +138,10 @@ export const EDITORIAL: Record<string, Editorial> = {
   hate_crime: { group: 'condition', influence: 'shared', better: 'lower', labels: ['England and Wales', 'Excludes the Met'],
     baselineNote: 'Recorded on the victim’s or a witness’s perception, before any court tests it, and recording practice has changed repeatedly. The Metropolitan Police is excluded from every year because its 2024–25 figures are not comparable after a change of system.',
     influenceNote: 'The law, police funding and recording rules are the government’s. Whether an offence happens, and whether a victim reports it, are not.' },
-  net_migration: { group: 'condition', influence: 'direct', better: 'none', sinceFromBaseline: true, betterNote: 'The right level of migration is a political judgement, so the direction is not coloured.', labels: ['UK', 'ONS estimate, revised'], influenceNote: 'Visa rules are set by ministers. Departures, returning British citizens and world events are not controlled by anyone.' },
+  net_migration: { group: 'condition', influence: 'direct', better: 'none', labels: ['UK', 'Provisional, revised'],
+    betterNote: 'The right level of migration is a political judgement, so the direction is not coloured.',
+    baselineNote: 'These are provisional estimates that the ONS revises as administrative data matures; past figures have moved by tens of thousands.',
+    influenceNote: 'Visa rules are set by ministers. Departures, returning British citizens and world events are not controlled by anyone.' },
 };
 
 export const VERDICT_LABEL: Record<Verdict, string> = {
