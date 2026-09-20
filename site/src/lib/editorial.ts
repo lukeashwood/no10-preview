@@ -6,6 +6,7 @@
 import type { Editorial, RawMetric, Verdict } from './types';
 
 const v = (verdict: Verdict, reason: string) => ({ verdict, reason });
+const v2 = v;   // alias, so a rate() can name its own value `v` without shadowing the helper
 
 export const EDITORIAL: Record<string, Editorial> = {
   /* ------------------------------------------------------------ promises: the government's own commitments */
@@ -127,10 +128,26 @@ export const EDITORIAL: Record<string, Editorial> = {
   asylum_backlog: { group: 'condition', influence: 'direct', better: 'lower', labels: ['UK', 'End of quarter'],
     influenceNote: 'How fast claims are decided is a matter of Home Office staffing and process. How many claims arrive is not.' },
 
-  asylum_hotels: { group: 'condition', influence: 'direct', better: 'lower', labels: ['UK', 'End of quarter'],
+  asylum_hotels: {
+    group: 'target', influence: 'direct', better: 'lower', labels: ['UK', 'End of quarter'],
     baselineNote: 'Hotel numbers rose after the election before falling, so the two end points hide the shape of the series. The chart shows it in full.',
-    betterNote: 'Lower is treated as better because the government and its critics both want hotel use to end. What replaces it — dispersal accommodation in towns and cities — is itself disputed, and is not measured here.',
-    influenceNote: 'Asylum accommodation is contracted and paid for by the Home Office, so this is about as directly in the government’s hands as a measure gets. The number of people needing it depends on arrivals and on how fast claims are decided.' },
+    influenceNote: 'Asylum accommodation is contracted and paid for by the Home Office, so this is about as directly in the government’s hands as a measure gets. The number of people needing it depends on arrivals and on how fast claims are decided.',
+    target: {
+      owner: 'government', ownerLabel: 'Spending Review 2025 and the asylum policy statement', deadline: '2029-07-04',
+      commitment: 'End the use of asylum hotels by the end of this Parliament.',
+      sourceLabel: 'Restoring Order and Control, CP 1418, 21 November 2025',
+      sourceUrl: 'https://www.gov.uk/government/publications/restoring-order-and-control',
+      rule: 'Met when no one is housed in an asylum hotel. Before the deadline it is “in progress” while the number is falling, and “at risk” if it is flat or rising. The government set no firmer date than the end of the Parliament, so the deadline here is the last date this Parliament can run to.',
+      rate: (m) => {
+        const v = m.headline.value, base = m.baseline?.value ?? 0;
+        if (v === 0) return v2('met', 'No one is housed in an asylum hotel.');
+        const falling = v < base;
+        const txt = `${v.toLocaleString('en-GB')} people are still in asylum hotels, against ${base.toLocaleString('en-GB')} at the election.`;
+        return falling ? v2('in_progress', `${txt} The commitment is to end their use by the end of this Parliament.`)
+          : v2('at_risk', `${txt} The number is no lower than when the government took office.`);
+      },
+    },
+  },
   returns: { group: 'condition', influence: 'direct', better: 'none', labels: ['UK', 'Rolling 12 months'],
     baselineNote: 'Every point on this chart is a total of the previous four quarters, so the two figures compared are twelve-month totals rather than single quarters.',
     betterNote: 'Whether more returns is good depends on what you think the rules should be and how they should be enforced, so the direction is not coloured. The figures and their split are shown in full.',
