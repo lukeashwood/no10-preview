@@ -39,7 +39,7 @@ const coloured = CONDITIONS.filter((m) => m.ed.better !== 'none'), neutral = CON
       <p>This site exists to hold the government of the day to account, so the main comparison on every measure is simple: where was it when the government took office, and where is it now? The starting point is the last figure before the government’s first full period: June 2024 for monthly figures, the April–June quarter of 2024 for quarterly figures, and 2023–24 for annual ones. Every chart shades the government’s time in office and fades what came before.</p>
       <p>A since-office comparison is a fact, not a verdict. Two things are always shown beside it so it can’t mislead: how much control the government has over that measure, and a note wherever the starting point was unusual (for example, a figure that was already falling sharply before the election).</p>
       <p><strong>Better or worse</strong> colouring is used only where nearly everyone agrees which direction is good: {coloured.map((m) => m.title.toLowerCase()).join(', ')}. For {neutral.map((m) => m.title.toLowerCase()).join(', ')}, which way is “good” is a matter of political opinion, so the site says only higher, lower or little changed. The front-page count of measures that are better or worse since the election includes only the first group.</p>
-      <p><strong>Over the past year</strong> is shown second. It compares the latest figure with the same period a year earlier (the previous year for annual figures), which avoids seasonal swings. A change smaller than 0.2 percentage points (for rates) or 1% (for levels and indexes) counts as little changed. Dollar figures that can go negative, such as the budget balance, are compared in dollars. One series, housing completions, isn’t seasonally adjusted, so it is left out of since-office comparisons and judged on its commitment instead.</p>
+      <p><strong>Over the past year</strong> is shown second. It compares the latest figure with the same period a year earlier (the previous year for annual figures), which avoids seasonal swings. A change smaller than 0.2 percentage points (for rates) or 1% (for levels and indexes) counts as little changed. Money figures that can go negative, such as public sector net borrowing, are compared in pounds rather than as a percentage. Strongly seasonal monthly counts, such as small boat arrivals and monthly borrowing, are compared as rolling twelve-month totals, so a summer month is never set against a winter one.</p>
 
       <h2>6. Whose doing is it?</h2>
       <p>Every measure carries one of three labels, with a sentence explaining why.</p>
@@ -54,7 +54,16 @@ const coloured = CONDITIONS.filter((m) => m.ed.better !== 'none'), neutral = CON
         <li>It doesn’t take a side on contested questions such as how large the state or migration should be.</li>
         <li>It doesn’t publish figures from campaign material, media releases alone, or think tanks as if they were official statistics.</li>
       </ul>
-      <h2>9. Reuse</h2>
+      <h2>9. Contested subjects</h2>
+      <p>Some subjects are fought over harder than others: child sexual exploitation by organised groups, immigration and asylum, the policing of speech and protest, and public disorder. They are covered here, because a government is accountable for them like anything else, and leaving them out would be its own kind of editorial choice. They are held to a stricter standard than the rest of the site, not a looser one.</p>
+      <ul>
+        <li><strong>The official term is used, with the common one beside it.</strong> Precision is not squeamishness: an inquiry, a police force and a statistician each mean something specific, and a claim can only be checked against the record if it is stated in the record’s own terms.</li>
+        <li><strong>Every strand is labelled.</strong> Within a single controversy, some claims are established by the official record, some are genuinely contested by credible people, and some are in wide circulation but not supported by the record. Each is marked, including where a popular claim turns out to be understated as well as where it is overstated.</li>
+        <li><strong>A gap in the data is reported as a gap.</strong> Where a figure is missing, poorly recorded or not collected at all — which is itself a recurring finding in this area — the site says so rather than filling it with an estimate.</li>
+        <li><strong>No verdict on questions of value.</strong> How much immigration a country should have, and where the line between lawful speech and a criminal offence should sit, are political judgements, not measurements. The site reports what the figures and the record say and leaves the judgement to the reader. Verdicts are still given on commitments the government itself made and put a number or a date on.</li>
+      </ul>
+
+      <h2>10. Reuse</h2>
       <p>Figures from the ONS, the Bank of England and government departments are used under the Open Government Licence v3.0. This site’s own tables and calculations may be reused with credit: name “{SITE.name}” and link to the page. Every measure page has a ready-made citation and a CSV download, and the <a href={url('data/')}>data page</a> has everything in one file.</p>
     </div>
   </div>
