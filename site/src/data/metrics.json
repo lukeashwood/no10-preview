@@ -1,11 +1,11 @@
 {
  "summary": {
-  "generated_at": "2026-09-20T18:00:11+00:00",
-  "checks_total": 19,
-  "checks_passed": 19,
+  "generated_at": "2026-09-20T18:02:41+00:00",
+  "checks_total": 21,
+  "checks_passed": 21,
   "checks_warn": 0,
   "checks_failed": 0,
-  "metrics_total": 17
+  "metrics_total": 18
  },
  "election": "2024-07-04",
  "sections": [
@@ -679,7 +679,7 @@
      "series": [
       "CPI annual rate and CPI index, all items (D7G7, D7BT)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -689,7 +689,7 @@
     "why": "The Bank of England is required to keep inflation at 2%. When pay rises more slowly than prices, households are worse off even though wages are going up."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "real_wages",
@@ -1303,7 +1303,7 @@
      "series": [
       "AWE whole economy, real terms level, regular pay, seasonally adjusted (A3WX)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -1313,7 +1313,7 @@
     "why": "This is the clearest measure of whether working people are better or worse off than they were."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "homes",
@@ -1998,7 +1998,7 @@
      "series": [
       "Unemployment rate, employment rate and inactivity rate, seasonally adjusted (MGSX, LF24, LF2S)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -2008,7 +2008,7 @@
     "why": "It is the clearest measure of whether the jobs market is getting easier or harder, though it misses people who have stopped looking."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "gdp_vs_capita",
@@ -2432,7 +2432,7 @@
      "series": [
       "Gross domestic product and GDP per head, chained volume measures, seasonally adjusted (ABMI, IHXW)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -2442,7 +2442,7 @@
     "why": "Total GDP can grow simply because there are more people. GDP per person is the better guide to living standards."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "productivity",
@@ -2678,7 +2678,7 @@
      "series": [
       "UK whole economy output per hour worked, seasonally adjusted (LZVB)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -2688,7 +2688,7 @@
     "why": "Sustained pay rises and better public services ultimately depend on producing more per hour. UK productivity has grown slowly since the financial crisis."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "bank_rate",
@@ -3866,7 +3866,7 @@
       "IUMBV34",
       "IUMTLMV"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -3876,7 +3876,7 @@
     "why": "It is the main tool for controlling inflation, and it decides what mortgages cost. The government does not set it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "borrowing",
@@ -4346,7 +4346,7 @@
      "series": [
       "Public sector net borrowing excluding public sector banks, £ million (J5II)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -4356,7 +4356,7 @@
     "why": "Every pound borrowed is added to the national debt and has to be serviced out of future taxes."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "debt",
@@ -5207,7 +5207,7 @@
      "series": [
       "Public sector net debt excluding public sector banks, as a share of GDP (HF6X)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -5217,7 +5217,7 @@
     "why": "Interest on this debt is paid before anything else. The larger it is relative to the economy, the more of each year's taxes go to servicing it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "nhs_18_weeks",
@@ -6022,7 +6022,7 @@
      "series": [
       "Returns from the UK by return destination and return type (Ret_D02)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -6032,7 +6032,7 @@
     "why": "Arrivals get the attention, but a system's credibility rests on whether people refused permission to stay actually leave. Governments of both parties are judged on this figure."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "small_boats",
@@ -6454,7 +6454,7 @@
      "series": [
       "Migrants detected crossing the English Channel in small boats — daily time series (SB_01)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -6464,7 +6464,7 @@
     "why": "It is the most visible measure of control of the border, and the figure most often cited in the debate about asylum. It is published weekly, so it is unusually current."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "clean_power",
@@ -6742,7 +6742,7 @@
      "series": [
       "Asylum seekers in receipt of Home Office support, by accommodation type (Asy_D09)"
      ],
-     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
      "automated": true
     }
    ],
@@ -6752,7 +6752,410 @@
     "why": "Hotels are the most visible form of asylum accommodation, the most expensive per person, and the focus of local protest. Both the government and its critics use this figure, so it is worth seeing in full."
    },
    "automated": true,
-   "updated_at": "2026-09-20T18:00:11+00:00"
+   "updated_at": "2026-09-20T18:02:41+00:00"
+  },
+  {
+   "id": "hate_crime",
+   "section": "cohesion",
+   "title": "Hate crime",
+   "question": "How many crimes are recorded as motivated by hostility to who someone is?",
+   "headline": {
+    "value": 115990,
+    "unit": "",
+    "decimals": 0,
+    "period": "2024–25",
+    "caption": "hate crimes recorded by the police, excluding the Metropolitan Police"
+   },
+   "benchmark": {
+    "label": "Year before",
+    "text": "113,166"
+   },
+   "baseline": {
+    "label": "2023–24",
+    "value": 113166,
+    "unit": ""
+   },
+   "context": [
+    "115,990 hate crimes were recorded in 2024–25, against 113,166 the year before: +2.5%.",
+    "Race is the largest strand, at 82,490 offences.",
+    "The Metropolitan Police is left out of every year shown. It changed crime recording system in 2024–25, so its figures are no longer comparable, and the Home Office excludes them from its own trend table. Including them would show a fall that is an artefact of the system change.",
+    "A hate crime is any offence the victim or anyone else perceives as motivated by hostility to race, religion, sexual orientation, disability or transgender identity. It is recorded on perception, before any court tests it.",
+    "The long rise from 2012 onwards is partly better recording rather than more offences, so short comparisons are safer than long ones.",
+    "The year runs April to March, so the latest year covers the first nine months of this government and the three before it."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "",
+    "decimals": 0,
+    "freq": "fy",
+    "series": [
+     {
+      "name": "All hate crimes recorded",
+      "role": "primary",
+      "points": [
+       [
+        "2013-03-31",
+        31884
+       ],
+       [
+        "2014-03-31",
+        33829
+       ],
+       [
+        "2015-03-31",
+        38576
+       ],
+       [
+        "2016-03-31",
+        46071
+       ],
+       [
+        "2017-03-31",
+        60650
+       ],
+       [
+        "2018-03-31",
+        74674
+       ],
+       [
+        "2019-03-31",
+        86593
+       ],
+       [
+        "2021-03-31",
+        99813
+       ],
+       [
+        "2022-03-31",
+        128485
+       ],
+       [
+        "2023-03-31",
+        123033
+       ],
+       [
+        "2024-03-31",
+        113166
+       ],
+       [
+        "2025-03-31",
+        115990
+       ]
+      ]
+     },
+     {
+      "name": "Race",
+      "role": "muted",
+      "points": [
+       [
+        "2012-03-31",
+        27961
+       ],
+       [
+        "2013-03-31",
+        26462
+       ],
+       [
+        "2014-03-31",
+        27826
+       ],
+       [
+        "2015-03-31",
+        31322
+       ],
+       [
+        "2016-03-31",
+        36121
+       ],
+       [
+        "2017-03-31",
+        46762
+       ],
+       [
+        "2018-03-31",
+        55793
+       ],
+       [
+        "2019-03-31",
+        62992
+       ],
+       [
+        "2021-03-31",
+        71995
+       ],
+       [
+        "2022-03-31",
+        87905
+       ],
+       [
+        "2023-03-31",
+        84039
+       ],
+       [
+        "2024-03-31",
+        77901
+       ],
+       [
+        "2025-03-31",
+        82490
+       ]
+      ]
+     },
+     {
+      "name": "Religion",
+      "role": "muted",
+      "points": [
+       [
+        "2012-03-31",
+        1011
+       ],
+       [
+        "2013-03-31",
+        941
+       ],
+       [
+        "2014-03-31",
+        1349
+       ],
+       [
+        "2015-03-31",
+        1922
+       ],
+       [
+        "2016-03-31",
+        2637
+       ],
+       [
+        "2017-03-31",
+        3833
+       ],
+       [
+        "2018-03-31",
+        5833
+       ],
+       [
+        "2019-03-31",
+        6344
+       ],
+       [
+        "2021-03-31",
+        4527
+       ],
+       [
+        "2022-03-31",
+        6510
+       ],
+       [
+        "2023-03-31",
+        6513
+       ],
+       [
+        "2024-03-31",
+        6973
+       ],
+       [
+        "2025-03-31",
+        7164
+       ]
+      ]
+     },
+     {
+      "name": "Sexual orientation",
+      "role": "muted",
+      "points": [
+       [
+        "2012-03-31",
+        3111
+       ],
+       [
+        "2013-03-31",
+        3109
+       ],
+       [
+        "2014-03-31",
+        3375
+       ],
+       [
+        "2015-03-31",
+        4042
+       ],
+       [
+        "2016-03-31",
+        5350
+       ],
+       [
+        "2017-03-31",
+        7111
+       ],
+       [
+        "2018-03-31",
+        9491
+       ],
+       [
+        "2019-03-31",
+        12080
+       ],
+       [
+        "2021-03-31",
+        15668
+       ],
+       [
+        "2022-03-31",
+        22317
+       ],
+       [
+        "2023-03-31",
+        21306
+       ],
+       [
+        "2024-03-31",
+        19127
+       ],
+       [
+        "2025-03-31",
+        18702
+       ]
+      ]
+     },
+     {
+      "name": "Disability",
+      "role": "muted",
+      "points": [
+       [
+        "2012-03-31",
+        1628
+       ],
+       [
+        "2013-03-31",
+        1803
+       ],
+       [
+        "2014-03-31",
+        1896
+       ],
+       [
+        "2015-03-31",
+        2337
+       ],
+       [
+        "2016-03-31",
+        3272
+       ],
+       [
+        "2017-03-31",
+        4892
+       ],
+       [
+        "2018-03-31",
+        6759
+       ],
+       [
+        "2019-03-31",
+        7837
+       ],
+       [
+        "2021-03-31",
+        9418
+       ],
+       [
+        "2022-03-31",
+        13611
+       ],
+       [
+        "2023-03-31",
+        13637
+       ],
+       [
+        "2024-03-31",
+        11131
+       ],
+       [
+        "2025-03-31",
+        10224
+       ]
+      ]
+     },
+     {
+      "name": "Transgender",
+      "role": "muted",
+      "points": [
+       [
+        "2012-03-31",
+        239
+       ],
+       [
+        "2013-03-31",
+        314
+       ],
+       [
+        "2014-03-31",
+        480
+       ],
+       [
+        "2015-03-31",
+        500
+       ],
+       [
+        "2016-03-31",
+        706
+       ],
+       [
+        "2017-03-31",
+        1046
+       ],
+       [
+        "2018-03-31",
+        1523
+       ],
+       [
+        "2019-03-31",
+        2089
+       ],
+       [
+        "2021-03-31",
+        2510
+       ],
+       [
+        "2022-03-31",
+        3920
+       ],
+       [
+        "2023-03-31",
+        4477
+       ],
+       [
+        "2024-03-31",
+        4258
+       ],
+       [
+        "2025-03-31",
+        3809
+       ]
+      ]
+     }
+    ],
+    "note": "Police recorded hate crime, England and Wales, excluding the Metropolitan Police. 2019–20 is missing because Greater Manchester Police could not supply data that year."
+   },
+   "sources": [
+    {
+     "publisher": "Home Office",
+     "title": "Hate crime, England and Wales (bulletin table 2a)",
+     "url": "https://www.gov.uk/government/statistics/hate-crime-england-and-wales-year-ending-march-2025",
+     "data_url": "https://assets.publishing.service.gov.uk/media/68e4bbbb8c1db6022d0ca16e/hate-crime-england-and-wales-2024-to-2025-data-tables.ods",
+     "series": [
+      "Number of hate crimes recorded by the police, by monitored strand (table 2a)"
+     ],
+     "retrieved_at": "2026-09-20T18:02:41+00:00",
+     "automated": true
+    }
+   ],
+   "method": "Home Office hate crime statistics, bulletin table 2a: offences recorded by the police in England and Wales excluding the Metropolitan Police, year ending March. The Met is excluded throughout because its 2024–25 figures are not comparable with earlier years after a change of recording system. Published annually, each October.",
+   "explainer": {
+    "what": "Crimes the police recorded as motivated by hostility to someone's race, religion, sexual orientation, disability or transgender identity.",
+    "why": "It is the closest thing to a running measure of hostility between groups. It is a record of what is reported and recorded, not of everything that happens, and recording practice has changed a lot over the years."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T18:02:41+00:00"
   },
   {
    "id": "school_readiness",

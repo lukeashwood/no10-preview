@@ -114,7 +114,12 @@ function sinceElection(m: RawMetric) {
   if (pts.length < 2) return null;
   const freq = inferFreq(pts, m.chart.freq);
   const anchor = ELECTION_BASE;
-  const from = nearest(pts, anchor, freq === 'fy' ? 10 : 50); const to = pts[pts.length - 1];
+  // For an annual series the baseline is the last full year that ended BEFORE the government took office. UK financial
+  // years end on 31 March, so nothing ever sits on the 30 June anchor and a tolerance-based match finds nothing.
+  const from = freq === 'fy' || freq === 'y'
+    ? [...pts].reverse().find((p) => p[0] <= anchor) ?? null
+    : nearest(pts, anchor, 50);
+  const to = pts[pts.length - 1];
   if (!from || from[0] === to[0]) return null;
   const isRate = rs.unit === '%' || rs.unit === 'pts', isMoney = isMoneyUnit(rs.unit);
   const change = isRate || isMoney ? to[1] - from[1] : from[1] !== 0 ? ((to[1] - from[1]) / Math.abs(from[1])) * 100 : 0;

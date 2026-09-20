@@ -126,6 +126,9 @@ export const EDITORIAL: Record<string, Editorial> = {
     baselineNote: 'Every point on this chart is a total of the previous four quarters, so the two figures compared are twelve-month totals rather than single quarters.',
     betterNote: 'Whether more returns is good depends on what you think the rules should be and how they should be enforced, so the direction is not coloured. The figures and their split are shown in full.',
     influenceNote: 'Enforcement, detention capacity and returns agreements are the Home Office’s own. Returns also depend on other countries accepting their nationals back, and on the courts.' },
+  hate_crime: { group: 'condition', influence: 'shared', better: 'lower', labels: ['England and Wales', 'Excludes the Met'],
+    baselineNote: 'Recorded on the victim’s or a witness’s perception, before any court tests it, and recording practice has changed repeatedly. The Metropolitan Police is excluded from every year because its 2024–25 figures are not comparable after a change of system.',
+    influenceNote: 'The law, police funding and recording rules are the government’s. Whether an offence happens, and whether a victim reports it, are not.' },
   net_migration: { group: 'condition', influence: 'direct', better: 'none', sinceFromBaseline: true, betterNote: 'The right level of migration is a political judgement, so the direction is not coloured.', labels: ['UK', 'ONS estimate, revised'], influenceNote: 'Visa rules are set by ministers. Departures, returning British citizens and world events are not controlled by anyone.' },
 };
 

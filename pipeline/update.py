@@ -600,6 +600,96 @@ def small_boat_arrivals():
     }
 
 
+def ods_table(blob, name, max_repeat=16):
+    """Rows of one named sheet in an .ods file."""
+    t_ns, x_ns, o_ns = ("urn:oasis:names:tc:opendocument:xmlns:table:1.0",
+                        "urn:oasis:names:tc:opendocument:xmlns:text:1.0",
+                        "urn:oasis:names:tc:opendocument:xmlns:office:1.0")
+    root = ET.fromstring(zipfile.ZipFile(io.BytesIO(blob)).read("content.xml"))
+    for table in root.iter(f"{{{t_ns}}}table"):
+        if table.get(f"{{{t_ns}}}name") != name:
+            continue
+        for row in table.iter(f"{{{t_ns}}}table-row"):
+            cells = []
+            for c in row.iter(f"{{{t_ns}}}table-cell"):
+                rep = min(int(c.get(f"{{{t_ns}}}number-columns-repeated", 1) or 1), max_repeat)
+                val = c.get(f"{{{o_ns}}}value")
+                if val is None:
+                    val = "".join(p.text or "" for p in c.iter(f"{{{x_ns}}}p"))
+                cells.extend([val] * rep)
+            while cells and cells[-1] == "":
+                cells.pop()
+            yield cells
+        return
+    raise RuntimeError(f"sheet {name!r} not found")
+
+
+@metric
+def hate_crime():
+    mid = "hate_crime"
+    page = get("https://www.gov.uk/api/search.json?q=hate+crime+england+and+wales&count=20"
+               "&filter_content_store_document_type=official_statistics&fields=link,public_timestamp", "home_office_hate_crime")
+    hits = [r for r in json.loads(page).get("results", []) if re.search(r"/hate-crime-england-and-wales-", r.get("link", ""))]
+    if not hits:
+        raise RuntimeError("could not find a hate crime release on gov.uk")
+    latest_release = max(hits, key=lambda r: r.get("public_timestamp", ""))["link"]
+    rel = get("https://www.gov.uk/api/content" + latest_release, "home_office_hate_crime_release")
+    m = re.search(r'https://assets\.publishing\.service\.gov\.uk/media/[A-Za-z0-9]+/[^"\\ ]*data-tables\.ods', rel)
+    if not m:
+        raise RuntimeError("could not find the hate crime data tables")
+    rows = list(ods_table(get(m.group(0), binary=True), "2"))
+
+    # Table 2a is the Home Office's own trend table: England and Wales EXCLUDING the Metropolitan Police. The Met
+    # changed crime recording system in 2024/25, so its figures for that year are not comparable with earlier ones
+    # and the department leaves them out of the trend. Adding them back would invent a fall that isn't there.
+    header = next(r for r in rows if r and r[0] == "Hate crime strand")
+    years = [re.match(r"(\d{4})/(\d{2})", y).group(0) for y in header[1:] if re.match(r"\d{4}/\d{2}", y)]
+    isos = [f"{int(y[:4]) + 1}-03-31" for y in years]
+
+    def row(label):
+        r = next(r for r in rows if r and r[0] == label)
+        return [[iso, int(float(v))] for iso, v in zip(isos, r[1:1 + len(isos)]) if re.fullmatch(r"[\d.]+", str(v))]
+
+    total = row("Total number of offences")
+    strands = {s: row(s) for s in ("Race", "Religion", "Sexual orientation", "Disability", "Transgender")}
+    d, v = total[-1]
+    check_fresh(mid, d, 620)                        # annual, published each October for the year to the previous March
+    check_range(mid, "hate crimes recorded", v, 0, 1000000)
+    base = at(total, BASE_Q)
+    latest_strands = {k: s[-1][1] for k, s in strands.items() if s}
+    top = max(latest_strands, key=latest_strands.get)
+    return {
+        "id": mid, "section": "cohesion", "title": "Hate crime",
+        "question": "How many crimes are recorded as motivated by hostility to who someone is?",
+        "headline": {"value": v, "unit": "", "decimals": 0, "period": fy_label(d),
+                     "caption": "hate crimes recorded by the police, excluding the Metropolitan Police"},
+        "benchmark": {"label": "Year before", "text": f"{total[-2][1]:,}"},
+        "baseline": {"label": fy_label(base[0]), "value": base[1], "unit": ""},
+        "context": [
+            f"{v:,} hate crimes were recorded in {fy_label(d)}, against {total[-2][1]:,} the year before: {pct(total[-2][1], v):+.1f}%.",
+            f"{top.lower().capitalize()} is the largest strand, at {latest_strands[top]:,} offences.",
+            "The Metropolitan Police is left out of every year shown. It changed crime recording system in 2024–25, "
+            "so its figures are no longer comparable, and the Home Office excludes them from its own trend table. "
+            "Including them would show a fall that is an artefact of the system change.",
+            "A hate crime is any offence the victim or anyone else perceives as motivated by hostility to race, religion, "
+            "sexual orientation, disability or transgender identity. It is recorded on perception, before any court tests it.",
+            "The long rise from 2012 onwards is partly better recording rather than more offences, so short comparisons are safer than long ones.",
+            "The year runs April to March, so the latest year covers the first nine months of this government and the three before it.",
+        ],
+        "chart": {"kind": "line", "unit": "", "decimals": 0, "freq": "fy",
+                  "series": [{"name": "All hate crimes recorded", "role": "primary", "points": total}]
+                            + [{"name": k, "role": "muted", "points": s} for k, s in strands.items()],
+                  "note": "Police recorded hate crime, England and Wales, excluding the Metropolitan Police. 2019–20 is missing because Greater Manchester Police could not supply data that year."},
+        "sources": [{"publisher": "Home Office", "title": "Hate crime, England and Wales (bulletin table 2a)",
+                     "url": "https://www.gov.uk" + latest_release,
+                     "data_url": m.group(0), "series": ["Number of hate crimes recorded by the police, by monitored strand (table 2a)"],
+                     "retrieved_at": NOW.isoformat(timespec="seconds"), "automated": True}],
+        "method": "Home Office hate crime statistics, bulletin table 2a: offences recorded by the police in England and Wales excluding the Metropolitan Police, year ending March. The Met is excluded throughout because its 2024–25 figures are not comparable with earlier years after a change of recording system. Published annually, each October.",
+        "explainer": {"what": "Crimes the police recorded as motivated by hostility to someone's race, religion, sexual orientation, disability or transgender identity.",
+                      "why": "It is the closest thing to a running measure of hostility between groups. It is a record of what is reported and recorded, not of everything that happens, and recording practice has changed a lot over the years."},
+    }
+
+
 @metric
 def returns():
     mid = "returns"

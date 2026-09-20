@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T18:00:11+00:00",
+ "generated_at": "2026-09-20T18:02:41+00:00",
  "checks": [
   {
    "metric": "inflation",
@@ -104,6 +104,20 @@
    "check": "freshness",
    "status": "pass",
    "detail": "latest observation 2026-09-17 (4 days old)",
+   "critical": false
+  },
+  {
+   "metric": "hate_crime",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2025-03-31 (539 days old)",
+   "critical": false
+  },
+  {
+   "metric": "hate_crime",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "hate crimes recorded = 115990 within [0, 1000000]",
    "critical": false
   },
   {
