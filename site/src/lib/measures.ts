@@ -114,11 +114,13 @@ function sinceElection(m: RawMetric) {
   if (pts.length < 2) return null;
   const freq = inferFreq(pts, m.chart.freq);
   const anchor = ELECTION_BASE;
-  // For an annual series the baseline is the last full year that ended BEFORE the government took office. UK financial
-  // years end on 31 March, so nothing ever sits on the 30 June anchor and a tolerance-based match finds nothing.
-  const from = freq === 'fy' || freq === 'y'
-    ? [...pts].reverse().find((p) => p[0] <= anchor) ?? null
-    : nearest(pts, anchor, 50);
+  // The published rule is "the last figure before the government's first full period", so take exactly that: the most
+  // recent observation at or before the anchor. For the regular monthly and quarterly series this is the same point a
+  // tolerance match found. It also handles the two cases a tolerance got wrong: UK financial years, which end on 31
+  // March and never sit on the 30 June anchor, and surveys run in irregular windows. A baseline more than about a year
+  // before the election is too stale to call a starting point, so the comparison is dropped instead.
+  const before = [...pts].reverse().find((p) => p[0] <= anchor) ?? null;
+  const from = before && Math.abs(daysBetween(before[0], anchor)) <= 400 ? before : null;
   const to = pts[pts.length - 1];
   if (!from || from[0] === to[0]) return null;
   const isRate = rs.unit === '%' || rs.unit === 'pts', isMoney = isMoneyUnit(rs.unit);

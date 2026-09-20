@@ -121,6 +121,9 @@ export const EDITORIAL: Record<string, Editorial> = {
   cohesion: { group: 'condition', influence: 'shared', better: 'higher', labels: ['England', 'Adults 16+'],
     baselineNote: 'The survey was renamed and re-based during this period. The overlapping year is identical in both, so the three points are comparable, but the question is now asked over October to March rather than across a full year.',
     influenceNote: 'Cohesion follows housing, migration, policing and local services, all of which ministers shape. It also follows things no government controls, and people answer about their own street rather than the country.' },
+  trust_government: { group: 'condition', influence: 'shared', better: 'higher', labels: ['Great Britain', 'Adults 16+'],
+    baselineNote: 'The starting point is the last reading before the election, taken in the closing weeks of the previous government, when trust was near the lowest in the series. The survey also runs in irregular windows and bounces by several points between them, so the level matters more than any single move.',
+    influenceNote: 'Trust responds to everything a government does, and to events it does not control. No single decision moves it.' },
   asylum_backlog: { group: 'condition', influence: 'direct', better: 'lower', labels: ['UK', 'End of quarter'],
     influenceNote: 'How fast claims are decided is a matter of Home Office staffing and process. How many claims arrive is not.' },
 

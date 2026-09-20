@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T18:38:55+00:00",
+ "generated_at": "2026-09-20T18:42:46+00:00",
  "checks": [
   {
    "metric": "inflation",
@@ -132,6 +132,20 @@
    "check": "plausible range",
    "status": "pass",
    "detail": "returns over 12 months = 40605 within [0, 500000]",
+   "critical": false
+  },
+  {
+   "metric": "trust_government",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-06-28 (85 days old)",
+   "critical": false
+  },
+  {
+   "metric": "trust_government",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "trust in the UK government = 25.1 within [0, 100]",
    "critical": false
   },
   {

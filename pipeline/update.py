@@ -92,6 +92,11 @@ def fy_label(iso):
     return f"{y}–{str(y + 1)[2:]}"
 
 
+def fmt_day(iso):
+    d = dt.date.fromisoformat(iso)
+    return f"{d.day} {MONTHS[d.month - 1].title()} {d.year}"
+
+
 def period_label(iso, freq):
     d = dt.date.fromisoformat(iso)
     if freq == "q":
@@ -756,6 +761,84 @@ def returns():
         "method": "Home Office quarterly returns dataset Ret_D02, summed across destinations into rolling four-quarter totals. The headline follows the Home Office's own definition of a return: enforced returns plus voluntary returns. People refused entry at the border who subsequently departed are a separate published category and are charted separately rather than added in.",
         "explainer": {"what": "The number of people leaving the UK who had no right to remain, whether removed by the Home Office or leaving voluntarily.",
                       "why": "Arrivals get the attention, but a system's credibility rests on whether people refused permission to stay actually leave. Governments of both parties are judged on this figure."},
+    }
+
+
+def ons_dataset_file(path, key):
+    """Newest edition of an ONS dataset landing page, resolved through the site's own JSON rather than a pinned URL."""
+    listing = json.loads(get(f"https://www.ons.gov.uk{path}/data", key))
+    editions = [d["uri"] for d in listing.get("datasets", []) if d.get("uri")]
+    if not editions:
+        raise RuntimeError(f"no editions for {path}")
+    ed = json.loads(get(f"https://www.ons.gov.uk{editions[0]}/data", key + "_edition"))
+    files = [f["file"] for f in ed.get("downloads", []) if f.get("file")]
+    if not files:
+        raise RuntimeError(f"no download for {editions[0]}")
+    return f"https://www.ons.gov.uk/file?uri={editions[0]}/{files[0]}", ed.get("description", {}).get("releaseDate", "")
+
+
+OLS_MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
+
+
+def ols_period_end(label):
+    """'11 to 22 Jan 2023' -> 2023-01-22; '4 Dec 2024 to 5 Jan 2025' -> 2025-01-05. Fieldwork windows, so the
+    comparable date is the day collection ended."""
+    s = re.sub(r"\[[^\]]*\]", "", label).strip()
+    tail = s.split(" to ")[-1].strip()
+    m = re.match(r"(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})", tail)
+    if not m:
+        return None
+    mon = OLS_MONTHS.get(m.group(2)[:3].lower())
+    return f"{m.group(3)}-{mon:02d}-{int(m.group(1)):02d}" if mon else None
+
+
+@metric
+def trust_government():
+    mid = "trust_government"
+    url, released = ons_dataset_file("/peoplepopulationandcommunity/wellbeing/datasets/beyondgdpinsightsukheadlinemeasuresofnationalwellbeing", "ons_wellbeing")
+    points = []
+    for cells in xlsx_rows(get(url, binary=True), "6_Trust_in_UK_government"):
+        if len(cells) < 2:
+            continue
+        iso = ols_period_end(cells[0])
+        if not iso:
+            continue
+        try:
+            points.append([iso, round(float(cells[1]), 1)])
+        except ValueError:
+            pass
+    if len(points) < 3:
+        raise RuntimeError("trust in government: no rows parsed")
+    points.sort()
+    d, v = points[-1]
+    check_fresh(mid, d, 200)
+    check_range(mid, "trust in the UK government", v, 0, 100)
+    base = at(points, BASE_M)
+    peak_since = max((p for p in points if p[0] >= BASE_M), key=lambda p: p[1])
+    return {
+        "id": mid, "section": "cohesion", "title": "Trust in government",
+        "question": "How many people say they trust the UK government?",
+        "headline": {"value": v, "unit": "%", "decimals": 1, "period": fmt_day(d),
+                     "caption": "of adults say they tend to trust the UK government"},
+        "benchmark": {"label": "Before the election", "text": f"{base[1]}%"},
+        "baseline": {"label": "Last reading before the election", "value": base[1], "unit": "%"},
+        "context": [
+            f"{v}% said they tend to trust the UK government in the survey ending {fmt_day(d)}, against {base[1]}% in the last reading before the election.",
+            f"Trust rose after the election, reaching {peak_since[1]}% in {fmt_day(peak_since[0])}, and has since fallen back.",
+            "Roughly three quarters of adults do not say they trust the government. That has been true throughout this series, under both governments.",
+            "The Opinions and Lifestyle Survey runs in irregular windows rather than on fixed dates, so the points are not evenly spaced.",
+            "An older ONS survey put trust in government at 27% in late 2023, but it asked a different sample in a different way and the two are not comparable.",
+        ],
+        "chart": {"kind": "line", "unit": "%", "decimals": 1, "freq": "m", "band": [0, 60],
+                  "series": [{"name": "Tend to trust the UK government", "role": "primary", "points": points}],
+                  "note": "ONS Opinions and Lifestyle Survey, Great Britain, adults aged 16 and over. Plotted at the end of each fieldwork window."},
+        "sources": [{"publisher": "Office for National Statistics", "title": "Beyond GDP insights: UK headline measures of national well-being",
+                     "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/datasets/beyondgdpinsightsukheadlinemeasuresofnationalwellbeing",
+                     "data_url": url, "series": ["People who tend to trust the UK government (worksheet 6)"],
+                     "retrieved_at": NOW.isoformat(timespec="seconds"), "automated": True}],
+        "method": "ONS Beyond GDP headline measures, worksheet 6: the share of adults in Great Britain who say they tend to trust the UK government, from the Opinions and Lifestyle Survey. Each figure is plotted at the end of its fieldwork window. Published quarterly.",
+        "explainer": {"what": "The share of adults who say they tend to trust the UK government.",
+                      "why": "Trust is what lets a government act. It is also the measure most likely to move on events rather than policy, so it is worth watching over years rather than between readings."},
     }
 
 
