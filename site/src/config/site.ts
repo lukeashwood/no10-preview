@@ -24,7 +24,7 @@ export const SITE = {
   /* Who publishes the site, who pays for it, and any political affiliation. Left null until the publisher supplies
      the facts; the About page and footer say so plainly rather than inventing details or implying independence. */
   publisher: null as null | { name: string; statement: string; funding: string; contact: string; authorisation: string },
-  rulesVersion: '1.0',
+  rulesVersion: '1.1',
   rulesDate: '2026-09-21',
   repo: '',
   /* Form endpoint for sign-ups and error reports. Set this before launch; until then the forms say so. */

@@ -1,6 +1,7 @@
 {
   "corrections": [],
   "rules": [
+    { "date": "2026-09-21", "version": "1.1", "summary": "Clean power by 2030: while the only published figure on the government's own definition is the 2024 starting point, the promise is shown as in progress rather than on track. 2024 is the year the target was set and mostly falls before this government, so measuring the starting point against itself scored the promise on nothing." },
     { "date": "2026-09-21", "version": "1.0", "summary": "First published rules. Verdicts are given only on measurable commitments the government itself made. Every other measure shows its direction since the 2024 general election, with no verdict. Each measure states how much control the government has over it. A change of Prime Minister inside the same parliament is marked on the charts but does not restart the record." }
   ]
 }
