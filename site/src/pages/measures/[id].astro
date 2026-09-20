@@ -1,0 +1,148 @@
+---
+import Base from '../../layouts/Base.astro';
+import Chart from '../../islands/Chart.tsx';
+import VerdictPill from '../../components/VerdictPill.astro';
+import DirectionBadge from '../../components/DirectionBadge.astro';
+import InfluenceChip from '../../components/InfluenceChip.astro';
+import Icon from '../../components/Icon.astro';
+import { SITE, url } from '../../config/site';
+import { MEASURES, GENERATED_AT, freshness, ratedSeries } from '../../lib/measures';
+import { INFLUENCE_MEANING, VERDICT_MEANING } from '../../lib/editorial';
+import { fmtDate, fmtMonth, fmtPeriod, fmtStamp, headlineText, withUnit } from '../../lib/format';
+import type { Measure } from '../../lib/types';
+
+export function getStaticPaths() { return MEASURES.map((m) => ({ params: { id: m.id }, props: { m } })); }
+const { m } = Astro.props as { m: Measure };
+const t = m.ed.target; const fr = freshness(m); const rs = ratedSeries(m);
+const idx = MEASURES.findIndex((x) => x.id === m.id);
+const prev = MEASURES[(idx - 1 + MEASURES.length) % MEASURES.length], next = MEASURES[(idx + 1) % MEASURES.length];
+const related = MEASURES.filter((x) => x.id !== m.id && (x.ed.supports === m.id || m.ed.supports === x.id || x.section === m.section)).slice(0, 3);
+const context = m.context.filter((c) => !(m.ed.dropContext ?? []).some((re) => re.test(c)));
+const kind = m.ed.group === 'target' ? 'Commitment' : m.ed.group === 'condition' ? 'Condition' : 'Context';
+const pageUrl = new URL(url(`measures/${m.id}/`), Astro.site).href;
+const cite = `${SITE.name} (${GENERATED_AT.slice(0, 4)}). ${m.title}: ${headlineText(m.headline)} (${m.headline.period ?? ''}). Source: ${m.sources.map((s) => s.publisher).filter((v, i, a) => a.indexOf(v) === i).join('; ')}. Retrieved ${fmtDate(GENERATED_AT)}, from ${pageUrl}`;
+const jsonld = {
+  '@context': 'https://schema.org', '@type': 'Dataset', name: `${m.title} (United Kingdom)`, description: m.question, url: pageUrl,
+  dateModified: m.updated_at ?? GENERATED_AT, isBasedOn: m.sources.map((s) => s.url), license: 'https://creativecommons.org/licenses/by/4.0/',
+  creator: { '@type': 'Organization', name: SITE.name }, temporalCoverage: rs?.points.length ? `${rs.points[0][0]}/${rs.points[rs.points.length - 1][0]}` : undefined,
+};
+---
+<Base title={m.title} description={`${m.question} Latest: ${headlineText(m.headline)} ${m.headline.caption}.`} section="measures/" jsonld={jsonld}>
+  <article class="wrap pt-8 md:pt-12">
+    <nav class="meta flex flex-wrap items-center gap-1.5" aria-label="Breadcrumb">
+      <a href={url('measures/')} class="text-ink-3">Measures</a><span aria-hidden="true">/</span><span>{m.sectionTitle}</span>
+    </nav>
+    <header class="mt-4 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div>
+        <p class="eyebrow">{kind}</p>
+        <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">{m.title}</h1>
+        <p class="lede mt-3">{m.question}</p>
+      </div>
+      {m.verdict && <div class="lg:text-right"><VerdictPill verdict={m.verdict.verdict} label={m.ed.target?.verdictLabels?.[m.verdict.verdict]} large /><p class="meta mt-2 max-w-[38ch] lg:ml-auto">{t?.owner === 'official' ? m.verdict.reason : VERDICT_MEANING[m.verdict.verdict]}</p></div>}
+    </header>
+
+    <dl class="mt-8 grid gap-px overflow-hidden rounded-[14px] border border-rule bg-rule sm:grid-cols-3">
+      <div class="bg-surface p-5">
+        <dt class="eyebrow">Latest{m.isForecastHeadline ? ' (Budget estimate)' : ''}</dt>
+        <dd class="mt-2"><span class="num font-display text-[40px] font-semibold leading-none tracking-tight">{headlineText(m.headline)}</span><span class="meta mt-2 block">{m.headline.caption}{m.headline.period ? ` · ${m.headline.period}` : ''}</span></dd>
+      </div>
+      <div class="bg-surface p-5">
+        <dt class="eyebrow">Since the government took office</dt>
+        <dd class="mt-3">{m.sinceElection ? <><DirectionBadge change={{ trend: m.sinceElection.trend, tone: m.sinceElection.tone, label: m.sinceElection.label }} /><span class="meta mt-2 block">{withUnit(m.sinceElection.from[1], rs!.unit, rs!.decimals)} → {withUnit(m.sinceElection.to[1], rs!.unit, rs!.decimals)} ({m.sinceElection.periodLabel})</span>{m.ed.baselineNote && <span class="meta mt-1.5 block"><b class="text-ink-2">Starting point:</b> {m.ed.baselineNote}</span>}{m.ed.betterNote && <span class="meta mt-1 block">{m.ed.betterNote}</span>}</> : <span class="meta">No comparable figure from mid-2022.</span>}</dd>
+      </div>
+      <div class="bg-surface p-5">
+        <dt class="eyebrow">Over the past year</dt>
+        <dd class="mt-3">{m.direction ? <><DirectionBadge change={{ trend: m.direction.trend, tone: m.direction.tone, label: m.direction.changeLabel }} /><span class="meta mt-2 block">{withUnit(m.direction.prior[1], rs!.unit, rs!.decimals)} → {withUnit(m.direction.latest[1], rs!.unit, rs!.decimals)} ({m.direction.periodLabel})</span></> : <span class="meta">Not a time series, so no yearly change is shown.</span>}</dd>
+      </div>
+    </dl>
+
+    <section class="card card-pad mt-6" aria-label="Chart">
+      <div class="mb-1 flex flex-wrap items-center justify-between gap-2">
+        <h2 class="h3">{m.ed.chartTitle ?? ((m.chart.series?.length ?? 0) > 1 ? m.title : rs?.name ?? m.title)}</h2>
+        <ul class="flex flex-wrap gap-1.5">{m.ed.labels.map((l) => <li class="pill pill-neutral !font-semibold">{l}</li>)}</ul>
+      </div>
+      <Chart client:load spec={m.ed.chartNote ? { ...m.chart, note: m.ed.chartNote } : m.chart} title={m.title} unitOverride={m.ed.unitOverride} useExtra={m.ed.useExtra} elections={[...SITE.government.elections]} term={{ start: SITE.government.swornIn, label: SITE.government.name }} csvName={`${m.id}-${GENERATED_AT.slice(0, 10)}`} />
+      <noscript><p class="meta">The chart needs JavaScript. The figures are in the sources below.</p></noscript>
+    </section>
+
+    <div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div class="grid gap-10">
+        {t && (
+          <section>
+            <h2 class="h2">The commitment</h2>
+            <blockquote class="mt-4 border-l-[3px] border-brand pl-5">
+              <p class="font-display text-[22px] font-medium leading-snug">{m.promise?.quote ?? t.commitment}</p>
+              <footer class="meta mt-2">{m.promise?.attribution ?? t.sourceLabel} · <a href={t.sourceUrl} rel="noopener">source <Icon name="ext" size={12} class="inline" /></a></footer>
+            </blockquote>
+            <h3 class="h3 mt-6">How the verdict is reached</h3>
+            <p class="mt-1.5 text-[16px] text-ink-2">{t.rule}</p>
+            <p class="mt-3 text-[16px]"><b>Today:</b> {m.verdict!.reason}</p>
+          </section>
+        )}
+        {m.explainer && (
+          <section>
+            <h2 class="h2">What this is</h2>
+            <p class="prose mt-3">{m.explainer.what}</p>
+            <h3 class="h3 mt-6">Why it matters</h3>
+            <p class="prose mt-1.5">{m.explainer.why}</p>
+          </section>
+        )}
+        {context.length > 0 && (
+          <section>
+            <h2 class="h2">More from the figures</h2>
+            <ul class="prose mt-3 !pl-5" style="list-style:disc">{context.map((c) => <li>{c}</li>)}</ul>
+          </section>
+        )}
+        <section>
+          <h2 class="h2">How it’s calculated</h2>
+          <p class="prose mt-3">{m.method}</p>
+        </section>
+      </div>
+
+      <aside class="grid content-start gap-5">
+        <div class="card card-pad">
+          <p class="eyebrow">Whose doing is it?</p>
+          <p class="mt-2"><InfluenceChip influence={m.ed.influence} /></p>
+          <p class="mt-2 text-[14.5px] text-ink-2">{m.ed.influenceNote}</p>
+          <p class="meta mt-2">{INFLUENCE_MEANING[m.ed.influence]}</p>
+        </div>
+        <div class="card card-pad">
+          <p class="eyebrow">Freshness</p>
+          <dl class="mt-2 grid gap-1.5 text-[14px]">
+            {m.lastDataDate && <div class="flex justify-between gap-3"><dt class="text-ink-3">Latest data point</dt><dd class="num font-semibold">{fmtPeriod(m.lastDataDate, fr?.freq)}</dd></div>}
+            <div class="flex justify-between gap-3"><dt class="text-ink-3">Last checked</dt><dd class="num font-semibold">{fmtDate(m.updated_at ?? m.verified_on ?? GENERATED_AT)}</dd></div>
+            <div class="flex justify-between gap-3"><dt class="text-ink-3">How it’s collected</dt><dd class="font-semibold">{m.automated ? 'Automatic feed' : 'Read by hand from the source'}</dd></div>
+            {m.recheck_by && <div class="flex justify-between gap-3"><dt class="text-ink-3">Next review due</dt><dd class="num font-semibold">{fmtDate(m.recheck_by)}</dd></div>}
+          </dl>
+          {fr?.stale && <p class="mt-3 rounded-lg bg-warn-tint p-2.5 text-[13px] text-warn">The latest data point is {fr.age} days old, longer than usual for this series. The publisher may be late or may have changed its format.</p>}
+        </div>
+        <div class="card card-pad">
+          <p class="eyebrow">Sources</p>
+          <ul class="mt-2 grid gap-3">{m.sources.map((s) => (
+            <li class="text-[14px] leading-snug"><a href={s.url} rel="noopener" class="font-semibold">{s.title} <Icon name="ext" size={12} class="inline" /></a><span class="meta block">{s.publisher}{s.published ? ` · published ${fmtDate(s.published)}` : ''}{s.retrieved_at ? ` · retrieved ${fmtDate(s.retrieved_at)}` : ''}</span>{s.data_url && <a class="meta mono block break-all" href={s.data_url} rel="noopener">{s.data_url.replace(/^https?:\/\//, '').slice(0, 60)}</a>}</li>))}</ul>
+        </div>
+        <div class="card card-pad">
+          <p class="eyebrow">Cite this</p>
+          <p id="cite-text" class="mt-2 text-[13.5px] leading-snug text-ink-2">{cite}</p>
+          <button type="button" id="cite-btn" class="btn btn-quiet btn-sm mt-3">Copy citation</button>
+        </div>
+      </aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="mt-16">
+        <h2 class="h3">Related</h2>
+        <ul class="mt-3 flex flex-wrap gap-2">{related.map((r) => <li><a class="btn btn-ghost btn-sm" href={url(`measures/${r.id}/`)}>{r.title}</a></li>)}</ul>
+      </section>
+    )}
+    <nav class="mt-10 flex justify-between gap-4 border-t border-rule pt-5 text-[14.5px] font-semibold" aria-label="More measures">
+      <a href={url(`measures/${prev.id}/`)} class="no-underline">← {prev.title}</a>
+      <a href={url(`measures/${next.id}/`)} class="text-right no-underline">{next.title} →</a>
+    </nav>
+  </article>
+  <script is:inline>
+    (function () { var b = document.getElementById('cite-btn'), t = document.getElementById('cite-text'); if (!b || !t) return;
+      b.addEventListener('click', function () { var done = function (ok) { b.textContent = ok ? 'Copied' : 'Copy failed: select the text instead'; setTimeout(function () { b.textContent = 'Copy citation'; }, 2200); };
+        if (navigator.clipboard) navigator.clipboard.writeText(t.textContent).then(function () { done(true); }, function () { done(false); }); else done(false); }); })();
+  </script>
+</Base>

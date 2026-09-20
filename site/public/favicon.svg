@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 34" width="26" height="34">
+  <rect width="26" height="34" rx="3" fill="#0b0b0d"/>
+  <path d="M3 8.2a10 10 0 0 1 20 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
+  <text x="13" y="24.4" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12.5" fill="#fff" letter-spacing="0.6"><tspan>1</tspan><tspan dx="0.6" rotate="-16">0</tspan></text>
+</svg>

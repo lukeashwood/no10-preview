@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import ReportForm from '../components/ReportForm.astro';
+import log from '../data/changelog.json';
+import { fmtDate } from '../lib/format';
+---
+<Base title="Corrections" description="A public, dated log of every correction and every change to the rating rules, and a form to report an error.">
+  <div class="wrap-narrow pt-10 md:pt-14">
+    <p class="eyebrow">Corrections and changes</p>
+    <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">When we get it wrong, we say so</h1>
+    <p class="lede mt-3">Every correction to a figure, a calculation or a description is listed here with its date. Changes to the rating rules are listed too, so you can always tell whether a verdict moved because the facts changed or because the rule did.</p>
+
+    <h2 class="h2 mt-12">Corrections</h2>
+    {log.corrections.length === 0
+      ? <p class="mt-3 text-ink-2">None so far. This log began on {fmtDate('2026-09-18')}.</p>
+      : <ul class="mt-4 grid gap-4">{log.corrections.map((c: any) => <li class="card card-pad"><p class="mono meta">{fmtDate(c.date)}</p><p class="mt-1">{c.summary}</p></li>)}</ul>}
+
+    <h2 class="h2 mt-12">Changes to the rules</h2>
+    <ul class="mt-4 grid gap-4">{log.rules.map((c) => <li class="card card-pad"><p class="mono meta">{fmtDate(c.date)} · rules v{c.version}</p><p class="mt-1 text-ink-2">{c.summary}</p></li>)}</ul>
+
+    <h2 class="h2 mt-12" id="report">Report an error</h2>
+    <p class="mt-2 text-ink-2">Tell us what looks wrong and, if you can, point to the official source. We check every report against the source and reply if you leave an email.</p>
+    <div class="card card-pad mt-5">
+      <ReportForm kind="report">
+        <label class="field">Which page or figure?<input class="input" name="where" required maxlength="200" /></label>
+        <label class="field">What’s wrong?<textarea class="input min-h-[120px] py-2.5" name="detail" required maxlength="2000"></textarea></label>
+        <label class="field">Link to the official source (optional)<input class="input" name="source" type="url" placeholder="https://" maxlength="300" /></label>
+        <label class="field">Your email (optional, only used to reply)<input class="input" name="email" type="email" autocomplete="email" maxlength="200" /></label>
+      </ReportForm>
+    </div>
+  </div>
+</Base>

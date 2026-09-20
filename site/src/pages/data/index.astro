@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { SITE, url } from '../../config/site';
+import { MEASURES, GENERATED_AT } from '../../lib/measures';
+import { fmtStamp, fmtPeriod } from '../../lib/format';
+---
+<Base title="Data and downloads" description="Download every series on the site as CSV, or everything at once as JSON. Free to reuse with credit.">
+  <div class="wrap pt-10 md:pt-14">
+    <p class="eyebrow">Data and downloads</p>
+    <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">Take the numbers with you</h1>
+    <p class="lede mt-3">Every series on the site, free to reuse with credit. Files are rebuilt whenever the data updates; the latest build was {fmtStamp(GENERATED_AT)}.</p>
+    <div class="mt-7 flex flex-wrap gap-3">
+      <a class="btn btn-primary" href={url('data/measures.json')} download><Icon name="download" />Everything (JSON)</a>
+      <a class="btn btn-ghost" href={url('methodology/')}>Read the methodology</a>
+    </div>
+    <div class="card mt-10 overflow-hidden">
+      <div class="table-scroll"><table class="dt">
+        <thead><tr><th>Measure</th><th>Topic</th><th>Latest data</th><th>Collected</th><th class="r">Download</th></tr></thead>
+        <tbody>{MEASURES.map((m) => <tr><td><a class="font-semibold" href={url(`measures/${m.id}/`)}>{m.title}</a></td><td class="text-ink-2">{m.sectionTitle}</td><td class="num whitespace-nowrap">{m.lastDataDate ? fmtPeriod(m.lastDataDate, m.chart.freq) : m.headline.period ?? '–'}</td><td class="text-ink-2">{m.automated ? 'Automatic feed' : 'By hand from source'}</td><td class="r"><a href={url(`data/${m.id}.csv`)} download class="whitespace-nowrap font-semibold">CSV</a></td></tr>)}</tbody>
+      </table></div>
+    </div>
+    <div class="prose mt-10">
+      <h2>Using this data</h2>
+      <p>The underlying figures belong to their publishers (mainly the ONS, the Bank of England and government departments, under the Open Government Licence v3.0) and each file names them. This site’s own calculations and tables are offered for reuse with credit. Please credit “{SITE.name}” and link to the page you used. Each measure page has a ready-made citation.</p>
+      <p>Addresses are stable: <span class="mono">/data/&lt;measure-id&gt;.csv</span> will keep working, so you can point a spreadsheet or script at it.</p>
+    </div>
+  </div>
+</Base>

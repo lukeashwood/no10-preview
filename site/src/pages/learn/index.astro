@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { url } from '../../config/site';
+import { LESSONS } from '../../lib/learn';
+import { MEASURES } from '../../lib/measures';
+const glossary = MEASURES.filter((m) => m.explainer).slice(0, 40);
+---
+<Base title="Learn" description="Short, interactive explainers on tax, debt, inflation and interest rates, in plain English with no jargon." section="learn/">
+  <div class="wrap pt-10 md:pt-14">
+    <p class="eyebrow">Learn</p>
+    <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">The economy, without the jargon</h1>
+    <p class="lede mt-3">You don’t need an economics degree to follow how the country is going. Each of these takes two or three minutes and lets you move the numbers yourself.</p>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {LESSONS.map((l, i) => (
+        <a href={url(`learn/${l.slug}/`)} class="card card-link card-pad rise flex flex-col" style={`--i:${i}`}>
+          <p class="eyebrow">Interactive · {l.minutes} min</p>
+          <p class="mt-2 font-display text-[26px] font-semibold leading-tight">{l.title}</p>
+          <p class="mt-2 text-[16px] text-ink-2">{l.question}</p>
+          <p class="mt-5 inline-flex items-center gap-1.5 text-[14.5px] font-bold text-brand">Start <Icon name="arrow" size={15} /></p>
+        </a>))}
+    </div>
+    <section class="mt-16">
+      <h2 class="h2">Plain-English glossary</h2>
+      <p class="mt-2 max-w-[70ch] text-ink-2">Every measure on the site comes with a short explanation of what it is and why it matters.</p>
+      <dl class="mt-6 grid gap-x-10 gap-y-6 md:grid-cols-2">
+        {glossary.map((m) => <div><dt class="font-bold"><a href={url(`measures/${m.id}/`)} class="text-ink no-underline hover:underline">{m.title}</a></dt><dd class="mt-1 text-[15px] text-ink-2">{m.explainer!.what}</dd></div>)}
+      </dl>
+    </section>
+  </div>
+</Base>

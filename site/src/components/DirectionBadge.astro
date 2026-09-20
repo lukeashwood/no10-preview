@@ -1,0 +1,11 @@
+---
+import Icon from './Icon.astro';
+interface Change { trend: 'up' | 'down' | 'steady'; tone: 'good' | 'bad' | 'neutral'; label: string }
+interface Props { change: Change | null; prefix?: string; quiet?: boolean }
+const { change: d, prefix, quiet = false } = Astro.props;
+const word = d ? (d.trend === 'steady' ? 'Little changed' : d.tone === 'good' ? 'Better' : d.tone === 'bad' ? 'Worse' : d.trend === 'up' ? 'Higher' : 'Lower') : '';
+const cls = d ? (d.tone === 'good' ? 'pill-good' : d.tone === 'bad' ? 'pill-bad' : 'pill-neutral') : '';
+---
+{d && (quiet
+  ? <span class="meta inline-flex items-center gap-1">{prefix && <span>{prefix}</span>}<Icon name={d.trend} size={12} /><span class="num font-semibold">{d.label}</span></span>
+  : <span class:list={['pill', cls]}><Icon name={d.trend} size={13} />{prefix ? `${prefix}: ` : ''}{word.toLowerCase() === 'little changed' ? 'little changed' : word}<span class="num font-semibold opacity-80">{d.label}</span></span>)}

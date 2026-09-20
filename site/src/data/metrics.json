@@ -1,0 +1,6007 @@
+{
+ "summary": {
+  "generated_at": "2026-09-20T17:21:35+00:00",
+  "checks_total": 15,
+  "checks_passed": 15,
+  "checks_warn": 0,
+  "checks_failed": 0,
+  "metrics_total": 15
+ },
+ "election": "2024-07-04",
+ "sections": [
+  {
+   "id": "cost",
+   "title": "Cost of living",
+   "blurb": "Prices, pay and what a wage actually buys."
+  },
+  {
+   "id": "housing",
+   "title": "Housing",
+   "blurb": "Building, buying and renting."
+  },
+  {
+   "id": "jobs",
+   "title": "Jobs",
+   "blurb": "Work, unemployment and the people not looking."
+  },
+  {
+   "id": "economy",
+   "title": "The economy",
+   "blurb": "Growth, output per person and productivity."
+  },
+  {
+   "id": "money",
+   "title": "Tax, spending and debt",
+   "blurb": "What the state raises, spends, borrows and owes."
+  },
+  {
+   "id": "health",
+   "title": "The NHS",
+   "blurb": "Waiting lists and access to care."
+  },
+  {
+   "id": "borders",
+   "title": "Borders and migration",
+   "blurb": "Who is arriving, and how."
+  },
+  {
+   "id": "energy",
+   "title": "Energy",
+   "blurb": "Bills and where power comes from."
+  },
+  {
+   "id": "crime",
+   "title": "Crime and policing",
+   "blurb": "Police numbers and public safety."
+  },
+  {
+   "id": "education",
+   "title": "Schools",
+   "blurb": "How children are doing."
+  }
+ ],
+ "metrics": [
+  {
+   "id": "inflation",
+   "section": "cost",
+   "title": "Inflation",
+   "question": "Is inflation back to the Bank of England's 2% target?",
+   "headline": {
+    "value": 3.1,
+    "unit": "%",
+    "decimals": 1,
+    "period": "Aug 2026",
+    "caption": "annual CPI inflation, measured over the past 12 months"
+   },
+   "benchmark": {
+    "label": "Bank of England target",
+    "text": "2%"
+   },
+   "baseline": {
+    "label": "June 2024",
+    "value": 2.0,
+    "unit": "%"
+   },
+   "context": [
+    "Prices overall are 7.1% higher than in June 2024, the last full month before the general election.",
+    "Inflation was 2.0% in June 2024 and is 3.1% now. The target is 2%.",
+    "Falling inflation does not mean prices fall. It means they rise more slowly."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "%",
+    "decimals": 1,
+    "series": [
+     {
+      "name": "CPI annual inflation",
+      "role": "primary",
+      "points": [
+       [
+        "2015-01-31",
+        0.3
+       ],
+       [
+        "2015-02-28",
+        0.0
+       ],
+       [
+        "2015-03-31",
+        0.0
+       ],
+       [
+        "2015-04-30",
+        -0.1
+       ],
+       [
+        "2015-05-31",
+        0.1
+       ],
+       [
+        "2015-06-30",
+        0.0
+       ],
+       [
+        "2015-07-31",
+        0.1
+       ],
+       [
+        "2015-08-31",
+        0.0
+       ],
+       [
+        "2015-09-30",
+        -0.1
+       ],
+       [
+        "2015-10-31",
+        -0.1
+       ],
+       [
+        "2015-11-30",
+        0.1
+       ],
+       [
+        "2015-12-31",
+        0.2
+       ],
+       [
+        "2016-01-31",
+        0.3
+       ],
+       [
+        "2016-02-29",
+        0.3
+       ],
+       [
+        "2016-03-31",
+        0.5
+       ],
+       [
+        "2016-04-30",
+        0.3
+       ],
+       [
+        "2016-05-31",
+        0.3
+       ],
+       [
+        "2016-06-30",
+        0.5
+       ],
+       [
+        "2016-07-31",
+        0.6
+       ],
+       [
+        "2016-08-31",
+        0.6
+       ],
+       [
+        "2016-09-30",
+        1.0
+       ],
+       [
+        "2016-10-31",
+        0.9
+       ],
+       [
+        "2016-11-30",
+        1.2
+       ],
+       [
+        "2016-12-31",
+        1.6
+       ],
+       [
+        "2017-01-31",
+        1.8
+       ],
+       [
+        "2017-02-28",
+        2.3
+       ],
+       [
+        "2017-03-31",
+        2.3
+       ],
+       [
+        "2017-04-30",
+        2.7
+       ],
+       [
+        "2017-05-31",
+        2.9
+       ],
+       [
+        "2017-06-30",
+        2.6
+       ],
+       [
+        "2017-07-31",
+        2.6
+       ],
+       [
+        "2017-08-31",
+        2.9
+       ],
+       [
+        "2017-09-30",
+        3.0
+       ],
+       [
+        "2017-10-31",
+        3.0
+       ],
+       [
+        "2017-11-30",
+        3.1
+       ],
+       [
+        "2017-12-31",
+        3.0
+       ],
+       [
+        "2018-01-31",
+        3.0
+       ],
+       [
+        "2018-02-28",
+        2.7
+       ],
+       [
+        "2018-03-31",
+        2.5
+       ],
+       [
+        "2018-04-30",
+        2.4
+       ],
+       [
+        "2018-05-31",
+        2.4
+       ],
+       [
+        "2018-06-30",
+        2.4
+       ],
+       [
+        "2018-07-31",
+        2.5
+       ],
+       [
+        "2018-08-31",
+        2.7
+       ],
+       [
+        "2018-09-30",
+        2.4
+       ],
+       [
+        "2018-10-31",
+        2.4
+       ],
+       [
+        "2018-11-30",
+        2.3
+       ],
+       [
+        "2018-12-31",
+        2.1
+       ],
+       [
+        "2019-01-31",
+        1.8
+       ],
+       [
+        "2019-02-28",
+        1.9
+       ],
+       [
+        "2019-03-31",
+        1.9
+       ],
+       [
+        "2019-04-30",
+        2.1
+       ],
+       [
+        "2019-05-31",
+        2.0
+       ],
+       [
+        "2019-06-30",
+        2.0
+       ],
+       [
+        "2019-07-31",
+        2.1
+       ],
+       [
+        "2019-08-31",
+        1.7
+       ],
+       [
+        "2019-09-30",
+        1.7
+       ],
+       [
+        "2019-10-31",
+        1.5
+       ],
+       [
+        "2019-11-30",
+        1.5
+       ],
+       [
+        "2019-12-31",
+        1.3
+       ],
+       [
+        "2020-01-31",
+        1.8
+       ],
+       [
+        "2020-02-29",
+        1.7
+       ],
+       [
+        "2020-03-31",
+        1.5
+       ],
+       [
+        "2020-04-30",
+        0.8
+       ],
+       [
+        "2020-05-31",
+        0.5
+       ],
+       [
+        "2020-06-30",
+        0.6
+       ],
+       [
+        "2020-07-31",
+        1.0
+       ],
+       [
+        "2020-08-31",
+        0.2
+       ],
+       [
+        "2020-09-30",
+        0.5
+       ],
+       [
+        "2020-10-31",
+        0.7
+       ],
+       [
+        "2020-11-30",
+        0.3
+       ],
+       [
+        "2020-12-31",
+        0.6
+       ],
+       [
+        "2021-01-31",
+        0.7
+       ],
+       [
+        "2021-02-28",
+        0.4
+       ],
+       [
+        "2021-03-31",
+        0.7
+       ],
+       [
+        "2021-04-30",
+        1.5
+       ],
+       [
+        "2021-05-31",
+        2.1
+       ],
+       [
+        "2021-06-30",
+        2.5
+       ],
+       [
+        "2021-07-31",
+        2.0
+       ],
+       [
+        "2021-08-31",
+        3.2
+       ],
+       [
+        "2021-09-30",
+        3.1
+       ],
+       [
+        "2021-10-31",
+        4.2
+       ],
+       [
+        "2021-11-30",
+        5.1
+       ],
+       [
+        "2021-12-31",
+        5.4
+       ],
+       [
+        "2022-01-31",
+        5.5
+       ],
+       [
+        "2022-02-28",
+        6.2
+       ],
+       [
+        "2022-03-31",
+        7.0
+       ],
+       [
+        "2022-04-30",
+        9.0
+       ],
+       [
+        "2022-05-31",
+        9.1
+       ],
+       [
+        "2022-06-30",
+        9.4
+       ],
+       [
+        "2022-07-31",
+        10.1
+       ],
+       [
+        "2022-08-31",
+        9.9
+       ],
+       [
+        "2022-09-30",
+        10.1
+       ],
+       [
+        "2022-10-31",
+        11.1
+       ],
+       [
+        "2022-11-30",
+        10.7
+       ],
+       [
+        "2022-12-31",
+        10.5
+       ],
+       [
+        "2023-01-31",
+        10.1
+       ],
+       [
+        "2023-02-28",
+        10.4
+       ],
+       [
+        "2023-03-31",
+        10.1
+       ],
+       [
+        "2023-04-30",
+        8.7
+       ],
+       [
+        "2023-05-31",
+        8.7
+       ],
+       [
+        "2023-06-30",
+        7.9
+       ],
+       [
+        "2023-07-31",
+        6.8
+       ],
+       [
+        "2023-08-31",
+        6.7
+       ],
+       [
+        "2023-09-30",
+        6.7
+       ],
+       [
+        "2023-10-31",
+        4.6
+       ],
+       [
+        "2023-11-30",
+        3.9
+       ],
+       [
+        "2023-12-31",
+        4.0
+       ],
+       [
+        "2024-01-31",
+        4.0
+       ],
+       [
+        "2024-02-29",
+        3.4
+       ],
+       [
+        "2024-03-31",
+        3.2
+       ],
+       [
+        "2024-04-30",
+        2.3
+       ],
+       [
+        "2024-05-31",
+        2.0
+       ],
+       [
+        "2024-06-30",
+        2.0
+       ],
+       [
+        "2024-07-31",
+        2.2
+       ],
+       [
+        "2024-08-31",
+        2.2
+       ],
+       [
+        "2024-09-30",
+        1.7
+       ],
+       [
+        "2024-10-31",
+        2.3
+       ],
+       [
+        "2024-11-30",
+        2.6
+       ],
+       [
+        "2024-12-31",
+        2.5
+       ],
+       [
+        "2025-01-31",
+        3.0
+       ],
+       [
+        "2025-02-28",
+        2.8
+       ],
+       [
+        "2025-03-31",
+        2.6
+       ],
+       [
+        "2025-04-30",
+        3.5
+       ],
+       [
+        "2025-05-31",
+        3.4
+       ],
+       [
+        "2025-06-30",
+        3.6
+       ],
+       [
+        "2025-07-31",
+        3.8
+       ],
+       [
+        "2025-08-31",
+        3.8
+       ],
+       [
+        "2025-09-30",
+        3.8
+       ],
+       [
+        "2025-10-31",
+        3.6
+       ],
+       [
+        "2025-11-30",
+        3.2
+       ],
+       [
+        "2025-12-31",
+        3.4
+       ],
+       [
+        "2026-01-31",
+        3.0
+       ],
+       [
+        "2026-02-28",
+        3.0
+       ],
+       [
+        "2026-03-31",
+        3.3
+       ],
+       [
+        "2026-04-30",
+        2.8
+       ],
+       [
+        "2026-05-31",
+        2.8
+       ],
+       [
+        "2026-06-30",
+        2.6
+       ],
+       [
+        "2026-07-31",
+        2.9
+       ],
+       [
+        "2026-08-31",
+        3.1
+       ]
+      ]
+     }
+    ],
+    "band": {
+     "lo": 1,
+     "hi": 3,
+     "label": "Target 2% (±1)"
+    }
+   },
+   "sources": [
+    {
+     "publisher": "Office for National Statistics",
+     "title": "Consumer price inflation, UK",
+     "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/latest",
+     "data_url": "https://www.ons.gov.uk/timeseries/d7g7/mm23",
+     "series": [
+      "CPI annual rate and CPI index, all items (D7G7, D7BT)"
+     ],
+     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "automated": true
+    }
+   ],
+   "method": "The Consumer Prices Index annual rate published by the ONS, and the CPI index level used for the change since June 2024.",
+   "explainer": {
+    "what": "Inflation is how fast prices are rising. The figure is the change in the Consumer Prices Index over the past 12 months.",
+    "why": "The Bank of England is required to keep inflation at 2%. When pay rises more slowly than prices, households are worse off even though wages are going up."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:21:35+00:00"
+  },
+  {
+   "id": "real_wages",
+   "section": "cost",
+   "title": "Real wages",
+   "question": "Is pay keeping up with prices?",
+   "headline": {
+    "value": 1.5,
+    "unit": "%",
+    "decimals": 1,
+    "signed": true,
+    "period": "Jun 2024 → Jul 2026",
+    "caption": "change in real regular pay since the election (now £531 a week)"
+   },
+   "benchmark": {
+    "label": "Level at the election",
+    "text": "£523 a week"
+   },
+   "baseline": {
+    "label": "June 2024",
+    "value": 100,
+    "unit": "index"
+   },
+   "context": [
+    "Average regular pay is worth £531 a week after inflation, against £523 in June 2024.",
+    "The highest this measure has ever reached is £535 a week, in Mar 2026.",
+    "Real pay is what your wage actually buys once prices are taken into account."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "index",
+    "decimals": 1,
+    "series": [
+     {
+      "name": "Real regular pay",
+      "role": "primary",
+      "points": [
+       [
+        "2015-01-31",
+        91.4
+       ],
+       [
+        "2015-02-28",
+        92.16
+       ],
+       [
+        "2015-03-31",
+        92.35
+       ],
+       [
+        "2015-04-30",
+        92.35
+       ],
+       [
+        "2015-05-31",
+        92.35
+       ],
+       [
+        "2015-06-30",
+        92.16
+       ],
+       [
+        "2015-07-31",
+        92.54
+       ],
+       [
+        "2015-08-31",
+        92.54
+       ],
+       [
+        "2015-09-30",
+        92.35
+       ],
+       [
+        "2015-10-31",
+        92.54
+       ],
+       [
+        "2015-11-30",
+        92.54
+       ],
+       [
+        "2015-12-31",
+        92.93
+       ],
+       [
+        "2016-01-31",
+        93.31
+       ],
+       [
+        "2016-02-29",
+        92.93
+       ],
+       [
+        "2016-03-31",
+        93.31
+       ],
+       [
+        "2016-04-30",
+        94.46
+       ],
+       [
+        "2016-05-31",
+        93.88
+       ],
+       [
+        "2016-06-30",
+        93.69
+       ],
+       [
+        "2016-07-31",
+        94.07
+       ],
+       [
+        "2016-08-31",
+        93.69
+       ],
+       [
+        "2016-09-30",
+        93.5
+       ],
+       [
+        "2016-10-31",
+        93.69
+       ],
+       [
+        "2016-11-30",
+        93.88
+       ],
+       [
+        "2016-12-31",
+        93.12
+       ],
+       [
+        "2017-01-31",
+        93.12
+       ],
+       [
+        "2017-02-28",
+        93.31
+       ],
+       [
+        "2017-03-31",
+        93.5
+       ],
+       [
+        "2017-04-30",
+        93.31
+       ],
+       [
+        "2017-05-31",
+        93.31
+       ],
+       [
+        "2017-06-30",
+        94.26
+       ],
+       [
+        "2017-07-31",
+        93.31
+       ],
+       [
+        "2017-08-31",
+        93.5
+       ],
+       [
+        "2017-09-30",
+        93.69
+       ],
+       [
+        "2017-10-31",
+        93.31
+       ],
+       [
+        "2017-11-30",
+        93.31
+       ],
+       [
+        "2017-12-31",
+        93.31
+       ],
+       [
+        "2018-01-31",
+        92.93
+       ],
+       [
+        "2018-02-28",
+        93.31
+       ],
+       [
+        "2018-03-31",
+        93.88
+       ],
+       [
+        "2018-04-30",
+        93.88
+       ],
+       [
+        "2018-05-31",
+        93.69
+       ],
+       [
+        "2018-06-30",
+        94.07
+       ],
+       [
+        "2018-07-31",
+        94.07
+       ],
+       [
+        "2018-08-31",
+        94.26
+       ],
+       [
+        "2018-09-30",
+        94.26
+       ],
+       [
+        "2018-10-31",
+        95.03
+       ],
+       [
+        "2018-11-30",
+        94.26
+       ],
+       [
+        "2018-12-31",
+        94.26
+       ],
+       [
+        "2019-01-31",
+        94.46
+       ],
+       [
+        "2019-02-28",
+        94.65
+       ],
+       [
+        "2019-03-31",
+        94.65
+       ],
+       [
+        "2019-04-30",
+        95.6
+       ],
+       [
+        "2019-05-31",
+        95.79
+       ],
+       [
+        "2019-06-30",
+        95.98
+       ],
+       [
+        "2019-07-31",
+        96.18
+       ],
+       [
+        "2019-08-31",
+        95.79
+       ],
+       [
+        "2019-09-30",
+        96.37
+       ],
+       [
+        "2019-10-31",
+        95.98
+       ],
+       [
+        "2019-11-30",
+        95.79
+       ],
+       [
+        "2019-12-31",
+        95.22
+       ],
+       [
+        "2020-01-31",
+        95.6
+       ],
+       [
+        "2020-02-29",
+        95.22
+       ],
+       [
+        "2020-03-31",
+        94.46
+       ],
+       [
+        "2020-04-30",
+        94.07
+       ],
+       [
+        "2020-05-31",
+        94.26
+       ],
+       [
+        "2020-06-30",
+        94.07
+       ],
+       [
+        "2020-07-31",
+        94.84
+       ],
+       [
+        "2020-08-31",
+        97.32
+       ],
+       [
+        "2020-09-30",
+        97.9
+       ],
+       [
+        "2020-10-31",
+        98.66
+       ],
+       [
+        "2020-11-30",
+        99.81
+       ],
+       [
+        "2020-12-31",
+        99.43
+       ],
+       [
+        "2021-01-31",
+        98.66
+       ],
+       [
+        "2021-02-28",
+        98.09
+       ],
+       [
+        "2021-03-31",
+        97.32
+       ],
+       [
+        "2021-04-30",
+        100.76
+       ],
+       [
+        "2021-05-31",
+        100.96
+       ],
+       [
+        "2021-06-30",
+        99.81
+       ],
+       [
+        "2021-07-31",
+        99.81
+       ],
+       [
+        "2021-08-31",
+        99.81
+       ],
+       [
+        "2021-09-30",
+        99.62
+       ],
+       [
+        "2021-10-31",
+        99.62
+       ],
+       [
+        "2021-11-30",
+        99.04
+       ],
+       [
+        "2021-12-31",
+        100.76
+       ],
+       [
+        "2022-01-31",
+        99.43
+       ],
+       [
+        "2022-02-28",
+        98.85
+       ],
+       [
+        "2022-03-31",
+        100.76
+       ],
+       [
+        "2022-04-30",
+        98.28
+       ],
+       [
+        "2022-05-31",
+        97.71
+       ],
+       [
+        "2022-06-30",
+        98.09
+       ],
+       [
+        "2022-07-31",
+        97.13
+       ],
+       [
+        "2022-08-31",
+        97.51
+       ],
+       [
+        "2022-09-30",
+        96.94
+       ],
+       [
+        "2022-10-31",
+        96.75
+       ],
+       [
+        "2022-11-30",
+        97.13
+       ],
+       [
+        "2022-12-31",
+        96.94
+       ],
+       [
+        "2023-01-31",
+        97.13
+       ],
+       [
+        "2023-02-28",
+        96.94
+       ],
+       [
+        "2023-03-31",
+        97.51
+       ],
+       [
+        "2023-04-30",
+        98.09
+       ],
+       [
+        "2023-05-31",
+        97.9
+       ],
+       [
+        "2023-06-30",
+        99.81
+       ],
+       [
+        "2023-07-31",
+        98.85
+       ],
+       [
+        "2023-08-31",
+        98.28
+       ],
+       [
+        "2023-09-30",
+        98.66
+       ],
+       [
+        "2023-10-31",
+        97.9
+       ],
+       [
+        "2023-11-30",
+        98.66
+       ],
+       [
+        "2023-12-31",
+        98.66
+       ],
+       [
+        "2024-01-31",
+        98.66
+       ],
+       [
+        "2024-02-29",
+        99.04
+       ],
+       [
+        "2024-03-31",
+        99.24
+       ],
+       [
+        "2024-04-30",
+        100.38
+       ],
+       [
+        "2024-05-31",
+        100.57
+       ],
+       [
+        "2024-06-30",
+        100.0
+       ],
+       [
+        "2024-07-31",
+        100.0
+       ],
+       [
+        "2024-08-31",
+        100.0
+       ],
+       [
+        "2024-09-30",
+        100.76
+       ],
+       [
+        "2024-10-31",
+        100.76
+       ],
+       [
+        "2024-11-30",
+        100.38
+       ],
+       [
+        "2024-12-31",
+        101.53
+       ],
+       [
+        "2025-01-31",
+        100.0
+       ],
+       [
+        "2025-02-28",
+        100.96
+       ],
+       [
+        "2025-03-31",
+        101.15
+       ],
+       [
+        "2025-04-30",
+        100.57
+       ],
+       [
+        "2025-05-31",
+        100.96
+       ],
+       [
+        "2025-06-30",
+        100.76
+       ],
+       [
+        "2025-07-31",
+        100.96
+       ],
+       [
+        "2025-08-31",
+        101.15
+       ],
+       [
+        "2025-09-30",
+        101.15
+       ],
+       [
+        "2025-10-31",
+        101.53
+       ],
+       [
+        "2025-11-30",
+        101.53
+       ],
+       [
+        "2025-12-31",
+        101.15
+       ],
+       [
+        "2026-01-31",
+        101.53
+       ],
+       [
+        "2026-02-28",
+        101.72
+       ],
+       [
+        "2026-03-31",
+        102.29
+       ],
+       [
+        "2026-04-30",
+        102.29
+       ],
+       [
+        "2026-05-31",
+        101.53
+       ],
+       [
+        "2026-06-30",
+        102.1
+       ],
+       [
+        "2026-07-31",
+        101.53
+       ]
+      ]
+     }
+    ],
+    "ref": [
+     {
+      "value": 100,
+      "label": "June 2024 = 100"
+     }
+    ],
+    "note": "Average weekly regular pay in Great Britain, adjusted for inflation and seasonally adjusted, set to 100 in June 2024."
+   },
+   "sources": [
+    {
+     "publisher": "Office for National Statistics",
+     "title": "Average weekly earnings in Great Britain",
+     "url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/averageweeklyearningsingreatbritain/latest",
+     "data_url": "https://www.ons.gov.uk/timeseries/a3wx/emp",
+     "series": [
+      "AWE whole economy, real terms level, regular pay, seasonally adjusted (A3WX)"
+     ],
+     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "automated": true
+    }
+   ],
+   "method": "ONS Average Weekly Earnings, whole economy regular pay (excluding bonuses), in real terms and seasonally adjusted, indexed to June 2024.",
+   "explainer": {
+    "what": "Average weekly earnings adjusted for inflation, so the figures can be compared over time.",
+    "why": "This is the clearest measure of whether working people are better or worse off than they were."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:21:35+00:00"
+  },
+  {
+   "id": "homes",
+   "section": "housing",
+   "title": "1.5 million new homes",
+   "question": "Is England on course for 1.5 million new homes this parliament?",
+   "headline": {
+    "value": 208600,
+    "unit": "",
+    "decimals": 0,
+    "period": "2024–25",
+    "caption": "homes added to England's housing stock in the latest full financial year"
+   },
+   "benchmark": {
+    "label": "Pace needed",
+    "text": "about 300,000 a year"
+   },
+   "baseline": {
+    "label": "2023–24",
+    "value": 221000,
+    "unit": ""
+   },
+   "context": [
+    "The pledge counts net additional dwellings: new builds, plus conversions and changes of use, minus demolitions.",
+    "208,600 homes were added in 2024–25, fewer than the year before.",
+    "Reaching 1.5 million over a five-year parliament needs about 300,000 a year, roughly half as much again as the latest figure.",
+    "Housing is devolved, so the target covers England only.",
+    "On 13 September 2026 the Communities Secretary, Angela Rayner, said there was a 'slim chance' of hitting the target."
+   ],
+   "chart": {
+    "kind": "hbar",
+    "unit": "",
+    "decimals": 0,
+    "bars": [
+     {
+      "name": "Pace needed each year",
+      "value": 300000,
+      "role": "accent"
+     },
+     {
+      "name": "Added 2024–25",
+      "value": 208600,
+      "role": "primary"
+     },
+     {
+      "name": "Added 2023–24",
+      "value": 221000,
+      "role": "muted"
+     }
+    ],
+    "note": "Net additional dwellings in England, financial years. The 2024–25 figure covers a few months of the previous government."
+   },
+   "sources": [
+    {
+     "publisher": "Ministry of Housing, Communities and Local Government",
+     "title": "Housing supply: net additional dwellings, England",
+     "url": "https://www.gov.uk/government/collections/net-supply-of-housing",
+     "series": [
+      "Net additional dwellings, England, 2024-25"
+     ],
+     "published": "2024-25"
+    },
+    {
+     "publisher": "Full Fact",
+     "title": "Is the government on track to deliver 1.5 million new homes?",
+     "url": "https://fullfact.org/government-tracker/1-5-million-homes/",
+     "published": "2026-09-14"
+    }
+   ],
+   "method": "Net additional dwellings in England, as published by MHCLG and compiled by Full Fact's government tracker. The pace needed is 1.5 million divided across the five years of a parliament.",
+   "explainer": {
+    "what": "The number of homes added to England's housing stock in a year, counting conversions and demolitions as well as new builds.",
+    "why": "Housing supply is the main lever on housing costs over time, and 1.5 million homes was one of the government's six headline milestones."
+   },
+   "verified_on": "2026-09-21",
+   "recheck_by": "2026-12-01",
+   "automated": false
+  },
+  {
+   "id": "unemployment",
+   "section": "jobs",
+   "title": "Unemployment",
+   "question": "Are more people out of work than when the government took office?",
+   "headline": {
+    "value": 4.9,
+    "unit": "%",
+    "decimals": 1,
+    "period": "Jun 2026",
+    "caption": "unemployment rate, people aged 16 and over"
+   },
+   "benchmark": {
+    "label": "At the election (June 2024)",
+    "text": "4.2%"
+   },
+   "baseline": {
+    "label": "June 2024",
+    "value": 4.2,
+    "unit": "%"
+   },
+   "context": [
+    "The unemployment rate was 4.2% at the general election and is 4.9% now.",
+    "The employment rate for people aged 16 to 64 is 75.1%, against 74.7% in June 2024.",
+    "20.9% of people aged 16 to 64 are economically inactive: neither working nor looking for work."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "%",
+    "decimals": 1,
+    "series": [
+     {
+      "name": "Unemployment rate",
+      "role": "primary",
+      "points": [
+       [
+        "2015-01-31",
+        5.6
+       ],
+       [
+        "2015-02-28",
+        5.5
+       ],
+       [
+        "2015-03-31",
+        5.5
+       ],
+       [
+        "2015-04-30",
+        5.6
+       ],
+       [
+        "2015-05-31",
+        5.6
+       ],
+       [
+        "2015-06-30",
+        5.5
+       ],
+       [
+        "2015-07-31",
+        5.4
+       ],
+       [
+        "2015-08-31",
+        5.3
+       ],
+       [
+        "2015-09-30",
+        5.2
+       ],
+       [
+        "2015-10-31",
+        5.1
+       ],
+       [
+        "2015-11-30",
+        5.1
+       ],
+       [
+        "2015-12-31",
+        5.1
+       ],
+       [
+        "2016-01-31",
+        5.1
+       ],
+       [
+        "2016-02-29",
+        5.1
+       ],
+       [
+        "2016-03-31",
+        5.0
+       ],
+       [
+        "2016-04-30",
+        4.9
+       ],
+       [
+        "2016-05-31",
+        4.9
+       ],
+       [
+        "2016-06-30",
+        4.9
+       ],
+       [
+        "2016-07-31",
+        5.0
+       ],
+       [
+        "2016-08-31",
+        4.8
+       ],
+       [
+        "2016-09-30",
+        4.8
+       ],
+       [
+        "2016-10-31",
+        4.8
+       ],
+       [
+        "2016-11-30",
+        4.7
+       ],
+       [
+        "2016-12-31",
+        4.7
+       ],
+       [
+        "2017-01-31",
+        4.6
+       ],
+       [
+        "2017-02-28",
+        4.6
+       ],
+       [
+        "2017-03-31",
+        4.5
+       ],
+       [
+        "2017-04-30",
+        4.4
+       ],
+       [
+        "2017-05-31",
+        4.4
+       ],
+       [
+        "2017-06-30",
+        4.3
+       ],
+       [
+        "2017-07-31",
+        4.3
+       ],
+       [
+        "2017-08-31",
+        4.3
+       ],
+       [
+        "2017-09-30",
+        4.2
+       ],
+       [
+        "2017-10-31",
+        4.3
+       ],
+       [
+        "2017-11-30",
+        4.4
+       ],
+       [
+        "2017-12-31",
+        4.3
+       ],
+       [
+        "2018-01-31",
+        4.2
+       ],
+       [
+        "2018-02-28",
+        4.2
+       ],
+       [
+        "2018-03-31",
+        4.2
+       ],
+       [
+        "2018-04-30",
+        4.2
+       ],
+       [
+        "2018-05-31",
+        4.0
+       ],
+       [
+        "2018-06-30",
+        4.0
+       ],
+       [
+        "2018-07-31",
+        4.0
+       ],
+       [
+        "2018-08-31",
+        4.1
+       ],
+       [
+        "2018-09-30",
+        4.1
+       ],
+       [
+        "2018-10-31",
+        4.0
+       ],
+       [
+        "2018-11-30",
+        4.0
+       ],
+       [
+        "2018-12-31",
+        3.9
+       ],
+       [
+        "2019-01-31",
+        4.0
+       ],
+       [
+        "2019-02-28",
+        3.8
+       ],
+       [
+        "2019-03-31",
+        3.8
+       ],
+       [
+        "2019-04-30",
+        3.8
+       ],
+       [
+        "2019-05-31",
+        3.9
+       ],
+       [
+        "2019-06-30",
+        3.9
+       ],
+       [
+        "2019-07-31",
+        3.9
+       ],
+       [
+        "2019-08-31",
+        3.9
+       ],
+       [
+        "2019-09-30",
+        3.8
+       ],
+       [
+        "2019-10-31",
+        3.8
+       ],
+       [
+        "2019-11-30",
+        3.7
+       ],
+       [
+        "2019-12-31",
+        3.9
+       ],
+       [
+        "2020-01-31",
+        3.9
+       ],
+       [
+        "2020-02-29",
+        4.1
+       ],
+       [
+        "2020-03-31",
+        4.1
+       ],
+       [
+        "2020-04-30",
+        4.1
+       ],
+       [
+        "2020-05-31",
+        4.1
+       ],
+       [
+        "2020-06-30",
+        4.4
+       ],
+       [
+        "2020-07-31",
+        4.6
+       ],
+       [
+        "2020-08-31",
+        5.0
+       ],
+       [
+        "2020-09-30",
+        5.2
+       ],
+       [
+        "2020-10-31",
+        5.2
+       ],
+       [
+        "2020-11-30",
+        5.3
+       ],
+       [
+        "2020-12-31",
+        5.2
+       ],
+       [
+        "2021-01-31",
+        5.0
+       ],
+       [
+        "2021-02-28",
+        4.9
+       ],
+       [
+        "2021-03-31",
+        4.8
+       ],
+       [
+        "2021-04-30",
+        4.8
+       ],
+       [
+        "2021-05-31",
+        4.7
+       ],
+       [
+        "2021-06-30",
+        4.6
+       ],
+       [
+        "2021-07-31",
+        4.5
+       ],
+       [
+        "2021-08-31",
+        4.4
+       ],
+       [
+        "2021-09-30",
+        4.3
+       ],
+       [
+        "2021-10-31",
+        4.2
+       ],
+       [
+        "2021-11-30",
+        4.2
+       ],
+       [
+        "2021-12-31",
+        4.1
+       ],
+       [
+        "2022-01-31",
+        3.9
+       ],
+       [
+        "2022-02-28",
+        3.8
+       ],
+       [
+        "2022-03-31",
+        3.8
+       ],
+       [
+        "2022-04-30",
+        3.7
+       ],
+       [
+        "2022-05-31",
+        3.8
+       ],
+       [
+        "2022-06-30",
+        3.6
+       ],
+       [
+        "2022-07-31",
+        3.6
+       ],
+       [
+        "2022-08-31",
+        3.7
+       ],
+       [
+        "2022-09-30",
+        3.8
+       ],
+       [
+        "2022-10-31",
+        3.9
+       ],
+       [
+        "2022-11-30",
+        3.9
+       ],
+       [
+        "2022-12-31",
+        3.9
+       ],
+       [
+        "2023-01-31",
+        4.0
+       ],
+       [
+        "2023-02-28",
+        4.0
+       ],
+       [
+        "2023-03-31",
+        3.9
+       ],
+       [
+        "2023-04-30",
+        4.0
+       ],
+       [
+        "2023-05-31",
+        4.2
+       ],
+       [
+        "2023-06-30",
+        4.4
+       ],
+       [
+        "2023-07-31",
+        4.3
+       ],
+       [
+        "2023-08-31",
+        4.1
+       ],
+       [
+        "2023-09-30",
+        4.0
+       ],
+       [
+        "2023-10-31",
+        4.0
+       ],
+       [
+        "2023-11-30",
+        3.9
+       ],
+       [
+        "2023-12-31",
+        4.1
+       ],
+       [
+        "2024-01-31",
+        4.2
+       ],
+       [
+        "2024-02-29",
+        4.3
+       ],
+       [
+        "2024-03-31",
+        4.4
+       ],
+       [
+        "2024-04-30",
+        4.4
+       ],
+       [
+        "2024-05-31",
+        4.2
+       ],
+       [
+        "2024-06-30",
+        4.2
+       ],
+       [
+        "2024-07-31",
+        4.1
+       ],
+       [
+        "2024-08-31",
+        4.3
+       ],
+       [
+        "2024-09-30",
+        4.2
+       ],
+       [
+        "2024-10-31",
+        4.4
+       ],
+       [
+        "2024-11-30",
+        4.4
+       ],
+       [
+        "2024-12-31",
+        4.4
+       ],
+       [
+        "2025-01-31",
+        4.5
+       ],
+       [
+        "2025-02-28",
+        4.6
+       ],
+       [
+        "2025-03-31",
+        4.6
+       ],
+       [
+        "2025-04-30",
+        4.7
+       ],
+       [
+        "2025-05-31",
+        4.7
+       ],
+       [
+        "2025-06-30",
+        4.7
+       ],
+       [
+        "2025-07-31",
+        4.8
+       ],
+       [
+        "2025-08-31",
+        5.0
+       ],
+       [
+        "2025-09-30",
+        5.1
+       ],
+       [
+        "2025-10-31",
+        5.1
+       ],
+       [
+        "2025-11-30",
+        5.2
+       ],
+       [
+        "2025-12-31",
+        5.2
+       ],
+       [
+        "2026-01-31",
+        4.9
+       ],
+       [
+        "2026-02-28",
+        5.0
+       ],
+       [
+        "2026-03-31",
+        4.9
+       ],
+       [
+        "2026-04-30",
+        4.9
+       ],
+       [
+        "2026-05-31",
+        4.9
+       ],
+       [
+        "2026-06-30",
+        4.9
+       ]
+      ]
+     }
+    ],
+    "ref": [
+     {
+      "value": 4.2,
+      "label": "June 2024: 4.2%"
+     }
+    ]
+   },
+   "sources": [
+    {
+     "publisher": "Office for National Statistics",
+     "title": "Labour market overview, UK",
+     "url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest",
+     "data_url": "https://www.ons.gov.uk/timeseries/mgsx/lms",
+     "series": [
+      "Unemployment rate, employment rate and inactivity rate, seasonally adjusted (MGSX, LF24, LF2S)"
+     ],
+     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "automated": true
+    }
+   ],
+   "method": "ONS Labour Force Survey, seasonally adjusted, published in the monthly labour market overview. The ONS has warned that survey response rates make these estimates less reliable than usual.",
+   "explainer": {
+    "what": "The share of people in the labour force who are out of work and looking for a job.",
+    "why": "It is the clearest measure of whether the jobs market is getting easier or harder, though it misses people who have stopped looking."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:21:35+00:00"
+  },
+  {
+   "id": "gdp_vs_capita",
+   "section": "economy",
+   "title": "GDP per person vs total GDP",
+   "question": "Is the economy growing for each person, or only because the population is growing?",
+   "headline": {
+    "value": 1.7,
+    "unit": "%",
+    "decimals": 1,
+    "signed": true,
+    "period": "Apr–Jun 2024 → Jan–Mar 2026",
+    "caption": "change in GDP per person since the election, while total GDP grew +2.1%"
+   },
+   "benchmark": {
+    "label": "Total GDP, same period",
+    "text": "+2.1%"
+   },
+   "baseline": {
+    "label": "Apr–Jun 2024",
+    "value": 100,
+    "unit": "index"
+   },
+   "context": [
+    "Since the general election the economy as a whole has grown +2.1%, while output per person has changed by +1.7%.",
+    "The gap is population growth of about 0.5% over the same period.",
+    "GDP per person was £10,196 in Jan–Mar 2026, against £10,030 in the quarter of the election."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "index",
+    "decimals": 1,
+    "series": [
+     {
+      "name": "GDP per person",
+      "role": "primary",
+      "points": [
+       [
+        "2015-03-31",
+        94.08
+       ],
+       [
+        "2015-06-30",
+        94.34
+       ],
+       [
+        "2015-09-30",
+        94.52
+       ],
+       [
+        "2015-12-31",
+        94.9
+       ],
+       [
+        "2016-03-31",
+        95.18
+       ],
+       [
+        "2016-06-30",
+        95.69
+       ],
+       [
+        "2016-09-30",
+        95.98
+       ],
+       [
+        "2016-12-31",
+        96.45
+       ],
+       [
+        "2017-03-31",
+        97.24
+       ],
+       [
+        "2017-06-30",
+        97.94
+       ],
+       [
+        "2017-09-30",
+        98.47
+       ],
+       [
+        "2017-12-31",
+        99.09
+       ],
+       [
+        "2018-03-31",
+        99.05
+       ],
+       [
+        "2018-06-30",
+        99.14
+       ],
+       [
+        "2018-09-30",
+        99.33
+       ],
+       [
+        "2018-12-31",
+        99.33
+       ],
+       [
+        "2019-03-31",
+        99.71
+       ],
+       [
+        "2019-06-30",
+        99.79
+       ],
+       [
+        "2019-09-30",
+        100.3
+       ],
+       [
+        "2019-12-31",
+        100.26
+       ],
+       [
+        "2020-03-31",
+        97.47
+       ],
+       [
+        "2020-06-30",
+        78.04
+       ],
+       [
+        "2020-09-30",
+        91.19
+       ],
+       [
+        "2020-12-31",
+        92.35
+       ],
+       [
+        "2021-03-31",
+        91.28
+       ],
+       [
+        "2021-06-30",
+        97.57
+       ],
+       [
+        "2021-09-30",
+        98.97
+       ],
+       [
+        "2021-12-31",
+        100.09
+       ],
+       [
+        "2022-03-31",
+        100.86
+       ],
+       [
+        "2022-06-30",
+        101.17
+       ],
+       [
+        "2022-09-30",
+        100.94
+       ],
+       [
+        "2022-12-31",
+        100.88
+       ],
+       [
+        "2023-03-31",
+        100.6
+       ],
+       [
+        "2023-06-30",
+        100.32
+       ],
+       [
+        "2023-09-30",
+        99.8
+       ],
+       [
+        "2023-12-31",
+        99.2
+       ],
+       [
+        "2024-03-31",
+        99.66
+       ],
+       [
+        "2024-06-30",
+        100.0
+       ],
+       [
+        "2024-09-30",
+        100.1
+       ],
+       [
+        "2024-12-31",
+        100.46
+       ],
+       [
+        "2025-03-31",
+        100.95
+       ],
+       [
+        "2025-06-30",
+        101.03
+       ],
+       [
+        "2025-09-30",
+        101.06
+       ],
+       [
+        "2025-12-31",
+        101.07
+       ],
+       [
+        "2026-03-31",
+        101.66
+       ]
+      ]
+     },
+     {
+      "name": "Total GDP",
+      "role": "accent",
+      "points": [
+       [
+        "2015-03-31",
+        88.22
+       ],
+       [
+        "2015-06-30",
+        88.63
+       ],
+       [
+        "2015-09-30",
+        88.97
+       ],
+       [
+        "2015-12-31",
+        89.5
+       ],
+       [
+        "2016-03-31",
+        89.95
+       ],
+       [
+        "2016-06-30",
+        90.62
+       ],
+       [
+        "2016-09-30",
+        91.02
+       ],
+       [
+        "2016-12-31",
+        91.58
+       ],
+       [
+        "2017-03-31",
+        92.45
+       ],
+       [
+        "2017-06-30",
+        93.24
+       ],
+       [
+        "2017-09-30",
+        93.87
+       ],
+       [
+        "2017-12-31",
+        94.58
+       ],
+       [
+        "2018-03-31",
+        94.65
+       ],
+       [
+        "2018-06-30",
+        94.86
+       ],
+       [
+        "2018-09-30",
+        95.16
+       ],
+       [
+        "2018-12-31",
+        95.28
+       ],
+       [
+        "2019-03-31",
+        95.76
+       ],
+       [
+        "2019-06-30",
+        95.97
+       ],
+       [
+        "2019-09-30",
+        96.49
+       ],
+       [
+        "2019-12-31",
+        96.5
+       ],
+       [
+        "2020-03-31",
+        93.85
+       ],
+       [
+        "2020-06-30",
+        75.17
+       ],
+       [
+        "2020-09-30",
+        87.92
+       ],
+       [
+        "2020-12-31",
+        89.12
+       ],
+       [
+        "2021-03-31",
+        88.16
+       ],
+       [
+        "2021-06-30",
+        94.32
+       ],
+       [
+        "2021-09-30",
+        95.91
+       ],
+       [
+        "2021-12-31",
+        97.23
+       ],
+       [
+        "2022-03-31",
+        98.22
+       ],
+       [
+        "2022-06-30",
+        98.77
+       ],
+       [
+        "2022-09-30",
+        98.87
+       ],
+       [
+        "2022-12-31",
+        99.12
+       ],
+       [
+        "2023-03-31",
+        99.18
+       ],
+       [
+        "2023-06-30",
+        99.22
+       ],
+       [
+        "2023-09-30",
+        98.98
+       ],
+       [
+        "2023-12-31",
+        98.66
+       ],
+       [
+        "2024-03-31",
+        99.38
+       ],
+       [
+        "2024-06-30",
+        100.0
+       ],
+       [
+        "2024-09-30",
+        100.18
+       ],
+       [
+        "2024-12-31",
+        100.61
+       ],
+       [
+        "2025-03-31",
+        101.19
+       ],
+       [
+        "2025-06-30",
+        101.35
+       ],
+       [
+        "2025-09-30",
+        101.42
+       ],
+       [
+        "2025-12-31",
+        101.48
+       ],
+       [
+        "2026-03-31",
+        102.11
+       ]
+      ]
+     }
+    ],
+    "ref": [
+     {
+      "value": 100,
+      "label": "Apr–Jun 2024 = 100"
+     }
+    ],
+    "note": "Real (inflation-adjusted) GDP and GDP per person, seasonally adjusted, each set to 100 in the quarter of the general election. Where the total line rises faster than the per-person line, the difference is population growth."
+   },
+   "sources": [
+    {
+     "publisher": "Office for National Statistics",
+     "title": "GDP quarterly national accounts, UK",
+     "url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/latest",
+     "data_url": "https://www.ons.gov.uk/timeseries/abmi/qna",
+     "series": [
+      "Gross domestic product and GDP per head, chained volume measures, seasonally adjusted (ABMI, IHXW)"
+     ],
+     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "automated": true
+    }
+   ],
+   "method": "ONS quarterly national accounts: real GDP (ABMI) and real GDP per head (IHXW), both chained volume measures and seasonally adjusted, each indexed to the June quarter of 2024.",
+   "explainer": {
+    "what": "GDP is everything the economy produces. GDP per person divides that by the population.",
+    "why": "Total GDP can grow simply because there are more people. GDP per person is the better guide to living standards."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:21:35+00:00"
+  },
+  {
+   "id": "productivity",
+   "section": "economy",
+   "title": "Productivity",
+   "question": "Is the country producing more for each hour worked?",
+   "headline": {
+    "value": 0.3,
+    "unit": "%",
+    "decimals": 1,
+    "signed": true,
+    "period": "Apr–Jun 2024 → Jan–Mar 2026",
+    "caption": "change in output per hour worked since the election"
+   },
+   "benchmark": {
+    "label": "Level at the election",
+    "text": "no change"
+   },
+   "baseline": {
+    "label": "Apr–Jun 2024",
+    "value": 100,
+    "unit": "index"
+   },
+   "context": [
+    "Productivity is output per hour worked. Over the long run it is what allows pay to rise without prices rising.",
+    "Output per hour is +0.3% compared with the quarter of the general election."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "index",
+    "decimals": 1,
+    "series": [
+     {
+      "name": "Output per hour worked",
+      "role": "primary",
+      "points": [
+       [
+        "2015-03-31",
+        93.39
+       ],
+       [
+        "2015-06-30",
+        93.99
+       ],
+       [
+        "2015-09-30",
+        94.19
+       ],
+       [
+        "2015-12-31",
+        92.89
+       ],
+       [
+        "2016-03-31",
+        93.89
+       ],
+       [
+        "2016-06-30",
+        94.49
+       ],
+       [
+        "2016-09-30",
+        94.69
+       ],
+       [
+        "2016-12-31",
+        94.99
+       ],
+       [
+        "2017-03-31",
+        95.29
+       ],
+       [
+        "2017-06-30",
+        95.59
+       ],
+       [
+        "2017-09-30",
+        97.19
+       ],
+       [
+        "2017-12-31",
+        97.6
+       ],
+       [
+        "2018-03-31",
+        97.19
+       ],
+       [
+        "2018-06-30",
+        97.29
+       ],
+       [
+        "2018-09-30",
+        96.79
+       ],
+       [
+        "2018-12-31",
+        96.99
+       ],
+       [
+        "2019-03-31",
+        96.09
+       ],
+       [
+        "2019-06-30",
+        96.39
+       ],
+       [
+        "2019-09-30",
+        97.49
+       ],
+       [
+        "2019-12-31",
+        97.7
+       ],
+       [
+        "2020-03-31",
+        97.6
+       ],
+       [
+        "2020-06-30",
+        95.29
+       ],
+       [
+        "2020-09-30",
+        102.61
+       ],
+       [
+        "2020-12-31",
+        97.8
+       ],
+       [
+        "2021-03-31",
+        99.0
+       ],
+       [
+        "2021-06-30",
+        100.5
+       ],
+       [
+        "2021-09-30",
+        99.5
+       ],
+       [
+        "2021-12-31",
+        99.9
+       ],
+       [
+        "2022-03-31",
+        100.5
+       ],
+       [
+        "2022-06-30",
+        100.6
+       ],
+       [
+        "2022-09-30",
+        100.8
+       ],
+       [
+        "2022-12-31",
+        100.4
+       ],
+       [
+        "2023-03-31",
+        99.9
+       ],
+       [
+        "2023-06-30",
+        100.4
+       ],
+       [
+        "2023-09-30",
+        100.7
+       ],
+       [
+        "2023-12-31",
+        99.8
+       ],
+       [
+        "2024-03-31",
+        99.3
+       ],
+       [
+        "2024-06-30",
+        100.0
+       ],
+       [
+        "2024-09-30",
+        98.5
+       ],
+       [
+        "2024-12-31",
+        99.9
+       ],
+       [
+        "2025-03-31",
+        99.8
+       ],
+       [
+        "2025-06-30",
+        99.3
+       ],
+       [
+        "2025-09-30",
+        99.6
+       ],
+       [
+        "2025-12-31",
+        99.3
+       ],
+       [
+        "2026-03-31",
+        100.3
+       ]
+      ]
+     }
+    ],
+    "ref": [
+     {
+      "value": 100,
+      "label": "Apr–Jun 2024 = 100"
+     }
+    ]
+   },
+   "sources": [
+    {
+     "publisher": "Office for National Statistics",
+     "title": "Labour productivity, UK",
+     "url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/labourproductivity/bulletins/labourproductivity/latest",
+     "data_url": "https://www.ons.gov.uk/timeseries/lzvb/prdy",
+     "series": [
+      "UK whole economy output per hour worked, seasonally adjusted (LZVB)"
+     ],
+     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "automated": true
+    }
+   ],
+   "method": "ONS labour productivity: whole economy output per hour worked, seasonally adjusted, indexed to the June quarter of 2024.",
+   "explainer": {
+    "what": "How much the economy produces for each hour of work.",
+    "why": "Sustained pay rises and better public services ultimately depend on producing more per hour. UK productivity has grown slowly since the financial crisis."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:21:35+00:00"
+  },
+  {
+   "id": "bank_rate",
+   "section": "money",
+   "title": "Interest rates",
+   "question": "What is it costing to borrow, and who decides?",
+   "headline": {
+    "value": 3.75,
+    "unit": "%",
+    "decimals": 2,
+    "period": "Aug 2026",
+    "caption": "Bank Rate, set by the Bank of England"
+   },
+   "benchmark": {
+    "label": "At the election (June 2024)",
+    "text": "5.25%"
+   },
+   "baseline": {
+    "label": "June 2024",
+    "value": 5.25,
+    "unit": "%"
+   },
+   "context": [
+    "Bank Rate was 5.25% at the general election and is 3.75% now.",
+    "A typical two-year fixed mortgage at 75% loan-to-value is 4.92%, and the average standard variable rate is 6.58%.",
+    "The Bank of England's Monetary Policy Committee sets Bank Rate independently of ministers, to meet the 2% inflation target."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "%",
+    "decimals": 2,
+    "series": [
+     {
+      "name": "Bank Rate",
+      "role": "primary",
+      "points": [
+       [
+        "2015-01-31",
+        0.5
+       ],
+       [
+        "2015-02-28",
+        0.5
+       ],
+       [
+        "2015-03-31",
+        0.5
+       ],
+       [
+        "2015-04-30",
+        0.5
+       ],
+       [
+        "2015-05-31",
+        0.5
+       ],
+       [
+        "2015-06-30",
+        0.5
+       ],
+       [
+        "2015-07-31",
+        0.5
+       ],
+       [
+        "2015-08-31",
+        0.5
+       ],
+       [
+        "2015-09-30",
+        0.5
+       ],
+       [
+        "2015-10-31",
+        0.5
+       ],
+       [
+        "2015-11-30",
+        0.5
+       ],
+       [
+        "2015-12-31",
+        0.5
+       ],
+       [
+        "2016-01-31",
+        0.5
+       ],
+       [
+        "2016-02-29",
+        0.5
+       ],
+       [
+        "2016-03-31",
+        0.5
+       ],
+       [
+        "2016-04-30",
+        0.5
+       ],
+       [
+        "2016-05-31",
+        0.5
+       ],
+       [
+        "2016-06-30",
+        0.5
+       ],
+       [
+        "2016-07-31",
+        0.5
+       ],
+       [
+        "2016-08-31",
+        0.2841
+       ],
+       [
+        "2016-09-30",
+        0.25
+       ],
+       [
+        "2016-10-31",
+        0.25
+       ],
+       [
+        "2016-11-30",
+        0.25
+       ],
+       [
+        "2016-12-31",
+        0.25
+       ],
+       [
+        "2017-01-31",
+        0.25
+       ],
+       [
+        "2017-02-28",
+        0.25
+       ],
+       [
+        "2017-03-31",
+        0.25
+       ],
+       [
+        "2017-04-30",
+        0.25
+       ],
+       [
+        "2017-05-31",
+        0.25
+       ],
+       [
+        "2017-06-30",
+        0.25
+       ],
+       [
+        "2017-07-31",
+        0.25
+       ],
+       [
+        "2017-08-31",
+        0.25
+       ],
+       [
+        "2017-09-30",
+        0.25
+       ],
+       [
+        "2017-10-31",
+        0.25
+       ],
+       [
+        "2017-11-30",
+        0.4886
+       ],
+       [
+        "2017-12-31",
+        0.5
+       ],
+       [
+        "2018-01-31",
+        0.5
+       ],
+       [
+        "2018-02-28",
+        0.5
+       ],
+       [
+        "2018-03-31",
+        0.5
+       ],
+       [
+        "2018-04-30",
+        0.5
+       ],
+       [
+        "2018-05-31",
+        0.5
+       ],
+       [
+        "2018-06-30",
+        0.5
+       ],
+       [
+        "2018-07-31",
+        0.5
+       ],
+       [
+        "2018-08-31",
+        0.7386
+       ],
+       [
+        "2018-09-30",
+        0.75
+       ],
+       [
+        "2018-10-31",
+        0.75
+       ],
+       [
+        "2018-11-30",
+        0.75
+       ],
+       [
+        "2018-12-31",
+        0.75
+       ],
+       [
+        "2019-01-31",
+        0.75
+       ],
+       [
+        "2019-02-28",
+        0.75
+       ],
+       [
+        "2019-03-31",
+        0.75
+       ],
+       [
+        "2019-04-30",
+        0.75
+       ],
+       [
+        "2019-05-31",
+        0.75
+       ],
+       [
+        "2019-06-30",
+        0.75
+       ],
+       [
+        "2019-07-31",
+        0.75
+       ],
+       [
+        "2019-08-31",
+        0.75
+       ],
+       [
+        "2019-09-30",
+        0.75
+       ],
+       [
+        "2019-10-31",
+        0.75
+       ],
+       [
+        "2019-11-30",
+        0.75
+       ],
+       [
+        "2019-12-31",
+        0.75
+       ],
+       [
+        "2020-01-31",
+        0.75
+       ],
+       [
+        "2020-02-29",
+        0.75
+       ],
+       [
+        "2020-03-31",
+        0.3477
+       ],
+       [
+        "2020-04-30",
+        0.1
+       ],
+       [
+        "2020-05-31",
+        0.1
+       ],
+       [
+        "2020-06-30",
+        0.1
+       ],
+       [
+        "2020-07-31",
+        0.1
+       ],
+       [
+        "2020-08-31",
+        0.1
+       ],
+       [
+        "2020-09-30",
+        0.1
+       ],
+       [
+        "2020-10-31",
+        0.1
+       ],
+       [
+        "2020-11-30",
+        0.1
+       ],
+       [
+        "2020-12-31",
+        0.1
+       ],
+       [
+        "2021-01-31",
+        0.1
+       ],
+       [
+        "2021-02-28",
+        0.1
+       ],
+       [
+        "2021-03-31",
+        0.1
+       ],
+       [
+        "2021-04-30",
+        0.1
+       ],
+       [
+        "2021-05-31",
+        0.1
+       ],
+       [
+        "2021-06-30",
+        0.1
+       ],
+       [
+        "2021-07-31",
+        0.1
+       ],
+       [
+        "2021-08-31",
+        0.1
+       ],
+       [
+        "2021-09-30",
+        0.1
+       ],
+       [
+        "2021-10-31",
+        0.1
+       ],
+       [
+        "2021-11-30",
+        0.1
+       ],
+       [
+        "2021-12-31",
+        0.1714
+       ],
+       [
+        "2022-01-31",
+        0.25
+       ],
+       [
+        "2022-02-28",
+        0.475
+       ],
+       [
+        "2022-03-31",
+        0.6196
+       ],
+       [
+        "2022-04-30",
+        0.75
+       ],
+       [
+        "2022-05-31",
+        0.9762
+       ],
+       [
+        "2022-06-30",
+        1.1375
+       ],
+       [
+        "2022-07-31",
+        1.25
+       ],
+       [
+        "2022-08-31",
+        1.6818
+       ],
+       [
+        "2022-09-30",
+        1.9167
+       ],
+       [
+        "2022-10-31",
+        2.25
+       ],
+       [
+        "2022-11-30",
+        2.9318
+       ],
+       [
+        "2022-12-31",
+        3.25
+       ],
+       [
+        "2023-01-31",
+        3.5
+       ],
+       [
+        "2023-02-28",
+        3.975
+       ],
+       [
+        "2023-03-31",
+        4.0761
+       ],
+       [
+        "2023-04-30",
+        4.25
+       ],
+       [
+        "2023-05-31",
+        4.425
+       ],
+       [
+        "2023-06-30",
+        4.6591
+       ],
+       [
+        "2023-07-31",
+        5.0
+       ],
+       [
+        "2023-08-31",
+        5.2273
+       ],
+       [
+        "2023-09-30",
+        5.25
+       ],
+       [
+        "2023-10-31",
+        5.25
+       ],
+       [
+        "2023-11-30",
+        5.25
+       ],
+       [
+        "2023-12-31",
+        5.25
+       ],
+       [
+        "2024-01-31",
+        5.25
+       ],
+       [
+        "2024-02-29",
+        5.25
+       ],
+       [
+        "2024-03-31",
+        5.25
+       ],
+       [
+        "2024-04-30",
+        5.25
+       ],
+       [
+        "2024-05-31",
+        5.25
+       ],
+       [
+        "2024-06-30",
+        5.25
+       ],
+       [
+        "2024-07-31",
+        5.25
+       ],
+       [
+        "2024-08-31",
+        5.0
+       ],
+       [
+        "2024-09-30",
+        5.0
+       ],
+       [
+        "2024-10-31",
+        5.0
+       ],
+       [
+        "2024-11-30",
+        4.7976
+       ],
+       [
+        "2024-12-31",
+        4.75
+       ],
+       [
+        "2025-01-31",
+        4.75
+       ],
+       [
+        "2025-02-28",
+        4.5375
+       ],
+       [
+        "2025-03-31",
+        4.5
+       ],
+       [
+        "2025-04-30",
+        4.5
+       ],
+       [
+        "2025-05-31",
+        4.3
+       ],
+       [
+        "2025-06-30",
+        4.25
+       ],
+       [
+        "2025-07-31",
+        4.25
+       ],
+       [
+        "2025-08-31",
+        4.05
+       ],
+       [
+        "2025-09-30",
+        4.0
+       ],
+       [
+        "2025-10-31",
+        4.0
+       ],
+       [
+        "2025-11-30",
+        4.0
+       ],
+       [
+        "2025-12-31",
+        3.9048
+       ],
+       [
+        "2026-01-31",
+        3.75
+       ],
+       [
+        "2026-02-28",
+        3.75
+       ],
+       [
+        "2026-03-31",
+        3.75
+       ],
+       [
+        "2026-04-30",
+        3.75
+       ],
+       [
+        "2026-05-31",
+        3.75
+       ],
+       [
+        "2026-06-30",
+        3.75
+       ],
+       [
+        "2026-07-31",
+        3.75
+       ],
+       [
+        "2026-08-31",
+        3.75
+       ]
+      ]
+     },
+     {
+      "name": "Two-year fixed mortgage (75% LTV)",
+      "role": "muted",
+      "points": [
+       [
+        "2015-01-31",
+        2.01
+       ],
+       [
+        "2015-02-28",
+        1.96
+       ],
+       [
+        "2015-03-31",
+        1.99
+       ],
+       [
+        "2015-04-30",
+        1.95
+       ],
+       [
+        "2015-05-31",
+        1.9
+       ],
+       [
+        "2015-06-30",
+        1.83
+       ],
+       [
+        "2015-07-31",
+        1.87
+       ],
+       [
+        "2015-08-31",
+        1.95
+       ],
+       [
+        "2015-09-30",
+        1.91
+       ],
+       [
+        "2015-10-31",
+        1.87
+       ],
+       [
+        "2015-11-30",
+        1.92
+       ],
+       [
+        "2015-12-31",
+        1.9
+       ],
+       [
+        "2016-01-31",
+        1.93
+       ],
+       [
+        "2016-02-29",
+        1.95
+       ],
+       [
+        "2016-03-31",
+        1.9
+       ],
+       [
+        "2016-04-30",
+        1.84
+       ],
+       [
+        "2016-05-31",
+        1.91
+       ],
+       [
+        "2016-06-30",
+        1.75
+       ],
+       [
+        "2016-07-31",
+        1.72
+       ],
+       [
+        "2016-08-31",
+        1.69
+       ],
+       [
+        "2016-09-30",
+        1.59
+       ],
+       [
+        "2016-10-31",
+        1.52
+       ],
+       [
+        "2016-11-30",
+        1.43
+       ],
+       [
+        "2016-12-31",
+        1.45
+       ],
+       [
+        "2017-01-31",
+        1.45
+       ],
+       [
+        "2017-02-28",
+        1.42
+       ],
+       [
+        "2017-03-31",
+        1.37
+       ],
+       [
+        "2017-04-30",
+        1.35
+       ],
+       [
+        "2017-05-31",
+        1.49
+       ],
+       [
+        "2017-06-30",
+        1.48
+       ],
+       [
+        "2017-07-31",
+        1.41
+       ],
+       [
+        "2017-08-31",
+        1.43
+       ],
+       [
+        "2017-09-30",
+        1.4
+       ],
+       [
+        "2017-10-31",
+        1.55
+       ],
+       [
+        "2017-11-30",
+        1.61
+       ],
+       [
+        "2017-12-31",
+        1.57
+       ],
+       [
+        "2018-01-31",
+        1.54
+       ],
+       [
+        "2018-02-28",
+        1.49
+       ],
+       [
+        "2018-03-31",
+        1.53
+       ],
+       [
+        "2018-04-30",
+        1.72
+       ],
+       [
+        "2018-05-31",
+        1.74
+       ],
+       [
+        "2018-06-30",
+        1.74
+       ],
+       [
+        "2018-07-31",
+        1.75
+       ],
+       [
+        "2018-08-31",
+        1.75
+       ],
+       [
+        "2018-09-30",
+        1.71
+       ],
+       [
+        "2018-10-31",
+        1.8
+       ],
+       [
+        "2018-11-30",
+        1.75
+       ],
+       [
+        "2018-12-31",
+        1.73
+       ],
+       [
+        "2019-01-31",
+        1.72
+       ],
+       [
+        "2019-02-28",
+        1.7
+       ],
+       [
+        "2019-03-31",
+        1.7
+       ],
+       [
+        "2019-04-30",
+        1.66
+       ],
+       [
+        "2019-05-31",
+        1.65
+       ],
+       [
+        "2019-06-30",
+        1.64
+       ],
+       [
+        "2019-07-31",
+        1.61
+       ],
+       [
+        "2019-08-31",
+        1.59
+       ],
+       [
+        "2019-09-30",
+        1.55
+       ],
+       [
+        "2019-10-31",
+        1.47
+       ],
+       [
+        "2019-11-30",
+        1.41
+       ],
+       [
+        "2019-12-31",
+        1.42
+       ],
+       [
+        "2020-01-31",
+        1.41
+       ],
+       [
+        "2020-02-29",
+        1.4
+       ],
+       [
+        "2020-03-31",
+        1.4
+       ],
+       [
+        "2020-04-30",
+        1.38
+       ],
+       [
+        "2020-05-31",
+        1.42
+       ],
+       [
+        "2020-06-30",
+        1.41
+       ],
+       [
+        "2020-07-31",
+        1.45
+       ],
+       [
+        "2020-08-31",
+        1.6
+       ],
+       [
+        "2020-09-30",
+        1.75
+       ],
+       [
+        "2020-10-31",
+        1.94
+       ],
+       [
+        "2020-11-30",
+        1.92
+       ],
+       [
+        "2020-12-31",
+        1.86
+       ],
+       [
+        "2021-01-31",
+        1.75
+       ],
+       [
+        "2021-02-28",
+        1.61
+       ],
+       [
+        "2021-03-31",
+        1.56
+       ],
+       [
+        "2021-04-30",
+        1.49
+       ],
+       [
+        "2021-05-31",
+        1.47
+       ],
+       [
+        "2021-06-30",
+        1.39
+       ],
+       [
+        "2021-07-31",
+        1.29
+       ],
+       [
+        "2021-08-31",
+        1.23
+       ],
+       [
+        "2021-09-30",
+        1.2
+       ],
+       [
+        "2021-10-31",
+        1.29
+       ],
+       [
+        "2021-11-30",
+        1.53
+       ],
+       [
+        "2021-12-31",
+        1.57
+       ],
+       [
+        "2022-01-31",
+        1.64
+       ],
+       [
+        "2022-02-28",
+        1.78
+       ],
+       [
+        "2022-03-31",
+        2.14
+       ],
+       [
+        "2022-04-30",
+        2.35
+       ],
+       [
+        "2022-05-31",
+        2.63
+       ],
+       [
+        "2022-06-30",
+        2.87
+       ],
+       [
+        "2022-07-31",
+        3.48
+       ],
+       [
+        "2022-08-31",
+        3.6
+       ],
+       [
+        "2022-09-30",
+        4.17
+       ],
+       [
+        "2022-10-31",
+        5.99
+       ],
+       [
+        "2022-11-30",
+        5.98
+       ],
+       [
+        "2022-12-31",
+        5.43
+       ],
+       [
+        "2023-01-31",
+        5.14
+       ],
+       [
+        "2023-02-28",
+        4.79
+       ],
+       [
+        "2023-03-31",
+        4.74
+       ],
+       [
+        "2023-04-30",
+        4.6
+       ],
+       [
+        "2023-05-31",
+        4.72
+       ],
+       [
+        "2023-06-30",
+        5.49
+       ],
+       [
+        "2023-07-31",
+        6.22
+       ],
+       [
+        "2023-08-31",
+        6.18
+       ],
+       [
+        "2023-09-30",
+        5.91
+       ],
+       [
+        "2023-10-31",
+        5.6
+       ],
+       [
+        "2023-11-30",
+        5.28
+       ],
+       [
+        "2023-12-31",
+        5.03
+       ],
+       [
+        "2024-01-31",
+        4.71
+       ],
+       [
+        "2024-02-29",
+        4.76
+       ],
+       [
+        "2024-03-31",
+        4.96
+       ],
+       [
+        "2024-04-30",
+        4.98
+       ],
+       [
+        "2024-05-31",
+        5.19
+       ],
+       [
+        "2024-06-30",
+        5.16
+       ],
+       [
+        "2024-07-31",
+        4.99
+       ],
+       [
+        "2024-08-31",
+        4.8
+       ],
+       [
+        "2024-09-30",
+        4.58
+       ],
+       [
+        "2024-10-31",
+        4.4
+       ],
+       [
+        "2024-11-30",
+        4.53
+       ],
+       [
+        "2024-12-31",
+        4.6
+       ],
+       [
+        "2025-01-31",
+        4.63
+       ],
+       [
+        "2025-02-28",
+        4.65
+       ],
+       [
+        "2025-03-31",
+        4.54
+       ],
+       [
+        "2025-04-30",
+        4.42
+       ],
+       [
+        "2025-05-31",
+        4.18
+       ],
+       [
+        "2025-06-30",
+        4.28
+       ],
+       [
+        "2025-07-31",
+        4.21
+       ],
+       [
+        "2025-08-31",
+        4.1
+       ],
+       [
+        "2025-09-30",
+        4.19
+       ],
+       [
+        "2025-10-31",
+        4.2
+       ],
+       [
+        "2025-11-30",
+        4.06
+       ],
+       [
+        "2025-12-31",
+        3.97
+       ],
+       [
+        "2026-01-31",
+        3.93
+       ],
+       [
+        "2026-02-28",
+        3.97
+       ],
+       [
+        "2026-03-31",
+        4.45
+       ],
+       [
+        "2026-04-30",
+        5.14
+       ],
+       [
+        "2026-05-31",
+        4.91
+       ],
+       [
+        "2026-06-30",
+        4.8
+       ],
+       [
+        "2026-07-31",
+        4.79
+       ],
+       [
+        "2026-08-31",
+        4.92
+       ]
+      ]
+     }
+    ]
+   },
+   "sources": [
+    {
+     "publisher": "Bank of England",
+     "title": "Bank of England official Bank Rate and quoted household interest rates",
+     "url": "https://www.bankofengland.co.uk/boeapps/database/",
+     "data_url": "https://www.bankofengland.co.uk/boeapps/iadb/fromshowcolumns.asp?csv.x=yes&SeriesCodes=IUMABEDR",
+     "series": [
+      "IUMABEDR",
+      "IUMBV34",
+      "IUMTLMV"
+     ],
+     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "automated": true
+    }
+   ],
+   "method": "Bank of England statistical database: official Bank Rate (IUMABEDR), the quoted rate on a two-year fixed mortgage at 75% loan-to-value (IUMBV34) and the average standard variable rate (IUMTLMV), monthly.",
+   "explainer": {
+    "what": "Bank Rate is the interest rate the Bank of England pays commercial banks, and it feeds through to mortgages, loans and savings.",
+    "why": "It is the main tool for controlling inflation, and it decides what mortgages cost. The government does not set it."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:21:35+00:00"
+  },
+  {
+   "id": "borrowing",
+   "section": "money",
+   "title": "Government borrowing",
+   "question": "How much more is the government spending than it raises?",
+   "headline": {
+    "value": 123.8,
+    "unit": "£bn",
+    "decimals": 1,
+    "period": "12 months to Jul 2026",
+    "caption": "public sector net borrowing over the past 12 months"
+   },
+   "benchmark": {
+    "label": "Balanced budget",
+    "text": "£0"
+   },
+   "baseline": {
+    "label": "June 2024",
+    "value": 14.608,
+    "unit": "£bn"
+   },
+   "context": [
+    "Over the 12 months to Jul 2026 the government borrowed £123.8 billion.",
+    "Borrowing is the yearly gap between what the state spends and what it raises. Debt is the running total of every past gap.",
+    "In the latest month alone, the government borrowed £1.8 billion."
+   ],
+   "chart": {
+    "kind": "bar",
+    "unit": "£bn",
+    "decimals": 1,
+    "freq": "m",
+    "series": [
+     {
+      "name": "Monthly public sector net borrowing (£bn)",
+      "role": "primary",
+      "points": [
+       [
+        "2018-01-31",
+        -5.82
+       ],
+       [
+        "2018-02-28",
+        2.58
+       ],
+       [
+        "2018-03-31",
+        1.78
+       ],
+       [
+        "2018-04-30",
+        10.04
+       ],
+       [
+        "2018-05-31",
+        4.49
+       ],
+       [
+        "2018-06-30",
+        4.1
+       ],
+       [
+        "2018-07-31",
+        -2.49
+       ],
+       [
+        "2018-08-31",
+        6.99
+       ],
+       [
+        "2018-09-30",
+        8.88
+       ],
+       [
+        "2018-10-31",
+        9.26
+       ],
+       [
+        "2018-11-30",
+        5.79
+       ],
+       [
+        "2018-12-31",
+        5.43
+       ],
+       [
+        "2019-01-31",
+        -10.27
+       ],
+       [
+        "2019-02-28",
+        2.12
+       ],
+       [
+        "2019-03-31",
+        -0.02
+       ],
+       [
+        "2019-04-30",
+        11.14
+       ],
+       [
+        "2019-05-31",
+        4.67
+       ],
+       [
+        "2019-06-30",
+        6.79
+       ],
+       [
+        "2019-07-31",
+        -1.15
+       ],
+       [
+        "2019-08-31",
+        4.89
+       ],
+       [
+        "2019-09-30",
+        8.71
+       ],
+       [
+        "2019-10-31",
+        11.26
+       ],
+       [
+        "2019-11-30",
+        5.45
+       ],
+       [
+        "2019-12-31",
+        6.05
+       ],
+       [
+        "2020-01-31",
+        -8.2
+       ],
+       [
+        "2020-02-29",
+        1.93
+       ],
+       [
+        "2020-03-31",
+        6.85
+       ],
+       [
+        "2020-04-30",
+        49.01
+       ],
+       [
+        "2020-05-31",
+        51.13
+       ],
+       [
+        "2020-06-30",
+        32.16
+       ],
+       [
+        "2020-07-31",
+        21.84
+       ],
+       [
+        "2020-08-31",
+        24.02
+       ],
+       [
+        "2020-09-30",
+        27.98
+       ],
+       [
+        "2020-10-31",
+        17.91
+       ],
+       [
+        "2020-11-30",
+        21.42
+       ],
+       [
+        "2020-12-31",
+        23.93
+       ],
+       [
+        "2021-01-31",
+        1.25
+       ],
+       [
+        "2021-02-28",
+        15.48
+       ],
+       [
+        "2021-03-31",
+        24.84
+       ],
+       [
+        "2021-04-30",
+        23.52
+       ],
+       [
+        "2021-05-31",
+        17.13
+       ],
+       [
+        "2021-06-30",
+        18.72
+       ],
+       [
+        "2021-07-31",
+        4.3
+       ],
+       [
+        "2021-08-31",
+        13.9
+       ],
+       [
+        "2021-09-30",
+        16.78
+       ],
+       [
+        "2021-10-31",
+        8.02
+       ],
+       [
+        "2021-11-30",
+        7.36
+       ],
+       [
+        "2021-12-31",
+        9.83
+       ],
+       [
+        "2022-01-31",
+        -11.96
+       ],
+       [
+        "2022-02-28",
+        7.09
+       ],
+       [
+        "2022-03-31",
+        5.53
+       ],
+       [
+        "2022-04-30",
+        13.43
+       ],
+       [
+        "2022-05-31",
+        8.73
+       ],
+       [
+        "2022-06-30",
+        18.87
+       ],
+       [
+        "2022-07-31",
+        0.6
+       ],
+       [
+        "2022-08-31",
+        7.87
+       ],
+       [
+        "2022-09-30",
+        15.35
+       ],
+       [
+        "2022-10-31",
+        11.09
+       ],
+       [
+        "2022-11-30",
+        15.56
+       ],
+       [
+        "2022-12-31",
+        15.94
+       ],
+       [
+        "2023-01-31",
+        -8.61
+       ],
+       [
+        "2023-02-28",
+        10.94
+       ],
+       [
+        "2023-03-31",
+        17.59
+       ],
+       [
+        "2023-04-30",
+        19.99
+       ],
+       [
+        "2023-05-31",
+        15.37
+       ],
+       [
+        "2023-06-30",
+        19.09
+       ],
+       [
+        "2023-07-31",
+        2.71
+       ],
+       [
+        "2023-08-31",
+        11.45
+       ],
+       [
+        "2023-09-30",
+        15.46
+       ],
+       [
+        "2023-10-31",
+        16.47
+       ],
+       [
+        "2023-11-30",
+        15.01
+       ],
+       [
+        "2023-12-31",
+        8.11
+       ],
+       [
+        "2024-01-31",
+        -14.29
+       ],
+       [
+        "2024-02-29",
+        11.37
+       ],
+       [
+        "2024-03-31",
+        14.35
+       ],
+       [
+        "2024-04-30",
+        19.35
+       ],
+       [
+        "2024-05-31",
+        17.52
+       ],
+       [
+        "2024-06-30",
+        14.61
+       ],
+       [
+        "2024-07-31",
+        3.96
+       ],
+       [
+        "2024-08-31",
+        14.87
+       ],
+       [
+        "2024-09-30",
+        18.77
+       ],
+       [
+        "2024-10-31",
+        19.37
+       ],
+       [
+        "2024-11-30",
+        13.53
+       ],
+       [
+        "2024-12-31",
+        18.67
+       ],
+       [
+        "2025-01-31",
+        -14.67
+       ],
+       [
+        "2025-02-28",
+        11.94
+       ],
+       [
+        "2025-03-31",
+        13.76
+       ],
+       [
+        "2025-04-30",
+        19.64
+       ],
+       [
+        "2025-05-31",
+        17.98
+       ],
+       [
+        "2025-06-30",
+        24.0
+       ],
+       [
+        "2025-07-31",
+        1.07
+       ],
+       [
+        "2025-08-31",
+        14.94
+       ],
+       [
+        "2025-09-30",
+        22.19
+       ],
+       [
+        "2025-10-31",
+        15.79
+       ],
+       [
+        "2025-11-30",
+        9.54
+       ],
+       [
+        "2025-12-31",
+        12.58
+       ],
+       [
+        "2026-01-31",
+        -32.29
+       ],
+       [
+        "2026-02-28",
+        12.43
+       ],
+       [
+        "2026-03-31",
+        11.96
+       ],
+       [
+        "2026-04-30",
+        23.13
+       ],
+       [
+        "2026-05-31",
+        18.98
+       ],
+       [
+        "2026-06-30",
+        12.78
+       ],
+       [
+        "2026-07-31",
+        1.8
+       ]
+      ]
+     }
+    ],
+    "ref": [
+     {
+      "value": 0,
+      "label": ""
+     }
+    ],
+    "note": "Public sector net borrowing excluding public sector banks, by month. Positive bars are months when the government borrowed; bars below the line are surpluses, usually January and July when self-assessment tax arrives."
+   },
+   "sources": [
+    {
+     "publisher": "Office for National Statistics",
+     "title": "Public sector finances, UK",
+     "url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest",
+     "data_url": "https://www.ons.gov.uk/timeseries/j5ii/pusf",
+     "series": [
+      "Public sector net borrowing excluding public sector banks, £ million (J5II)"
+     ],
+     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "automated": true
+    }
+   ],
+   "method": "ONS public sector finances: net borrowing excluding public sector banks. The headline is the sum of the latest 12 months.",
+   "explainer": {
+    "what": "The difference between what the government spends and what it raises in tax, in one period.",
+    "why": "Every pound borrowed is added to the national debt and has to be serviced out of future taxes."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:21:35+00:00"
+  },
+  {
+   "id": "debt",
+   "section": "money",
+   "title": "Government debt",
+   "question": "How much does the state owe, measured against the size of the economy?",
+   "headline": {
+    "value": 94.1,
+    "unit": "%",
+    "decimals": 1,
+    "period": "Jul 2026",
+    "caption": "public sector net debt as a share of GDP"
+   },
+   "benchmark": {
+    "label": "At the election (June 2024)",
+    "text": "94.5% of GDP"
+   },
+   "baseline": {
+    "label": "June 2024",
+    "value": 94.5,
+    "unit": "%"
+   },
+   "context": [
+    "Debt was 94.5% of the economy at the general election and is 94.1% now.",
+    "Debt as a share of GDP is the measure the government's own fiscal rules use, because it compares what is owed with the size of the economy that has to service it."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "%",
+    "decimals": 1,
+    "series": [
+     {
+      "name": "Public sector net debt, % of GDP",
+      "role": "primary",
+      "points": [
+       [
+        "2010-01-31",
+        62.7
+       ],
+       [
+        "2010-02-28",
+        62.9
+       ],
+       [
+        "2010-03-31",
+        64.4
+       ],
+       [
+        "2010-04-30",
+        64.5
+       ],
+       [
+        "2010-05-31",
+        65.1
+       ],
+       [
+        "2010-06-30",
+        66.1
+       ],
+       [
+        "2010-07-31",
+        66.1
+       ],
+       [
+        "2010-08-31",
+        66.5
+       ],
+       [
+        "2010-09-30",
+        67.8
+       ],
+       [
+        "2010-10-31",
+        67.8
+       ],
+       [
+        "2010-11-30",
+        68.7
+       ],
+       [
+        "2010-12-31",
+        70.1
+       ],
+       [
+        "2011-01-31",
+        69.1
+       ],
+       [
+        "2011-02-28",
+        69.4
+       ],
+       [
+        "2011-03-31",
+        70.6
+       ],
+       [
+        "2011-04-30",
+        70.7
+       ],
+       [
+        "2011-05-31",
+        71.1
+       ],
+       [
+        "2011-06-30",
+        72.0
+       ],
+       [
+        "2011-07-31",
+        71.4
+       ],
+       [
+        "2011-08-31",
+        72.2
+       ],
+       [
+        "2011-09-30",
+        72.5
+       ],
+       [
+        "2011-10-31",
+        72.3
+       ],
+       [
+        "2011-11-30",
+        72.7
+       ],
+       [
+        "2011-12-31",
+        73.8
+       ],
+       [
+        "2012-01-31",
+        72.6
+       ],
+       [
+        "2012-02-29",
+        72.8
+       ],
+       [
+        "2012-03-31",
+        73.9
+       ],
+       [
+        "2012-04-30",
+        73.6
+       ],
+       [
+        "2012-05-31",
+        74.0
+       ],
+       [
+        "2012-06-30",
+        74.9
+       ],
+       [
+        "2012-07-31",
+        74.8
+       ],
+       [
+        "2012-08-31",
+        74.7
+       ],
+       [
+        "2012-09-30",
+        75.5
+       ],
+       [
+        "2012-10-31",
+        75.8
+       ],
+       [
+        "2012-11-30",
+        76.3
+       ],
+       [
+        "2012-12-31",
+        77.3
+       ],
+       [
+        "2013-01-31",
+        76.0
+       ],
+       [
+        "2013-02-28",
+        76.0
+       ],
+       [
+        "2013-03-31",
+        77.2
+       ],
+       [
+        "2013-04-30",
+        77.1
+       ],
+       [
+        "2013-05-31",
+        77.6
+       ],
+       [
+        "2013-06-30",
+        78.1
+       ],
+       [
+        "2013-07-31",
+        77.6
+       ],
+       [
+        "2013-08-31",
+        77.6
+       ],
+       [
+        "2013-09-30",
+        78.1
+       ],
+       [
+        "2013-10-31",
+        77.8
+       ],
+       [
+        "2013-11-30",
+        78.3
+       ],
+       [
+        "2013-12-31",
+        79.2
+       ],
+       [
+        "2014-01-31",
+        78.2
+       ],
+       [
+        "2014-02-28",
+        78.3
+       ],
+       [
+        "2014-03-31",
+        78.8
+       ],
+       [
+        "2014-04-30",
+        78.8
+       ],
+       [
+        "2014-05-31",
+        79.3
+       ],
+       [
+        "2014-06-30",
+        79.9
+       ],
+       [
+        "2014-07-31",
+        79.5
+       ],
+       [
+        "2014-08-31",
+        79.5
+       ],
+       [
+        "2014-09-30",
+        80.2
+       ],
+       [
+        "2014-10-31",
+        80.3
+       ],
+       [
+        "2014-11-30",
+        80.5
+       ],
+       [
+        "2014-12-31",
+        81.5
+       ],
+       [
+        "2015-01-31",
+        80.2
+       ],
+       [
+        "2015-02-28",
+        80.3
+       ],
+       [
+        "2015-03-31",
+        81.1
+       ],
+       [
+        "2015-04-30",
+        80.9
+       ],
+       [
+        "2015-05-31",
+        81.3
+       ],
+       [
+        "2015-06-30",
+        81.8
+       ],
+       [
+        "2015-07-31",
+        81.3
+       ],
+       [
+        "2015-08-31",
+        81.0
+       ],
+       [
+        "2015-09-30",
+        81.5
+       ],
+       [
+        "2015-10-31",
+        81.6
+       ],
+       [
+        "2015-11-30",
+        81.6
+       ],
+       [
+        "2015-12-31",
+        81.7
+       ],
+       [
+        "2016-01-31",
+        80.4
+       ],
+       [
+        "2016-02-29",
+        80.1
+       ],
+       [
+        "2016-03-31",
+        80.6
+       ],
+       [
+        "2016-04-30",
+        80.7
+       ],
+       [
+        "2016-05-31",
+        80.7
+       ],
+       [
+        "2016-06-30",
+        80.8
+       ],
+       [
+        "2016-07-31",
+        80.0
+       ],
+       [
+        "2016-08-31",
+        80.2
+       ],
+       [
+        "2016-09-30",
+        80.3
+       ],
+       [
+        "2016-10-31",
+        80.6
+       ],
+       [
+        "2016-11-30",
+        81.2
+       ],
+       [
+        "2016-12-31",
+        82.5
+       ],
+       [
+        "2017-01-31",
+        80.7
+       ],
+       [
+        "2017-02-28",
+        81.5
+       ],
+       [
+        "2017-03-31",
+        82.7
+       ],
+       [
+        "2017-04-30",
+        82.3
+       ],
+       [
+        "2017-05-31",
+        82.7
+       ],
+       [
+        "2017-06-30",
+        83.4
+       ],
+       [
+        "2017-07-31",
+        83.2
+       ],
+       [
+        "2017-08-31",
+        83.0
+       ],
+       [
+        "2017-09-30",
+        83.9
+       ],
+       [
+        "2017-10-31",
+        82.9
+       ],
+       [
+        "2017-11-30",
+        82.2
+       ],
+       [
+        "2017-12-31",
+        81.7
+       ],
+       [
+        "2018-01-31",
+        80.7
+       ],
+       [
+        "2018-02-28",
+        81.6
+       ],
+       [
+        "2018-03-31",
+        81.6
+       ],
+       [
+        "2018-04-30",
+        81.9
+       ],
+       [
+        "2018-05-31",
+        81.8
+       ],
+       [
+        "2018-06-30",
+        82.0
+       ],
+       [
+        "2018-07-31",
+        80.9
+       ],
+       [
+        "2018-08-31",
+        81.1
+       ],
+       [
+        "2018-09-30",
+        81.1
+       ],
+       [
+        "2018-10-31",
+        81.1
+       ],
+       [
+        "2018-11-30",
+        81.1
+       ],
+       [
+        "2018-12-31",
+        81.3
+       ],
+       [
+        "2019-01-31",
+        79.8
+       ],
+       [
+        "2019-02-28",
+        79.7
+       ],
+       [
+        "2019-03-31",
+        79.6
+       ],
+       [
+        "2019-04-30",
+        79.9
+       ],
+       [
+        "2019-05-31",
+        80.0
+       ],
+       [
+        "2019-06-30",
+        80.3
+       ],
+       [
+        "2019-07-31",
+        79.5
+       ],
+       [
+        "2019-08-31",
+        79.3
+       ],
+       [
+        "2019-09-30",
+        79.9
+       ],
+       [
+        "2019-10-31",
+        81.5
+       ],
+       [
+        "2019-11-30",
+        82.8
+       ],
+       [
+        "2019-12-31",
+        84.2
+       ],
+       [
+        "2020-01-31",
+        83.5
+       ],
+       [
+        "2020-02-29",
+        83.7
+       ],
+       [
+        "2020-03-31",
+        84.5
+       ],
+       [
+        "2020-04-30",
+        89.6
+       ],
+       [
+        "2020-05-31",
+        93.3
+       ],
+       [
+        "2020-06-30",
+        95.3
+       ],
+       [
+        "2020-07-31",
+        96.0
+       ],
+       [
+        "2020-08-31",
+        97.7
+       ],
+       [
+        "2020-09-30",
+        98.1
+       ],
+       [
+        "2020-10-31",
+        98.1
+       ],
+       [
+        "2020-11-30",
+        97.9
+       ],
+       [
+        "2020-12-31",
+        97.6
+       ],
+       [
+        "2021-01-31",
+        96.0
+       ],
+       [
+        "2021-02-28",
+        96.2
+       ],
+       [
+        "2021-03-31",
+        95.4
+       ],
+       [
+        "2021-04-30",
+        96.1
+       ],
+       [
+        "2021-05-31",
+        96.4
+       ],
+       [
+        "2021-06-30",
+        95.8
+       ],
+       [
+        "2021-07-31",
+        95.3
+       ],
+       [
+        "2021-08-31",
+        93.9
+       ],
+       [
+        "2021-09-30",
+        93.2
+       ],
+       [
+        "2021-10-31",
+        95.9
+       ],
+       [
+        "2021-11-30",
+        96.4
+       ],
+       [
+        "2021-12-31",
+        96.2
+       ],
+       [
+        "2022-01-31",
+        94.8
+       ],
+       [
+        "2022-02-28",
+        94.0
+       ],
+       [
+        "2022-03-31",
+        94.3
+       ],
+       [
+        "2022-04-30",
+        93.8
+       ],
+       [
+        "2022-05-31",
+        93.7
+       ],
+       [
+        "2022-06-30",
+        94.0
+       ],
+       [
+        "2022-07-31",
+        93.2
+       ],
+       [
+        "2022-08-31",
+        92.9
+       ],
+       [
+        "2022-09-30",
+        92.8
+       ],
+       [
+        "2022-10-31",
+        92.6
+       ],
+       [
+        "2022-11-30",
+        92.9
+       ],
+       [
+        "2022-12-31",
+        93.1
+       ],
+       [
+        "2023-01-31",
+        92.2
+       ],
+       [
+        "2023-02-28",
+        92.6
+       ],
+       [
+        "2023-03-31",
+        93.2
+       ],
+       [
+        "2023-04-30",
+        93.2
+       ],
+       [
+        "2023-05-31",
+        94.1
+       ],
+       [
+        "2023-06-30",
+        94.9
+       ],
+       [
+        "2023-07-31",
+        93.8
+       ],
+       [
+        "2023-08-31",
+        93.9
+       ],
+       [
+        "2023-09-30",
+        93.6
+       ],
+       [
+        "2023-10-31",
+        94.7
+       ],
+       [
+        "2023-11-30",
+        95.3
+       ],
+       [
+        "2023-12-31",
+        95.6
+       ],
+       [
+        "2024-01-31",
+        93.8
+       ],
+       [
+        "2024-02-29",
+        94.0
+       ],
+       [
+        "2024-03-31",
+        94.2
+       ],
+       [
+        "2024-04-30",
+        93.4
+       ],
+       [
+        "2024-05-31",
+        94.5
+       ],
+       [
+        "2024-06-30",
+        94.5
+       ],
+       [
+        "2024-07-31",
+        94.2
+       ],
+       [
+        "2024-08-31",
+        94.5
+       ],
+       [
+        "2024-09-30",
+        94.0
+       ],
+       [
+        "2024-10-31",
+        94.4
+       ],
+       [
+        "2024-11-30",
+        95.2
+       ],
+       [
+        "2024-12-31",
+        94.8
+       ],
+       [
+        "2025-01-31",
+        93.0
+       ],
+       [
+        "2025-02-28",
+        93.4
+       ],
+       [
+        "2025-03-31",
+        93.4
+       ],
+       [
+        "2025-04-30",
+        93.7
+       ],
+       [
+        "2025-05-31",
+        94.8
+       ],
+       [
+        "2025-06-30",
+        94.5
+       ],
+       [
+        "2025-07-31",
+        94.9
+       ],
+       [
+        "2025-08-31",
+        95.1
+       ],
+       [
+        "2025-09-30",
+        94.9
+       ],
+       [
+        "2025-10-31",
+        94.0
+       ],
+       [
+        "2025-11-30",
+        94.7
+       ],
+       [
+        "2025-12-31",
+        94.3
+       ],
+       [
+        "2026-01-31",
+        92.3
+       ],
+       [
+        "2026-02-28",
+        92.5
+       ],
+       [
+        "2026-03-31",
+        93.4
+       ],
+       [
+        "2026-04-30",
+        93.7
+       ],
+       [
+        "2026-05-31",
+        94.4
+       ],
+       [
+        "2026-06-30",
+        94.6
+       ],
+       [
+        "2026-07-31",
+        94.1
+       ]
+      ]
+     }
+    ],
+    "ref": [
+     {
+      "value": 94.5,
+      "label": "June 2024: 94.5%"
+     }
+    ]
+   },
+   "sources": [
+    {
+     "publisher": "Office for National Statistics",
+     "title": "Public sector finances, UK",
+     "url": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest",
+     "data_url": "https://www.ons.gov.uk/timeseries/hf6x/pusf",
+     "series": [
+      "Public sector net debt excluding public sector banks, as a share of GDP (HF6X)"
+     ],
+     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "automated": true
+    }
+   ],
+   "method": "ONS public sector finances: net debt excluding public sector banks, as a percentage of GDP, published monthly.",
+   "explainer": {
+    "what": "Everything the state owes, minus its liquid assets, measured against the size of the economy.",
+    "why": "Interest on this debt is paid before anything else. The larger it is relative to the economy, the more of each year's taxes go to servicing it."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:21:35+00:00"
+  },
+  {
+   "id": "nhs_18_weeks",
+   "section": "health",
+   "title": "NHS 18-week waits",
+   "question": "Are NHS patients in England being treated within 18 weeks?",
+   "headline": {
+    "value": 65.8,
+    "unit": "%",
+    "decimals": 1,
+    "period": "June 2026",
+    "caption": "of patients waiting less than 18 weeks for planned treatment"
+   },
+   "benchmark": {
+    "label": "The NHS standard",
+    "text": "92% by March 2029"
+   },
+   "baseline": {
+    "label": "When the government took office",
+    "value": 58.9,
+    "unit": "%"
+   },
+   "context": [
+    "The standard is that 92% of patients should wait no more than 18 weeks from referral to treatment. It has not been met since 2015.",
+    "65.8% of patients were within 18 weeks at the end of June 2026.",
+    "The government set an interim goal of 65% by March 2026, which it met.",
+    "The waiting list covers England. Health is devolved elsewhere in the UK."
+   ],
+   "chart": {
+    "kind": "hbar",
+    "unit": "%",
+    "decimals": 1,
+    "bars": [
+     {
+      "name": "The standard (by March 2029)",
+      "value": 92,
+      "role": "accent"
+     },
+     {
+      "name": "June 2026",
+      "value": 65.8,
+      "role": "primary"
+     },
+     {
+      "name": "Interim goal (March 2026)",
+      "value": 65,
+      "role": "muted"
+     }
+    ],
+    "note": "Share of patients on the referral-to-treatment waiting list who have been waiting less than 18 weeks, England."
+   },
+   "sources": [
+    {
+     "publisher": "NHS England",
+     "title": "Referral to treatment waiting times statistics, June 2026",
+     "url": "https://www.gov.uk/government/statistics/referral-to-treatment-waiting-times-statistics-for-consultant-led-elective-care-for-june-2026",
+     "published": "2026-08-13"
+    },
+    {
+     "publisher": "Full Fact",
+     "title": "Is the government on course to meet the NHS 18-week standard?",
+     "url": "https://fullfact.org/government-tracker/cut-waiting-times-18-week-standard/",
+     "published": "2026-09-02"
+    }
+   ],
+   "method": "NHS England referral-to-treatment statistics: the percentage of incomplete pathways waiting under 18 weeks, as published monthly and compiled by Full Fact's government tracker.",
+   "explainer": {
+    "what": "The share of people waiting for planned hospital treatment in England who have waited less than 18 weeks since being referred.",
+    "why": "It is the official measure of hospital waiting times and the one the government chose for its own milestone."
+   },
+   "verified_on": "2026-09-21",
+   "recheck_by": "2026-11-01",
+   "automated": false
+  },
+  {
+   "id": "net_migration",
+   "section": "borders",
+   "title": "Net migration",
+   "question": "How many more people are coming to live in the UK than leaving?",
+   "headline": {
+    "value": 171000,
+    "unit": "",
+    "decimals": 0,
+    "period": "Year to December 2025",
+    "caption": "net long-term international migration"
+   },
+   "benchmark": {
+    "label": "Year to December 2024",
+    "text": "331,000"
+   },
+   "baseline": {
+    "label": "Year to June 2024",
+    "value": 740000,
+    "unit": ""
+   },
+   "context": [
+    "Net migration was 171,000 in the year to December 2025, down from 331,000 the year before.",
+    "It peaked at about 900,000 in the year to June 2023 and has fallen sharply since.",
+    "Net migration counts everyone arriving for a year or more, minus everyone leaving: students, workers, family and people arriving on humanitarian routes.",
+    "The government did not set a numerical target, so this is shown as a fact rather than a promise to be scored."
+   ],
+   "chart": {
+    "kind": "hbar",
+    "unit": "",
+    "decimals": 0,
+    "bars": [
+     {
+      "name": "Year to Dec 2025",
+      "value": 171000,
+      "role": "primary"
+     },
+     {
+      "name": "Year to Dec 2024",
+      "value": 331000,
+      "role": "muted"
+     },
+     {
+      "name": "Year to Jun 2024",
+      "value": 740000,
+      "role": "muted"
+     }
+    ],
+    "note": "Net long-term international migration to the UK, ONS estimates. Figures are revised as more data arrives."
+   },
+   "sources": [
+    {
+     "publisher": "Office for National Statistics",
+     "title": "Long-term international migration, provisional: year ending December 2025",
+     "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/longterminternationalmigrationprovisional/yearendingdecember2025",
+     "published": "2025-12-31"
+    }
+   ],
+   "method": "ONS provisional estimates of long-term international migration. These are estimates and are revised, sometimes substantially, as more administrative data becomes available.",
+   "explainer": {
+    "what": "The number of people arriving to live in the UK for at least a year, minus the number leaving.",
+    "why": "It drives population growth, and therefore demand for housing, schools and health services."
+   },
+   "verified_on": "2026-09-21",
+   "recheck_by": "2026-12-01",
+   "automated": false
+  },
+  {
+   "id": "small_boats",
+   "section": "borders",
+   "title": "Small boat arrivals",
+   "question": "How many people are crossing the Channel in small boats each month?",
+   "headline": {
+    "value": 28982,
+    "unit": "",
+    "decimals": 0,
+    "period": "12 months to Aug 2026",
+    "caption": "people detected arriving in small boats over the past 12 months"
+   },
+   "benchmark": {
+    "label": "Previous 12 months",
+    "text": "44,767"
+   },
+   "baseline": {
+    "label": "Month of the election",
+    "value": 3041,
+    "unit": ""
+   },
+   "context": [
+    "28,982 people arrived in the 12 months to Aug 2026, compared with 44,767 in the 12 months before that.",
+    "About 81,312 people have arrived since the general election in July 2024.",
+    "The busiest month on record in this series is Aug 2022, with 8,631 arrivals.",
+    "In the latest complete month, Aug 2026, there were 2,313 arrivals.",
+    "Arrivals are highly seasonal: crossings peak in summer when the Channel is calmest, so months should be compared with the same month a year earlier."
+   ],
+   "chart": {
+    "kind": "bar",
+    "unit": "",
+    "decimals": 0,
+    "freq": "m",
+    "series": [
+     {
+      "name": "People arriving in small boats, by month",
+      "role": "primary",
+      "points": [
+       [
+        "2019-01-31",
+        45
+       ],
+       [
+        "2019-02-28",
+        88
+       ],
+       [
+        "2019-03-31",
+        66
+       ],
+       [
+        "2019-04-30",
+        80
+       ],
+       [
+        "2019-05-31",
+        150
+       ],
+       [
+        "2019-06-30",
+        163
+       ],
+       [
+        "2019-07-31",
+        195
+       ],
+       [
+        "2019-08-31",
+        342
+       ],
+       [
+        "2019-09-30",
+        210
+       ],
+       [
+        "2019-10-31",
+        75
+       ],
+       [
+        "2019-11-30",
+        151
+       ],
+       [
+        "2019-12-31",
+        278
+       ],
+       [
+        "2020-01-31",
+        94
+       ],
+       [
+        "2020-02-29",
+        183
+       ],
+       [
+        "2020-03-31",
+        188
+       ],
+       [
+        "2020-04-30",
+        558
+       ],
+       [
+        "2020-05-31",
+        743
+       ],
+       [
+        "2020-06-30",
+        727
+       ],
+       [
+        "2020-07-31",
+        1111
+       ],
+       [
+        "2020-08-31",
+        1470
+       ],
+       [
+        "2020-09-30",
+        1946
+       ],
+       [
+        "2020-10-31",
+        472
+       ],
+       [
+        "2020-11-30",
+        761
+       ],
+       [
+        "2020-12-31",
+        209
+       ],
+       [
+        "2021-01-31",
+        224
+       ],
+       [
+        "2021-02-28",
+        308
+       ],
+       [
+        "2021-03-31",
+        831
+       ],
+       [
+        "2021-04-30",
+        750
+       ],
+       [
+        "2021-05-31",
+        1627
+       ],
+       [
+        "2021-06-30",
+        2177
+       ],
+       [
+        "2021-07-31",
+        3512
+       ],
+       [
+        "2021-08-31",
+        3053
+       ],
+       [
+        "2021-09-30",
+        4602
+       ],
+       [
+        "2021-10-31",
+        2701
+       ],
+       [
+        "2021-11-30",
+        6971
+       ],
+       [
+        "2021-12-31",
+        1770
+       ],
+       [
+        "2022-01-31",
+        1339
+       ],
+       [
+        "2022-02-28",
+        143
+       ],
+       [
+        "2022-03-31",
+        3066
+       ],
+       [
+        "2022-04-30",
+        2143
+       ],
+       [
+        "2022-05-31",
+        2916
+       ],
+       [
+        "2022-06-30",
+        3140
+       ],
+       [
+        "2022-07-31",
+        3687
+       ],
+       [
+        "2022-08-31",
+        8631
+       ],
+       [
+        "2022-09-30",
+        7964
+       ],
+       [
+        "2022-10-31",
+        6900
+       ],
+       [
+        "2022-11-30",
+        4082
+       ],
+       [
+        "2022-12-31",
+        1744
+       ],
+       [
+        "2023-01-31",
+        1180
+       ],
+       [
+        "2023-02-28",
+        1773
+       ],
+       [
+        "2023-03-31",
+        840
+       ],
+       [
+        "2023-04-30",
+        2153
+       ],
+       [
+        "2023-05-31",
+        1664
+       ],
+       [
+        "2023-06-30",
+        3823
+       ],
+       [
+        "2023-07-31",
+        3299
+       ],
+       [
+        "2023-08-31",
+        5369
+       ],
+       [
+        "2023-09-30",
+        4729
+       ],
+       [
+        "2023-10-31",
+        1869
+       ],
+       [
+        "2023-11-30",
+        1661
+       ],
+       [
+        "2023-12-31",
+        1077
+       ],
+       [
+        "2024-01-31",
+        1335
+       ],
+       [
+        "2024-02-29",
+        920
+       ],
+       [
+        "2024-03-31",
+        3180
+       ],
+       [
+        "2024-04-30",
+        2132
+       ],
+       [
+        "2024-05-31",
+        2881
+       ],
+       [
+        "2024-06-30",
+        3041
+       ],
+       [
+        "2024-07-31",
+        3414
+       ],
+       [
+        "2024-08-31",
+        4149
+       ],
+       [
+        "2024-09-30",
+        4192
+       ],
+       [
+        "2024-10-31",
+        5417
+       ],
+       [
+        "2024-11-30",
+        2901
+       ],
+       [
+        "2024-12-31",
+        3254
+       ],
+       [
+        "2025-01-31",
+        1098
+       ],
+       [
+        "2025-02-28",
+        958
+       ],
+       [
+        "2025-03-31",
+        4586
+       ],
+       [
+        "2025-04-30",
+        4432
+       ],
+       [
+        "2025-05-31",
+        3738
+       ],
+       [
+        "2025-06-30",
+        5170
+       ],
+       [
+        "2025-07-31",
+        5454
+       ],
+       [
+        "2025-08-31",
+        3567
+       ],
+       [
+        "2025-09-30",
+        5084
+       ],
+       [
+        "2025-10-31",
+        2867
+       ],
+       [
+        "2025-11-30",
+        2338
+       ],
+       [
+        "2025-12-31",
+        2180
+       ],
+       [
+        "2026-01-31",
+        933
+       ],
+       [
+        "2026-02-28",
+        1276
+       ],
+       [
+        "2026-03-31",
+        2232
+       ],
+       [
+        "2026-04-30",
+        1975
+       ],
+       [
+        "2026-05-31",
+        2726
+       ],
+       [
+        "2026-06-30",
+        2742
+       ],
+       [
+        "2026-07-31",
+        2316
+       ],
+       [
+        "2026-08-31",
+        2313
+       ]
+      ]
+     }
+    ],
+    "note": "Home Office and Border Force daily figures, added up by calendar month. The current, incomplete month is left out. These are people detected arriving; they are not the whole of irregular migration."
+   },
+   "sources": [
+    {
+     "publisher": "Home Office and Border Force",
+     "title": "Small boat activity in the English Channel (transparency data)",
+     "url": "https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats",
+     "data_url": "https://assets.publishing.service.gov.uk/media/6aad0a09086ce7c57b8186b8/18_September_2026_Small_boats_-_time_series.ods",
+     "series": [
+      "Migrants detected crossing the English Channel in small boats — daily time series (SB_01)"
+     ],
+     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "automated": true
+    }
+   ],
+   "method": "Home Office transparency data: daily counts of people detected arriving in the UK in small boats, summed by calendar month. The series begins in 2018 and is updated weekly. The incomplete current month is excluded. These figures count arrivals detected by Border Force, and are not the same as asylum claims or as total irregular migration.",
+   "explainer": {
+    "what": "The number of people detected crossing the English Channel in small boats and arriving in the UK.",
+    "why": "It is the most visible measure of control of the border, and the figure most often cited in the debate about asylum. It is published weekly, so it is unusually current."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:21:35+00:00"
+  },
+  {
+   "id": "clean_power",
+   "section": "energy",
+   "title": "Clean power by 2030",
+   "question": "How much of Britain's electricity is now low-carbon?",
+   "headline": {
+    "value": 73.8,
+    "unit": "%",
+    "decimals": 1,
+    "period": "2024",
+    "caption": "of Great Britain's electricity from clean sources"
+   },
+   "benchmark": {
+    "label": "The commitment",
+    "text": "at least 95% by 2030"
+   },
+   "baseline": {
+    "label": "2024 (first official figure)",
+    "value": 73.8,
+    "unit": "%"
+   },
+   "context": [
+    "'Clean power' counts renewables and nuclear, measured against the government's own Clean Power 2030 definition.",
+    "The first official figure on that definition was 73.8% in 2024.",
+    "The commitment is at least 95% by 2030, alongside enough capacity to meet demand.",
+    "Electricity generation is measured for Great Britain; Northern Ireland is part of a separate grid."
+   ],
+   "chart": {
+    "kind": "hbar",
+    "unit": "%",
+    "decimals": 1,
+    "bars": [
+     {
+      "name": "The commitment (2030)",
+      "value": 95,
+      "role": "accent"
+     },
+     {
+      "name": "2024",
+      "value": 73.8,
+      "role": "primary"
+     }
+    ],
+    "note": "Share of Great Britain's electricity generation from clean sources, on the government's Clean Power 2030 definition."
+   },
+   "sources": [
+    {
+     "publisher": "Department for Energy Security and Net Zero",
+     "title": "Clean Power 2030 Action Plan",
+     "url": "https://www.gov.uk/government/publications/clean-power-2030-action-plan",
+     "published": "2024-12-13"
+    },
+    {
+     "publisher": "House of Commons Library",
+     "title": "Clean power by 2030",
+     "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10182/"
+    }
+   ],
+   "method": "Share of Great Britain's electricity generation from clean sources on the government's own Clean Power 2030 definition, as reported by the House of Commons Library from DESNZ Energy Trends.",
+   "explainer": {
+    "what": "The proportion of the electricity Britain generates that comes from renewables and nuclear rather than gas and coal.",
+    "why": "It decides how exposed household bills are to world gas prices, and it is the government's central energy commitment."
+   },
+   "verified_on": "2026-09-21",
+   "recheck_by": "2026-12-31",
+   "automated": false
+  },
+  {
+   "id": "neighbourhood_police",
+   "section": "crime",
+   "title": "13,000 neighbourhood police",
+   "question": "Are there more police in neighbourhood roles?",
+   "headline": {
+    "value": 3123,
+    "unit": "",
+    "decimals": 0,
+    "period": "28 February 2026",
+    "caption": "additional officers, PCSOs and special constables in neighbourhood roles"
+   },
+   "benchmark": {
+    "label": "The commitment",
+    "text": "13,000 by the end of the parliament"
+   },
+   "baseline": {
+    "label": "31 March 2025 (the baseline used)",
+    "value": 0,
+    "unit": ""
+   },
+   "context": [
+    "The milestone counts police officers, police community support officers and special constables working in neighbourhood roles in England and Wales.",
+    "3,123 more were in post by 28 February 2026, about a quarter of the 13,000 promised.",
+    "That was ahead of the government's own first-year goal of 2,972.",
+    "The figures are Home Office management information, not accredited official statistics, and the baseline is March 2025 rather than the election."
+   ],
+   "chart": {
+    "kind": "hbar",
+    "unit": "",
+    "decimals": 0,
+    "bars": [
+     {
+      "name": "The commitment",
+      "value": 13000,
+      "role": "accent"
+     },
+     {
+      "name": "In post by Feb 2026",
+      "value": 3123,
+      "role": "primary"
+     },
+     {
+      "name": "First-year goal",
+      "value": 2972,
+      "role": "muted"
+     }
+    ],
+    "note": "Additional officers, PCSOs and special constables in neighbourhood roles, England and Wales, against a baseline of 31 March 2025."
+   },
+   "sources": [
+    {
+     "publisher": "Home Office",
+     "title": "Neighbourhood policing guarantee",
+     "url": "https://www.gov.uk/government/publications/neighbourhood-policing-guarantee",
+     "series": [
+      "Neighbourhood policing management information"
+     ]
+    },
+    {
+     "publisher": "Full Fact",
+     "title": "Is the government on track for 13,000 neighbourhood police?",
+     "url": "https://fullfact.org/government-tracker/13000-neighbourhood-police/",
+     "published": "2026-06-23"
+    }
+   ],
+   "method": "Home Office management information on neighbourhood policing numbers, as compiled by Full Fact's government tracker, measured against the 31 March 2025 baseline the government itself uses.",
+   "explainer": {
+    "what": "Extra police officers, PCSOs and special constables assigned to neighbourhood policing teams.",
+    "why": "Visible local policing is what most people mean by 'police on the beat', and the government set a specific number."
+   },
+   "verified_on": "2026-09-21",
+   "recheck_by": "2026-12-01",
+   "automated": false
+  },
+  {
+   "id": "school_readiness",
+   "section": "education",
+   "title": "Children ready for school",
+   "question": "Are more five-year-olds starting school ready to learn?",
+   "headline": {
+    "value": 68.3,
+    "unit": "%",
+    "decimals": 1,
+    "period": "2024–25",
+    "caption": "of five-year-olds reaching a good level of development"
+   },
+   "benchmark": {
+    "label": "The milestone",
+    "text": "75% by 2028"
+   },
+   "baseline": {
+    "label": "2023–24",
+    "value": 67.7,
+    "unit": "%"
+   },
+   "context": [
+    "The measure is the share of children reaching a 'good level of development' in the Early Years Foundation Stage Profile, assessed by teachers at the end of reception.",
+    "68.3% reached that standard in 2024–25.",
+    "The milestone is 75% by 2028, which would be a record.",
+    "The assessment covers England only."
+   ],
+   "chart": {
+    "kind": "hbar",
+    "unit": "%",
+    "decimals": 1,
+    "bars": [
+     {
+      "name": "The milestone (2028)",
+      "value": 75,
+      "role": "accent"
+     },
+     {
+      "name": "2024–25",
+      "value": 68.3,
+      "role": "primary"
+     },
+     {
+      "name": "2023–24",
+      "value": 67.7,
+      "role": "muted"
+     }
+    ],
+    "note": "Share of children reaching a good level of development at the end of reception, England."
+   },
+   "sources": [
+    {
+     "publisher": "Department for Education",
+     "title": "Early years foundation stage profile results",
+     "url": "https://explore-education-statistics.service.gov.uk/find-statistics/early-years-foundation-stage-profile-results",
+     "series": [
+      "Good level of development, England"
+     ]
+    },
+    {
+     "publisher": "Full Fact",
+     "title": "Is the government on track for 75% of children ready to learn?",
+     "url": "https://fullfact.org/government-tracker/75-percent-ready-to-learn/",
+     "published": "2026-07-13"
+    }
+   ],
+   "method": "Department for Education Early Years Foundation Stage Profile results: the percentage of children achieving a good level of development, as compiled by Full Fact's government tracker.",
+   "explainer": {
+    "what": "Teachers assess every child at the end of reception across communication, physical development, literacy, maths and personal development.",
+    "why": "Children who start school behind tend to stay behind, so this is an early indicator of how the school system will perform for years afterwards."
+   },
+   "verified_on": "2026-09-21",
+   "recheck_by": "2026-12-01",
+   "automated": false
+  }
+ ]
+}

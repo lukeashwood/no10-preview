@@ -1,0 +1,134 @@
+---
+/* The Briefing: the original 3D category model, moved across intact (scene, glow, moons, fly-to, side panel, guided tour,
+   boot sequence, ticker). Only its data feed is new: colours now show the record since the government took office. */
+import Base from '../layouts/Base.astro';
+import '@fontsource/rajdhani/500.css';
+import '@fontsource/rajdhani/600.css';
+import '@fontsource/rajdhani/700.css';
+import { SITE, url } from '../config/site';
+import { MEASURES, SECTIONS, GENERATED_AT } from '../lib/measures';
+import { fmtDate } from '../lib/format';
+import type { Measure } from '../lib/types';
+
+// fail = worse since the 2024 election (or a promise off track / not met); pass = better (or met / on track);
+// warn = little changed or at risk; info = no verdict, because which way is "better" is a political judgement.
+function statusOf(m: Measure): 'fail' | 'warn' | 'pass' | 'info' {
+  const s = m.sinceElection;
+  if (s && m.ed.better !== 'none') return s.tone === 'bad' ? 'fail' : s.tone === 'good' ? 'pass' : 'warn';
+  if (m.verdict) return ['off_track', 'not_met'].includes(m.verdict.verdict) ? 'fail' : ['met', 'on_track'].includes(m.verdict.verdict) ? 'pass' : 'warn';
+  return 'info';
+}
+const metrics = MEASURES.map((m) => ({ id: m.id, section: m.section, title: m.title, status: statusOf(m),
+  headline: { ...m.headline, caption: m.sinceElection ? `${m.headline.caption} · ${m.sinceElection.label} since the 2024 election` : m.headline.caption, period: m.headline.period ?? '' } }));
+const rated = metrics.filter((m) => m.status !== 'info');
+const data = { sections: SECTIONS, metrics, summary: { metrics_total: metrics.length, metrics_rated: rated.length, metrics_off_track: rated.filter((m) => m.status === 'fail').length, metrics_watch: rated.filter((m) => m.status === 'warn').length, metrics_on_track: rated.filter((m) => m.status === 'pass').length } };
+const base = url();
+---
+<Base title="The briefing" description="Every measure mapped in 3D: each sphere is a topic, each moon a measure, coloured by whether it is better or worse than when the government took office." section="briefing/" bodyClass="catpage" forceDark>
+  <link rel="stylesheet" href={url('briefing3d/categories.css')} />
+  <style is:global>
+    body.catpage { --font: var(--font-sans); --hud-font: "Rajdhani", var(--font-sans); }
+    body.catpage header.site { background: rgba(4, 9, 24, 0.85); border-bottom-color: var(--hud-line); }
+    body.catpage footer.site { margin-top: 0; }
+    .cat-stage { height: calc(100svh - 64px); }
+  </style>
+
+  <section class="cat-stage" aria-label="Interactive 3D map of the government's record by topic">
+    <div id="stage"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div id="labels"></div>
+    <div id="reticle" hidden aria-hidden="true"></div>
+    <span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+
+    <div class="hud-title">
+      <div class="k">{SITE.name} · {SITE.government.name} · record since the 2024 election</div>
+      <h1>Every measure, mapped</h1>
+      <p>Each sphere is a topic. Its colour and glow show how many of its measures are worse than when the government took office. The small dots orbiting it are the individual measures. Click anything to open it.</p>
+    </div>
+
+    <div class="hud-controls">
+      <button class="btn-hud accent" id="btn-tour" type="button">▶ Guided tour</button>
+      <button class="btn-hud" id="btn-reset" type="button">Reset view</button>
+      <button class="btn-hud" id="btn-text" type="button">Text version</button>
+    </div>
+    <div class="hint">Drag to rotate · Scroll to zoom · Click a sphere</div>
+
+    <aside id="panel" hidden aria-live="polite"></aside>
+
+    <div class="tour" role="region" aria-label="Guided tour">
+      <div class="tour-say" id="tour-say"></div>
+      <div class="tour-ctl">
+        <button class="btn-hud" id="tour-prev" type="button" aria-label="Previous">◀</button>
+        <span id="tour-count">1 / 1</span>
+        <button class="btn-hud" id="tour-next" type="button" aria-label="Next">▶</button>
+        <button class="btn-hud" id="tour-exit" type="button">Exit</button>
+      </div>
+    </div>
+
+    <div class="ticker"><b>LIVE</b><span id="ticker">Loading the figures…</span></div>
+
+    <div id="boot">
+      <div class="boot-box">
+        <div class="boot-ring">
+          <svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="16" stroke="#5fd4ff" stroke-width="1.4" opacity=".5" /><circle cx="18" cy="18" r="4" fill="#5fd4ff" /><circle cx="30" cy="18" r="2.2" fill="#ff4d55" /></svg>
+        </div>
+        <div class="boot-line"><span>{SITE.name} · Briefing model</span><span>v2.1</span></div>
+        <div class="boot-line"><span>Loading topics</span><span>OK</span></div>
+        <div class="boot-line"><span>Grouping individual measures</span><span>OK</span></div>
+        <div class="boot-line"><span>Comparing with July 2024</span><span>OK</span></div>
+        <div class="boot-line"><span>Rendering model</span><span>READY</span></div>
+        <div class="boot-skip">Click to skip</div>
+      </div>
+    </div>
+  </section>
+
+  <p id="no-webgl" class="noscript-box" hidden>Your browser can’t display the 3D model. The full list of topics and measures is below.</p>
+  <noscript><p class="noscript-box">This page needs JavaScript for the 3D model. Every figure is also on the <a href={url('measures/')}>measures page</a>.</p></noscript>
+
+  <section class="cat-about">
+    <div class="wrap">
+      <div>
+        <h2>What you’re looking at</h2>
+        <p>The site’s measures are grouped into topics: cost of living, energy, housing and so on. Each topic is a sphere. Its colour runs from green (mostly better than when the government took office in May 2022) through amber to red (mostly worse). Each small dot orbiting a sphere is one measure, coloured the same way. The centre sphere is every measure combined.</p>
+        <p>“Worse” means worse than at the 2024 election on the latest official figures, or a government promise that is off track. Measures where “better” is a matter of political opinion, such as the size of government or migration, are shown in blue and left out of the counts. Figures as at {fmtDate(GENERATED_AT)}.</p>
+        <div class="legend-row">
+          <span><i style="background:#3ecf6b"></i>Mostly better</span>
+          <span><i style="background:#f5c04a"></i>Mixed</span>
+          <span><i style="background:#ff4d55"></i>Mostly worse</span>
+          <span><i style="background:#8fb4ff"></i>No verdict</span>
+        </div>
+      </div>
+      <div>
+        <h2>Go further</h2>
+        <p>See <a href={url('#record')}>the record since the 2024 election</a>, the <a href={url('promises/')}>promises kept and broken</a>, or open any measure for its chart, sources and how much control Canberra has over it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="text-version" hidden>
+    <div class="wrap">
+      <h2>The topics as text</h2>
+      <p style="color:var(--hud-grey)">Every topic and the measures inside it.</p>
+      <div id="tv-body"></div>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ data, base }}>
+    window.SCORECARD = data; window.SCORECARD_BASE = base;
+    window.Charts = { fmtNum: function (v, unit, decimals, opts) { opts = opts || {}; if (v == null || isNaN(v)) return '–'; var d = decimals == null ? 1 : decimals, abs = Math.abs(v), s;
+      if (opts.compact && abs >= 1e6) s = (abs / 1e6).toFixed(abs >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M'; else if (opts.compact && abs >= 1e4) s = Math.round(abs / 1e3).toLocaleString('en-AU') + 'k'; else s = abs.toLocaleString('en-AU', { minimumFractionDigits: d, maximumFractionDigits: d });
+      var sign = v < 0 ? '−' : (opts.signed && v > 0 ? '+' : ''); if (unit === '$') return sign + '$' + s; if (unit === '%') return sign + s + '%'; return sign + s; } };
+    (function () { // text version (also the no-WebGL fallback), built from the same data as the model
+      var D = window.SCORECARD, root = document.getElementById('tv-body'), grid = document.createElement('div'); grid.className = 'tv-grid';
+      var el = function (t, txt) { var n = document.createElement(t); if (txt != null) n.textContent = txt; return n; };
+      D.sections.forEach(function (sec) { var ms = D.metrics.filter(function (m) { return m.section === sec.id; }); if (!ms.length) return;
+        var rated = ms.filter(function (m) { return m.status !== 'info'; }), off = rated.filter(function (m) { return m.status === 'fail'; }).length, box = el('div');
+        box.appendChild(el('h3', sec.title + ': ' + off + ' of ' + rated.length + ' worse or off track since the 2024 election')); box.appendChild(el('p', sec.blurb)); var ul = el('ul');
+        ms.forEach(function (m) { var li = el('li'), b = el('b', m.title + ': '), a = document.createElement('a'); a.href = window.SCORECARD_BASE + 'measures/' + m.id + '/'; a.appendChild(b); li.appendChild(a);
+          li.appendChild(document.createTextNode(window.Charts.fmtNum(m.headline.value, m.headline.unit === '$' ? '$' : '', m.headline.decimals, { signed: m.headline.signed }) + (m.headline.unit === '%' ? '%' : m.headline.suffix || '') + ' ' + m.headline.caption)); ul.appendChild(li); });
+        box.appendChild(ul); grid.appendChild(box); }); root.appendChild(grid); })();
+  </script>
+  <script is:inline src={url('briefing3d/three.min.js')}></script>
+  <script is:inline src={url('briefing3d/categories.js')}></script>
+</Base>

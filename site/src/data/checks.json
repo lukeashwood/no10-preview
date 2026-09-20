@@ -1,0 +1,110 @@
+{
+ "generated_at": "2026-09-20T17:21:35+00:00",
+ "checks": [
+  {
+   "metric": "inflation",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-08-31 (21 days old)",
+   "critical": false
+  },
+  {
+   "metric": "inflation",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "CPI annual rate = 3.1 within [-5, 25]",
+   "critical": false
+  },
+  {
+   "metric": "real_wages",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-07-31 (52 days old)",
+   "critical": false
+  },
+  {
+   "metric": "real_wages",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "real regular pay (£/week) = 531.0 within [300, 900]",
+   "critical": false
+  },
+  {
+   "metric": "unemployment",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-06-30 (83 days old)",
+   "critical": false
+  },
+  {
+   "metric": "unemployment",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "unemployment rate = 4.9 within [1, 20]",
+   "critical": false
+  },
+  {
+   "metric": "productivity",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-03-31 (174 days old)",
+   "critical": false
+  },
+  {
+   "metric": "gdp_vs_capita",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-03-31 (174 days old)",
+   "critical": false
+  },
+  {
+   "metric": "gdp_vs_capita",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "GDP per head change since the election = 1.655034895314067 within [-15, 25]",
+   "critical": false
+  },
+  {
+   "metric": "debt",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-07-31 (52 days old)",
+   "critical": false
+  },
+  {
+   "metric": "debt",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "public sector net debt (% of GDP) = 94.1 within [20, 200]",
+   "critical": false
+  },
+  {
+   "metric": "borrowing",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-07-31 (52 days old)",
+   "critical": false
+  },
+  {
+   "metric": "bank_rate",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-08-31 (21 days old)",
+   "critical": false
+  },
+  {
+   "metric": "bank_rate",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "Bank Rate = 3.75 within [0, 20]",
+   "critical": false
+  },
+  {
+   "metric": "small_boats",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-09-17 (4 days old)",
+   "critical": false
+  }
+ ]
+}

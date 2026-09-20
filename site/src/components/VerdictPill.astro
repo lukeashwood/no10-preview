@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+import { VERDICT_LABEL, VERDICT_TONE } from '../lib/editorial';
+import type { Verdict } from '../lib/types';
+interface Props { verdict: Verdict; large?: boolean; label?: string }
+const { verdict, large, label } = Astro.props;
+const tone = VERDICT_TONE[verdict];
+const icon = { met: 'check', on_track: 'check', in_progress: 'clock', at_risk: 'alert', off_track: 'x', not_met: 'x' }[verdict];
+---
+<span class:list={['pill', `pill-${tone}`, large && '!text-[14px] !py-1 !px-3']}><Icon name={icon} size={13} />{label ?? VERDICT_LABEL[verdict]}</span>

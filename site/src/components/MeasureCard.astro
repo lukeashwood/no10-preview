@@ -1,0 +1,30 @@
+---
+import DirectionBadge from './DirectionBadge.astro';
+import Sparkline from './Sparkline.astro';
+import InfluenceChip from './InfluenceChip.astro';
+import { url } from '../config/site';
+import { headlineText } from '../lib/format';
+import { ratedSeries } from '../lib/measures';
+import type { Measure } from '../lib/types';
+interface Props { m: Measure; i?: number }
+const { m, i = 0 } = Astro.props;
+const rs = ratedSeries(m);
+const pts = (rs?.points ?? []).filter((p) => !m.chart.estimateFrom || p[0] < m.chart.estimateFrom);
+---
+<a href={url(`measures/${m.id}/`)} class="card card-link card-pad rise flex flex-col gap-3" style={`--i:${i}`}>
+  <div class="flex items-start justify-between gap-3">
+    <h3 class="h3">{m.title}</h3>
+    <Sparkline points={pts} band={m.chart.band ?? null} label={`${m.title}, recent trend`} width={112} height={36} />
+  </div>
+  <div>
+    <p class="num font-display text-[34px] font-semibold leading-none tracking-tight">{headlineText(m.headline)}</p>
+    <p class="meta mt-1.5">{m.headline.caption}{m.headline.period ? ` · ${m.headline.period}` : ''}</p>
+  </div>
+  <div class="mt-auto grid gap-1.5 pt-1">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      {m.sinceElection ? <DirectionBadge change={{ trend: m.sinceElection.trend, tone: m.sinceElection.tone, label: m.sinceElection.label }} prefix="Since the election" /> : <span class="meta">No mid-2022 figure to compare</span>}
+      <InfluenceChip influence={m.ed.influence} />
+    </div>
+    {m.direction && <DirectionBadge quiet prefix="Past year" change={{ trend: m.direction.trend, tone: m.direction.tone, label: m.direction.changeLabel }} />}
+  </div>
+</a>

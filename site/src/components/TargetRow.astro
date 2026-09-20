@@ -1,0 +1,21 @@
+---
+import VerdictPill from './VerdictPill.astro';
+import Icon from './Icon.astro';
+import { url } from '../config/site';
+import { headlineText, fmtMonth } from '../lib/format';
+import type { Measure } from '../lib/types';
+interface Props { m: Measure; i?: number }
+const { m, i = 0 } = Astro.props;
+const t = m.ed.target!;
+---
+<a href={url(`measures/${m.id}/`)} class="card card-link rise grid gap-4 p-5 md:grid-cols-[1fr_auto] md:items-center md:gap-8 md:p-6" style={`--i:${i}`}>
+  <div>
+    <p class="eyebrow">{t.ownerLabel}{t.deadline ? ` · due ${fmtMonth(t.deadline)}` : ''}</p>
+    <p class="mt-1.5 font-display text-[21px] font-semibold leading-snug">{t.commitment}</p>
+    <p class="mt-2 text-[14.5px] text-ink-2">{m.verdict!.reason}</p>
+  </div>
+  <div class="flex items-center justify-between gap-5 md:flex-col md:items-end md:gap-2">
+    <VerdictPill verdict={m.verdict!.verdict} label={m.ed.target!.verdictLabels?.[m.verdict!.verdict]} large />
+    <p class="text-right"><span class="num font-display text-[26px] font-semibold leading-none">{headlineText(m.headline)}</span><span class="meta block max-w-[24ch]">{m.headline.caption}</span></p>
+  </div>
+</a>

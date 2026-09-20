@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../config/site';
+---
+<Base title="Page not found">
+  <div class="wrap-narrow py-24 text-center">
+    <p class="eyebrow">Error 404</p>
+    <h1 class="display mt-3 text-[clamp(34px,5vw,56px)]">That page isn’t on the record</h1>
+    <p class="lede mx-auto mt-4">The address may have changed, or the link may be out of date. Every figure is still here.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3"><a class="btn btn-primary" href={url()}>Go to the front page</a><a class="btn btn-ghost" href={url('measures/')}>Browse all measures</a></div>
+  </div>
+</Base>

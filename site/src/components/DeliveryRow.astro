@@ -1,0 +1,17 @@
+---
+import VerdictPill from './VerdictPill.astro';
+import Icon from './Icon.astro';
+import { fmtMonth } from '../lib/format';
+import type { Delivery } from '../lib/measures';
+interface Props { d: Delivery; i?: number }
+const { d, i = 0 } = Astro.props;
+---
+<article id={d.id} class="card rise grid gap-4 p-5 md:grid-cols-[1fr_auto] md:items-start md:gap-8 md:p-6" style={`--i:${i}`}>
+  <div>
+    <p class="eyebrow">{d.owner}{d.deadline ? ` · due ${fmtMonth(d.deadline)}` : ''}</p>
+    <h3 class="mt-1.5 font-display text-[21px] font-semibold leading-snug">{d.commitment}</h3>
+    <p class="mt-2 text-[14.5px] text-ink-2">{d.reason}</p>
+    <p class="meta mt-2.5 flex flex-wrap gap-x-4 gap-y-1">{d.sources.map((s) => <a href={s.url} rel="noopener" class="inline-flex items-center gap-1">{s.label} <Icon name="ext" size={12} /></a>)}</p>
+  </div>
+  <VerdictPill verdict={d.verdict} large />
+</article>

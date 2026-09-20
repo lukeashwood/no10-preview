@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { SITE, url } from '../../config/site';
+import { fmtDate } from '../../lib/format';
+import { CONTROVERSIES, STATUS_LABEL, TYPE_LABEL, STANDING_LABEL } from '../../lib/controversies';
+const ministers = [...new Set(CONTROVERSIES.map((c) => c.minister))].sort();
+const nPolicy = CONTROVERSIES.filter((c) => c.type === 'policy').length, nConduct = CONTROVERSIES.length - nPolicy;
+const tone = { established: 'pill-neutral', contested: 'pill-warn', unverified: 'pill-bad' } as const;
+---
+<Base title="Controversies" description="Policies in dispute and questions about ministers’ conduct under the current UK government: what happened, what the government says, what critics say and what the record shows, each linked to its sources." section="controversies/">
+  <div class="wrap pt-10 md:pt-14">
+    <p class="eyebrow">Controversies · since July 2024</p>
+    <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">Where the government’s decisions and conduct have been challenged</h1>
+    <p class="lede mt-3">Two kinds of entry: policies and decisions whose effects are in dispute, and questions about a minister’s own conduct. Each sets out what happened, what the government says, who is criticising it and on what grounds, and what the official record shows. Being listed here is not a finding of wrongdoing.</p>
+
+    <div class="no-print mt-7 flex flex-wrap gap-2" id="con-type" role="group" aria-label="Filter by kind">
+      <button type="button" class="btn btn-sm btn-ghost" data-t="all" aria-pressed="true">All <span class="num text-ink-3">{CONTROVERSIES.length}</span></button>
+      <button type="button" class="btn btn-sm btn-ghost" data-t="policy" aria-pressed="false">Policies and decisions <span class="num text-ink-3">{nPolicy}</span></button>
+      <button type="button" class="btn btn-sm btn-ghost" data-t="conduct" aria-pressed="false">Ministerial conduct <span class="num text-ink-3">{nConduct}</span></button>
+    </div>
+    <div class="no-print mt-3 grid gap-3 sm:grid-cols-[minmax(0,240px)_minmax(0,240px)_1fr]">
+      <select id="con-minister" class="input" aria-label="Minister"><option value="">All ministers</option>{ministers.map((m) => <option>{m}</option>)}</select>
+      <select id="con-status" class="input" aria-label="Outcome"><option value="">Any outcome</option>{Object.entries(STATUS_LABEL).map(([k, v]) => <option value={k}>{v}</option>)}</select>
+      <input type="search" id="con-q" class="input" placeholder="Search" aria-label="Search controversies" />
+    </div>
+    <p class="meta mt-3" id="con-count" role="status"></p>
+
+    <ul class="mt-5 grid gap-4" id="con-list">
+      {CONTROVERSIES.map((c) => (
+        <li id={c.id} class="card p-5 md:p-6" data-type={c.type} data-minister={c.minister} data-status={c.status} data-text={(c.title + ' ' + c.summary + ' ' + c.minister + ' ' + c.category).toLowerCase()}>
+          <div class="flex flex-wrap items-center gap-2">
+            {c.featured && <span class="pill pill-brand">In depth</span>}
+            <span class:list={['pill', c.type === 'policy' && !c.featured ? 'pill-brand' : 'pill-neutral']}>{TYPE_LABEL[c.type]}</span>
+            <span class="pill pill-neutral !font-semibold">{STATUS_LABEL[c.status]}</span>
+            <span class="meta mono">{fmtDate(c.date)}</span>
+          </div>
+          <h2 class="mt-2.5 font-display text-[22px] font-semibold leading-snug">{c.title}</h2>
+          <p class="meta mt-1">{[c.minister, c.portfolio].filter(Boolean).join(', ')}{c.category ? ` · ${c.category}` : ''}</p>
+          <p class="mt-3 max-w-[85ch] text-[15.5px] text-ink-2">{c.summary}</p>
+
+          {c.figures && <dl class="mt-4 grid gap-px overflow-hidden rounded-xl border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4">{c.figures.map((f) => <div class="bg-surface p-4"><dt class="eyebrow">{f.label}</dt><dd class="num mt-1 font-display text-[24px] font-semibold leading-tight">{f.value}</dd><dd class="meta mt-1">{f.note}</dd></div>)}</dl>}
+
+          {c.points && <div class="mt-5 grid gap-4">{c.points.map((p) => (
+            <section class="rounded-xl border border-rule p-4">
+              <div class="flex flex-wrap items-center justify-between gap-2"><h3 class="h3">{p.heading}</h3><span class:list={['pill', tone[p.standing]]}>{STANDING_LABEL[p.standing]}</span></div>
+              <p class="mt-2 max-w-[85ch] text-[15px] text-ink-2">{p.body}</p>
+              <ul class="meta mt-2.5 grid gap-1">{p.sources.map((s) => <li><a href={s.url} rel="noopener">{s.title} <Icon name="ext" size={12} class="inline" /></a></li>)}</ul>
+            </section>))}</div>}
+
+          <div class="mt-4 grid gap-4 md:grid-cols-2">
+            <div class="rounded-xl bg-panel p-4"><h3 class="eyebrow">The government’s response</h3><p class="mt-1.5 text-[14.5px] text-ink-2">{c.response}</p></div>
+            <div class="rounded-xl bg-panel p-4"><h3 class="eyebrow">Outcome so far</h3><p class="mt-1.5 text-[14.5px] text-ink-2">{c.outcome}</p></div>
+          </div>
+          <details class="mt-3"><summary class="cursor-pointer text-[14px] font-bold">Sources ({c.sources.length}) · checked {fmtDate(c.verified_on)}</summary>
+            <ul class="meta mt-2 grid gap-1">{c.sources.map((s) => <li><a href={s.url} rel="noopener">{s.title} <Icon name="ext" size={12} class="inline" /></a></li>)}</ul></details>
+        </li>))}
+    </ul>
+
+    <div class="prose mt-14"><h2>How entries are chosen</h2>
+      <p>An entry is included when a policy, decision or a minister’s own conduct under the current government was publicly challenged, and the episode is documented by official records (Hansard, select committees, the Independent Adviser on Ministerial Standards, the Parliamentary Commissioner for Standards, the National Audit Office) or established news organisations. Each entry gives the facts as reported, the government’s response and the outcome. For disputed policies, each strand of the dispute is marked <strong>established</strong> (supported by official figures), <strong>contested</strong> (credible people disagree) or <strong>not verified</strong> (a claim in circulation that the record doesn’t support).</p>
+      <p>Claims are attributed to whoever made them. Rumour, satire and unverified social-media claims are left out. “No inquiry or finding” means no official body has examined the matter; it doesn’t mean anyone was cleared or found at fault. Think an entry is missing or unfair? <a href={url('corrections/#report')}>Tell us</a>, and ministers’ offices have the same right of reply.</p></div>
+  </div>
+  <script is:inline>
+    (function () { var items = [].slice.call(document.querySelectorAll('#con-list > li')), tb = document.querySelectorAll('#con-type [data-t]'), mi = document.getElementById('con-minister'), st = document.getElementById('con-status'), q = document.getElementById('con-q'), ct = document.getElementById('con-count'), t = 'all';
+      function paint() { var s = q.value.trim().toLowerCase(), n = 0; items.forEach(function (li) { var ok = (t === 'all' || li.dataset.type === t) && (!mi.value || li.dataset.minister === mi.value) && (!st.value || li.dataset.status === st.value) && (!s || li.dataset.text.indexOf(s) > -1); li.hidden = !ok; if (ok) n++; }); ct.textContent = n + (n === 1 ? ' entry' : ' entries') + ' shown: in-depth entries first, then newest first'; }
+      tb.forEach(function (b) { b.addEventListener('click', function () { t = b.dataset.t; tb.forEach(function (x) { var on = x === b; x.setAttribute('aria-pressed', String(on)); x.style.background = on ? 'var(--ink)' : ''; x.style.color = on ? 'var(--paper)' : ''; }); paint(); }); });
+      [mi, st].forEach(function (e) { e.addEventListener('change', paint); }); q.addEventListener('input', paint); tb[0].style.background = 'var(--ink)'; tb[0].style.color = 'var(--paper)'; paint();
+      if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) el.scrollIntoView(); } })();
+  </script>
+</Base>

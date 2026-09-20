@@ -1,0 +1,37 @@
+---
+/* The mark: the No. 10 door, with the door's own tilted zero, beside the Union Flag.
+   The exact typeface on the door has never been published; Cinzel is used here because it is cut from the same
+   Roman inscriptional tradition, and the zero is tilted anticlockwise as it is on the door itself. */
+interface Props { size?: number; flag?: boolean; class?: string }
+const { size = 34, flag = true, class: cls } = Astro.props;
+const w = Math.round(size * 0.78);
+---
+<span class:list={['brandmark', cls]} style={`--s:${size}px`}>
+  <svg width={w} height={size} viewBox="0 0 26 34" role="img" aria-hidden="true" class="door">
+    <rect x="0.5" y="0.5" width="25" height="33" rx="2.5" fill="#0b0b0d" stroke="rgba(255,255,255,0.14)" />
+    <path d="M3 8.2a10 10 0 0 1 20 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.9" />
+    <path d="M13 3.1v5.1M8.4 4.3l2.6 3.9M17.6 4.3l-2.6 3.9" stroke="rgba(255,255,255,0.32)" stroke-width="0.7" />
+    <text x="13" y="24.4" text-anchor="middle" font-family="Cinzel, 'Times New Roman', serif" font-size="12.5" font-weight="500" fill="#fff" letter-spacing="0.6">
+      <tspan>1</tspan><tspan dx="0.6" rotate="-16">0</tspan>
+    </text>
+  </svg>
+  {flag && (
+    <svg width={Math.round(size * 0.62)} height={Math.round(size * 0.31)} viewBox="0 0 60 30" role="img" aria-label="United Kingdom" class="flag">
+      <clipPath id="uk-clip"><rect width="60" height="30" rx="1.5" /></clipPath>
+      <g clip-path="url(#uk-clip)">
+        <rect width="60" height="30" fill="#012169" />
+        <path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6" />
+        <path d="M0,0 60,30" stroke="#C8102E" stroke-width="2" clip-path="polygon(0 0, 30 0, 30 15, 60 15, 60 30, 30 30, 30 15, 0 15)" />
+        <path d="M60,0 0,30" stroke="#C8102E" stroke-width="2" />
+        <path d="M30,0 v30M0,15 h60" stroke="#fff" stroke-width="10" />
+        <path d="M30,0 v30M0,15 h60" stroke="#C8102E" stroke-width="6" />
+      </g>
+    </svg>
+  )}
+</span>
+<style>
+  .brandmark { display: inline-flex; align-items: center; gap: calc(var(--s) * 0.24); }
+  .door { display: block; border-radius: 3px; box-shadow: 0 1px 3px rgb(0 0 0 / 0.28); }
+  .flag { display: block; border-radius: 2px; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08); }
+  @media (max-width: 420px) { .flag { display: none; } }
+</style>

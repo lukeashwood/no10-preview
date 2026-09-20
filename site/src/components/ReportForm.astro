@@ -1,0 +1,37 @@
+---
+/* One form component for sign-ups and error reports. Posts JSON to Formspree; a hidden honeypot field stops basic bots. */
+import { SITE } from '../config/site';
+interface Props { kind: 'signup' | 'report'; }
+const { kind } = Astro.props;
+---
+<form class="sc-form grid gap-4" data-kind={kind} data-endpoint={SITE.formEndpoint} novalidate>
+  {!SITE.formEndpoint && <p class="rounded-lg bg-warn-tint p-3 text-[14px] text-warn">This form isn’t connected yet. It will be switched on before launch.</p>}
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
+  <slot />
+  <div class="flex flex-wrap items-center gap-3">
+    <button type="submit" class="btn btn-primary">{kind === 'signup' ? 'Join the list' : 'Send report'}</button>
+    <p class="form-status text-[14.5px]" role="status" aria-live="polite"></p>
+  </div>
+</form>
+<script is:inline>
+  document.querySelectorAll('.sc-form').forEach(function (f) {
+    if (f.dataset.bound) return; f.dataset.bound = '1';
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var st = f.querySelector('.form-status'), btn = f.querySelector('button[type=submit]'), data = {}, bad = null;
+      if (!f.dataset.endpoint) { st.style.color = 'var(--warn)'; st.textContent = 'Not connected yet: this form will be switched on before launch.'; return; }
+      new FormData(f).forEach(function (v, k) { if (data[k]) data[k] += ', ' + v; else data[k] = v; });
+      f.querySelectorAll('[required]').forEach(function (el) { if (!bad && !el.value.trim()) bad = el; });
+      var em = f.querySelector('input[type=email]');
+      if (!bad && em && em.value && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value)) bad = em;
+      if (bad) { st.textContent = bad.type === 'email' ? 'That email address doesn’t look right.' : 'Please fill in the highlighted field.'; st.style.color = 'var(--bad)'; bad.focus(); return; }
+      if (data._gotcha) return;
+      data.form_type = f.dataset.kind; data._subject = 'The Scorecard: ' + f.dataset.kind; data.page = location.pathname;
+      btn.disabled = true; st.style.color = 'var(--ink-2)'; st.textContent = 'Sending…';
+      fetch(f.dataset.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { if (!r.ok) throw new Error(); f.reset(); st.style.color = 'var(--good)'; st.textContent = f.dataset.kind === 'signup' ? 'You’re on the list. Thank you.' : 'Received. Thank you: we read every report.'; })
+        .catch(function () { st.style.color = 'var(--bad)'; st.textContent = 'That didn’t send. Please check your connection and try again.'; })
+        .finally(function () { btn.disabled = false; });
+    });
+  });
+</script>

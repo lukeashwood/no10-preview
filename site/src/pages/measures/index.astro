@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import MeasureCard from '../../components/MeasureCard.astro';
+import VerdictPill from '../../components/VerdictPill.astro';
+import InfluenceChip from '../../components/InfluenceChip.astro';
+import { url } from '../../config/site';
+import { MEASURES, SECTIONS, CONTEXT } from '../../lib/measures';
+import { headlineText } from '../../lib/format';
+const groups = SECTIONS.map((s) => ({ ...s, items: MEASURES.filter((m) => m.section === s.id && m.ed.group !== 'context') })).filter((g) => g.items.length);
+---
+<Base title="All measures" description="Every official figure the site tracks, by topic, with its latest value, its direction over the past year and how much control the federal government has over it." section="measures/">
+  <div class="wrap pt-10 md:pt-14">
+    <p class="eyebrow">Measures</p>
+    <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">Every figure we track</h1>
+    <p class="lede mt-3">{MEASURES.length} official series, grouped by topic. Open any one for the full chart, its sources, and a plain-English explanation.</p>
+    <div class="no-print mt-6 flex flex-wrap gap-2" role="group" aria-label="Filter by federal control" id="filters">
+      {[['all', 'All'], ['direct', 'Direct federal control'], ['shared', 'Shared control'], ['indirect', 'Indirect influence']].map(([v, l]) => <button type="button" class="btn btn-sm btn-ghost" data-filter={v} aria-pressed={v === 'all' ? 'true' : 'false'}>{l}</button>)}
+    </div>
+    {groups.map((g) => (
+      <section class="mt-12" data-group>
+        <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-rule-strong pb-2"><h2 class="font-display text-[24px] font-semibold">{g.title}</h2><p class="meta">{g.blurb}</p></div>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {g.items.map((m, i) => <div data-influence={m.ed.influence} class="grid">{m.verdict
+            ? <a href={url(`measures/${m.id}/`)} class="card card-link card-pad flex flex-col gap-3"><div class="flex items-start justify-between gap-3"><h3 class="h3">{m.title}</h3><VerdictPill verdict={m.verdict.verdict} label={m.ed.target?.verdictLabels?.[m.verdict.verdict]} /></div><div><p class="num font-display text-[34px] font-semibold leading-none tracking-tight">{headlineText(m.headline)}</p><p class="meta mt-1.5">{m.headline.caption}</p></div><div class="mt-auto flex items-center justify-between gap-2 pt-1"><span class="pill pill-brand">Commitment</span><InfluenceChip influence={m.ed.influence} /></div></a>
+            : <MeasureCard m={m} i={i} />}</div>)}
+        </div>
+      </section>
+    ))}
+    {CONTEXT.length > 0 && (
+      <section class="mt-14"><h2 class="font-display text-[24px] font-semibold">Background figures</h2><p class="meta mt-1">Useful context that has no “better” or “worse”.</p>
+        <ul class="mt-4 flex flex-wrap gap-2">{CONTEXT.map((m) => <li><a class="btn btn-ghost btn-sm" href={url(`measures/${m.id}/`)}>{m.title}</a></li>)}</ul></section>
+    )}
+  </div>
+  <script is:inline>
+    (function () { var bs = document.querySelectorAll('#filters [data-filter]');
+      bs.forEach(function (b) { b.addEventListener('click', function () { var f = b.dataset.filter;
+        bs.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); x.style.background = x === b ? 'var(--ink)' : ''; x.style.color = x === b ? 'var(--paper)' : ''; });
+        document.querySelectorAll('[data-influence]').forEach(function (c) { c.hidden = f !== 'all' && c.dataset.influence !== f; });
+        document.querySelectorAll('[data-group]').forEach(function (g) { g.hidden = !g.querySelector('[data-influence]:not([hidden])'); }); }); });
+      var first = bs[0]; if (first) { first.style.background = 'var(--ink)'; first.style.color = 'var(--paper)'; } })();
+  </script>
+</Base>

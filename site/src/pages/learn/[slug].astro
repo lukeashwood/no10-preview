@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import { InflationPay, MortgageRates } from '../../islands/Explainers.tsx';
+import { url } from '../../config/site';
+import { LESSONS, type Lesson } from '../../lib/learn';
+export function getStaticPaths() { return LESSONS.map((l) => ({ params: { slug: l.slug }, props: { l } })); }
+const { l } = Astro.props as { l: Lesson };
+const i = LESSONS.findIndex((x) => x.slug === l.slug), next = LESSONS[(i + 1) % LESSONS.length];
+---
+<Base title={l.title} description={l.question} section="learn/">
+  <article class="wrap pt-10 md:pt-14">
+    <p class="eyebrow"><a href={url('learn/')} class="text-ink-3 no-underline hover:underline">← Learn</a> · {l.minutes} minute read</p>
+    <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">{l.title}</h1>
+    <p class="lede mt-3">{l.question}</p>
+    <div class="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div>
+        <div class="prose">{l.intro.map((p) => <p>{p}</p>)}</div>
+        <div class="card card-pad mt-7 shadow-card">
+          {l.tool === 'inflation' && <InflationPay client:load />}
+          {l.tool === 'mortgage' && <MortgageRates client:load />}
+        </div>
+      </div>
+      <aside class="grid content-start gap-5">
+        <div class="card card-pad"><p class="eyebrow">The key ideas</p><ul class="mt-3 grid list-disc gap-2.5 pl-5 text-[15px] text-ink-2">{l.takeaways.map((t) => <li>{t}</li>)}</ul></div>
+        <div class="card card-pad"><p class="eyebrow">See the real figures</p><ul class="mt-3 grid gap-2">{l.related.map((r) => <li><a class="font-semibold" href={url(r.href)}>{r.label}</a></li>)}</ul></div>
+        <a class="btn btn-ghost" href={url(`learn/${next.slug}/`)}>Next: {next.title} →</a>
+      </aside>
+    </div>
+    <p class="meta mt-10 max-w-[80ch]">These tools are simplified on purpose so the idea is clear. They are not financial advice.</p>
+  </article>
+</Base>

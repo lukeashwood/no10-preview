@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import VerdictPill from '../components/VerdictPill.astro';
+import { SITE, url } from '../config/site';
+import { TARGETS, CONDITIONS, CHECKS } from '../lib/measures';
+import { VERDICT_MEANING, INFLUENCE_LABEL, INFLUENCE_MEANING } from '../lib/editorial';
+import { fmtDate } from '../lib/format';
+import type { Verdict } from '../lib/types';
+const order: Verdict[] = ['met', 'on_track', 'in_progress', 'at_risk', 'off_track', 'not_met'];
+const coloured = CONDITIONS.filter((m) => m.ed.better !== 'none'), neutral = CONDITIONS.filter((m) => m.ed.better === 'none');
+---
+<Base title="Methodology" description="How figures are collected and checked, how verdicts are reached, and the full text of every rating rule.">
+  <div class="wrap-narrow pt-10 md:pt-14">
+    <p class="eyebrow">Methodology · rules v{SITE.rulesVersion} · {fmtDate(SITE.rulesDate)}</p>
+    <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">How this site works</h1>
+    <div class="prose mt-6">
+      <p>This page is written from the same file the site’s code runs on, so what you read here is exactly what the site does. If a rule changes, the version number changes and the change is <a href={url('corrections/')}>logged in public</a>.</p>
+
+      <h2>1. Where the figures come from</h2>
+      <p>Only official publishers are used for figures: the Office for National Statistics, the Bank of England, the Home Office, NHS England, and the departments that run each programme. Most series are fetched automatically from the publisher’s own data service. Where a figure exists only in a document or a departmental release, a person reads it from the source, records where it came from, and sets a date to check it again. Where a fact-checking organisation has compiled an official figure, both are cited. Each measure’s page says which of the two applies.</p>
+      <p>Every figure links to its source. Every page shows the date of the latest data point and the date it was last checked, which are different things.</p>
+
+      <h2>2. Daily checks</h2>
+      <p>Each day an automated run re-fetches every series and tests it: is the source still reachable, is the newest figure inside a plausible range, does it agree with a second official source where one exists, and has the publisher revised earlier figures. The latest run made {CHECKS.checks_total} checks: {CHECKS.checks_passed} passed and {CHECKS.checks_warn} raised a warning (usually a source that was slow to respond). A failed critical check stops the site from updating rather than publishing a doubtful number.</p>
+
+      <h2>3. Commitments get verdicts. Nothing else does.</h2>
+      <p>A verdict is given only when three things are true: the government itself made the commitment, the commitment contains a number or a date, and official statistics can test it. This is deliberate. It is easy to make any government look good or bad by choosing the yardstick after the fact. Measuring a government against its own words is the one yardstick nobody can call unfair.</p>
+      <div class="table-scroll"><table><thead><tr><th>Verdict</th><th>Meaning</th></tr></thead><tbody>{order.map((v) => <tr><td><VerdictPill verdict={v} /></td><td>{VERDICT_MEANING[v]}</td></tr>)}</tbody></table></div>
+
+      <h3>The rule for each commitment</h3>
+      <div class="table-scroll"><table><thead><tr><th>Commitment</th><th>Rule</th></tr></thead><tbody>
+        {TARGETS.map((m) => <tr><td><a href={url(`measures/${m.id}/`)}>{m.ed.target!.commitment}</a><br /><span class="meta">{m.ed.target!.ownerLabel}</span></td><td>{m.ed.target!.rule}</td></tr>)}
+      </tbody></table></div>
+
+      <h2>4. A change of Prime Minister does not restart the clock</h2>
+      <p>The government elected on 4 July 2024 is the unit of account on this site. Sir Keir Starmer was Prime Minister from 5 July 2024 to 20 July 2026, when Andy Burnham succeeded him at the head of the same governing party and the same parliament. Charts mark the handover, but the record still runs from the election, because that is the mandate the public gave and the manifesto the commitments came from. Where a commitment was made by the previous Prime Minister and has not been withdrawn, it is still tracked.</p>
+
+      <h2>5. The record since the government took office</h2>
+      <p>This site exists to hold the government of the day to account, so the main comparison on every measure is simple: where was it when the government took office, and where is it now? The starting point is the last figure before the government’s first full period: June 2024 for monthly figures, the April–June quarter of 2024 for quarterly figures, and 2023–24 for annual ones. Every chart shades the government’s time in office and fades what came before.</p>
+      <p>A since-office comparison is a fact, not a verdict. Two things are always shown beside it so it can’t mislead: how much control the federal government has over that measure, and a note wherever the starting point was unusual (for example, a figure that was already falling sharply before the election).</p>
+      <p><strong>Better or worse</strong> colouring is used only where nearly everyone agrees which direction is good: {coloured.map((m) => m.title.toLowerCase()).join(', ')}. For {neutral.map((m) => m.title.toLowerCase()).join(', ')}, which way is “good” is a matter of political opinion, so the site says only higher, lower or little changed. The front-page count of measures that are better or worse since mid-2022 includes only the first group.</p>
+      <p><strong>Over the past year</strong> is shown second. It compares the latest figure with the same period a year earlier (the previous year for annual figures), which avoids seasonal swings. A change smaller than 0.2 percentage points (for rates) or 1% (for levels and indexes) counts as little changed. Dollar figures that can go negative, such as the budget balance, are compared in dollars. One series, housing completions, isn’t seasonally adjusted, so it is left out of since-office comparisons and judged on its commitment instead.</p>
+
+      <h2>6. Whose doing is it?</h2>
+      <p>Every measure carries one of three labels, with a sentence explaining why.</p>
+      <ul>{(['direct', 'shared', 'indirect'] as const).map((k) => <li><strong>{INFLUENCE_LABEL[k]}.</strong> {INFLUENCE_MEANING[k]}</li>)}</ul>
+
+      <h2>7. Revisions and corrections</h2>
+      <p>Statistical agencies routinely revise past figures. When they do, the site shows the revised series, because that is the official record. If this site makes a mistake of its own, in a figure, a calculation or a description, it is fixed and the fix is listed on the <a href={url('corrections/')}>corrections page</a> with the date and what changed.</p>
+
+      <h2>8. What this site doesn’t do</h2>
+      <ul>
+        <li>It doesn’t forecast. Official forecasts are shown as forecasts, shaded differently from actual results.</li>
+        <li>It doesn’t take a side on contested questions such as how large the state or migration should be.</li>
+        <li>It doesn’t publish figures from campaign material, media releases alone, or think tanks as if they were official statistics.</li>
+      </ul>
+      <h2>9. Reuse</h2>
+      <p>Figures from the ONS, the Bank of England and government departments are used under the Open Government Licence v3.0. This site’s own tables and calculations may be reused with credit: name “{SITE.name}” and link to the page. Every measure page has a ready-made citation and a CSV download, and the <a href={url('data/')}>data page</a> has everything in one file.</p>
+    </div>
+  </div>
+</Base>

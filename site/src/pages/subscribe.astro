@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import ReportForm from '../components/ReportForm.astro';
+import Icon from '../components/Icon.astro';
+import { SECTIONS } from '../lib/measures';
+---
+<Base title="Email updates" description="Join the list for updates when official figures change. Free, no spin, unsubscribe any time.">
+  <div class="wrap grid gap-12 pt-10 md:pt-14 lg:grid-cols-[minmax(0,1fr)_440px]">
+    <div>
+      <p class="eyebrow">Email updates</p>
+      <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">Know when the numbers change</h1>
+      <p class="lede mt-3">Join the list and you’ll get a short, plain email when new official figures land. Tell us what you care about and we’ll build the alerts around it.</p>
+      <ul class="mt-8 grid gap-5">
+        {[
+          { i: 'bell', h: 'Available now: the launch list', p: 'Sign up and you’ll be the first to get updates when regular emails begin. Your topic choices shape what we build first.' },
+          { i: 'clock', h: 'In development: alerts on the figures you pick', p: '“Tell me when unemployment changes” or “when a verdict moves”. This needs accounts, which we’re building. It isn’t live yet, and we won’t pretend it is.' },
+          { i: 'shield', h: 'Your email stays yours', p: 'Used only to send these updates. Never sold or shared. Every email has an unsubscribe link, as the Spam Act requires.' },
+        ].map((x) => <li class="flex gap-4"><span class="mt-1 text-brand"><Icon name={x.i} size={22} /></span><p><b class="block text-[17px]">{x.h}</b><span class="text-ink-2">{x.p}</span></p></li>)}
+      </ul>
+    </div>
+    <div class="card card-pad shadow-card h-fit">
+      <h2 class="h3">Join the list</h2>
+      <div class="mt-4">
+        <ReportForm kind="signup">
+          <label class="field">Email address<input class="input" name="email" type="email" required autocomplete="email" maxlength="200" /></label>
+          <fieldset class="grid gap-2"><legend class="mb-1 text-[14px] font-semibold text-ink-2">What do you want to hear about? (optional)</legend>
+            {SECTIONS.map((s) => <label class="flex items-center gap-2.5 text-[15px]"><input type="checkbox" name="topics" value={s.title} class="h-[18px] w-[18px] accent-[var(--brand)]" />{s.title}</label>)}
+          </fieldset>
+          <label class="field">I’m mostly here as…
+            <select class="input" name="audience"><option value="">Prefer not to say</option><option>A curious citizen</option><option>A journalist or podcaster</option><option>A researcher or student</option><option>A business or finance professional</option><option>Someone working in politics or policy</option></select></label>
+        </ReportForm>
+      </div>
+      <p class="meta mt-4">By joining you agree to receive emails from this site. Unsubscribe any time.</p>
+    </div>
+  </div>
+</Base>

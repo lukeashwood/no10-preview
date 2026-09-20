@@ -1,0 +1,13 @@
+---
+import { INFLUENCE_LABEL } from '../lib/editorial';
+import type { Influence } from '../lib/types';
+interface Props { influence: Influence }
+const { influence } = Astro.props;
+const bars = { direct: 3, shared: 2, indirect: 1 }[influence];
+---
+<span class="inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-ink-3" title={INFLUENCE_LABEL[influence]}>
+  <span class="inline-flex items-end gap-[2px]" aria-hidden="true">
+    {[1, 2, 3].map((i) => <span class="w-[4px] rounded-[1px]" style={`height:${4 + i * 3}px;background:${i <= bars ? 'var(--ink-2)' : 'var(--rule-strong)'}`} />)}
+  </span>
+  {INFLUENCE_LABEL[influence]}
+</span>

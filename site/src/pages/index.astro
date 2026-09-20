@@ -1,0 +1,162 @@
+---
+import Base from '../layouts/Base.astro';
+import TargetRow from '../components/TargetRow.astro';
+import MeasureCard from '../components/MeasureCard.astro';
+import VerdictPill from '../components/VerdictPill.astro';
+import Icon from '../components/Icon.astro';
+import { SITE, url } from '../config/site';
+import { CONDITIONS, GOV_TARGETS, TARGETS, DELIVERIES, SECTIONS, CHECKS, GENERATED_AT, tally, record } from '../lib/measures';
+import { headlineText } from '../lib/format';
+import { VERDICT_TONE } from '../lib/editorial';
+import { fmtStamp } from '../lib/format';
+
+const t = tally();
+const rec = record();
+const official = TARGETS.filter((m) => m.ed.target!.owner === 'official');
+const groups = SECTIONS.map((s) => ({ ...s, items: CONDITIONS.filter((m) => m.section === s.id) })).filter((g) => g.items.length);
+const segs = [
+  { n: t.good, label: 'met or on track', color: 'var(--good)' },
+  { n: t.progress, label: 'in progress', color: 'var(--ink-3)' },
+  { n: t.risk, label: 'at risk', color: 'var(--warn)' },
+  { n: t.bad, label: 'off track or not met', color: 'var(--bad)' },
+].filter((s) => s.n > 0);
+const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, description: SITE.description, url: new URL(url(), Astro.site).href };
+---
+<Base jsonld={jsonld}>
+  <section class="border-b border-rule">
+    <div class="wrap grid gap-10 py-12 md:py-16 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16">
+      <div>
+        <p class="eyebrow">{SITE.edition} · {SITE.government.name}</p>
+        <h1 class="display mt-3 text-[clamp(38px,5.6vw,64px)]">Holding the government to account, <span class="text-brand">in its own numbers.</span></h1>
+        <p class="lede mt-5">What the government promised at the 2024 general election, what it has delivered, and what has changed since. Every figure is official, linked to its source and checked against it. The facts are laid out plainly so you can judge for yourself.</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a class="btn btn-primary" href="#record">See the record <Icon name="arrow" /></a>
+          <a class="btn btn-ghost" href="#promises">Promises kept and broken</a>
+        </div>
+      </div>
+
+      <div class="card card-pad shadow-card">
+        <div class="flex items-baseline justify-between gap-3">
+          <p class="eyebrow">Commitments tracker</p>
+          <p class="meta mono">{fmtStamp(GENERATED_AT)}</p>
+        </div>
+        <p class="mt-3 font-display text-[22px] font-semibold leading-snug">{t.total} measurable commitments, judged on official figures.</p>
+        <ul class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[14px] text-ink-2">
+          {segs.map((s) => <li class="inline-flex items-center gap-1.5"><span aria-hidden="true" class="inline-block h-2.5 w-2.5 rounded-full" style={`background:${s.color}`} /><b class="num text-ink">{s.n}</b> {s.label}</li>)}
+        </ul>
+        <div class="mt-4 flex h-3 gap-[2px] overflow-hidden rounded-full" role="img" aria-label={segs.map((s) => `${s.n} ${s.label}`).join(', ')}>
+          {segs.map((s) => <span style={`flex:${s.n};background:${s.color}`} />)}
+        </div>
+        <ul class="mt-4 grid gap-0">
+          {[...GOV_TARGETS.map((m) => ({ href: url(`measures/${m.id}/`), title: m.title, verdict: m.verdict!.verdict })), ...DELIVERIES.map((d) => ({ href: url(`targets/#${d.id}`), title: d.title, verdict: d.verdict }))]
+            .sort((a, b) => ['bad', 'warn', 'neutral', 'good'].indexOf(VERDICT_TONE[a.verdict]) - ['bad', 'warn', 'neutral', 'good'].indexOf(VERDICT_TONE[b.verdict])).slice(0, 7).map((x) => (
+            <li class="rule-t first:border-t-0">
+              <a href={x.href} class="flex items-center justify-between gap-3 py-2 text-[14.5px] font-semibold text-ink no-underline hover:text-brand"><span>{x.title}</span><VerdictPill verdict={x.verdict} /></a>
+            </li>
+          ))}
+        </ul>
+        <a href={url('promises/')} class="mt-2 inline-flex items-center gap-1.5 text-[14.5px] font-bold no-underline hover:underline">See all {t.total} commitments <Icon name="arrow" size={15} /></a>
+        <p class="meta mt-3">Only commitments the government itself made are counted. <a href={url('methodology/')}>How verdicts work</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-rule bg-panel">
+    <div class="wrap grid gap-x-8 gap-y-5 py-7 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        { icon: 'ext', h: 'Every figure is sourced', p: 'Each number links to the official release it came from.' },
+        { icon: 'shield', h: 'Checked every day', p: `${CHECKS.checks_total} automated checks ran on the latest update.` },
+        { icon: 'scale', h: 'Verdicts only on real promises', p: 'No pass or fail on things the government never committed to.' },
+        { icon: 'quote', h: 'Mistakes are published', p: 'Corrections are logged in public, with dates.' },
+      ].map((x) => (
+        <div class="flex gap-3">
+          <span class="mt-0.5 text-brand"><Icon name={x.icon} size={20} /></span>
+          <p class="text-[14.5px] leading-snug"><span class="block font-bold">{x.h}</span><span class="text-ink-2">{x.p}</span></p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap pt-16" id="record">
+    <p class="eyebrow">The record · July 2024 to now</p>
+    <h2 class="h2 mt-2">What has changed since the government took office</h2>
+    <p class="lede mt-3">Across the {rec.total} measures where nearly everyone agrees which direction is better, <b class="text-ink">{rec.better.length} {rec.better.length === 1 ? 'is' : 'are'} better</b> than at the 2024 election and <b class="text-ink">{rec.worse.length} {rec.worse.length === 1 ? 'is' : 'are'} worse</b>{rec.steady.length ? `, with ${rec.steady.length} little changed` : ''}. Not all of it is the government’s doing: each measure says how much control ministers have, and where the starting point was unusual.</p>
+    <div class="mt-7 grid gap-5 md:grid-cols-2">
+      {[{ h: 'Better than when it took office', list: rec.better, bg: 'bg-good-tint', tx: 'text-good' }, { h: 'Worse than when it took office', list: rec.worse, bg: 'bg-bad-tint', tx: 'text-bad' }].map((g) => (
+        <div class="card overflow-hidden">
+          <div class:list={['flex items-center justify-between gap-3 px-5 py-3', g.bg]}><h3 class:list={['h3', g.tx]}>{g.h}</h3><span class:list={['num font-display text-[26px] font-semibold', g.tx]}>{g.list.length}</span></div>
+          <ul>{g.list.map((m) => (
+            <li class="rule-t"><a href={url(`measures/${m.id}/`)} class="grid grid-cols-[1fr_auto] items-baseline gap-x-4 px-5 py-2.5 text-ink no-underline hover:bg-panel">
+              <span class="font-semibold">{m.title}</span><span class:list={['num font-bold', g.tx]}>{m.sinceElection!.label}</span>
+              <span class="meta col-span-2">{m.sinceElection!.periodLabel} · now {headlineText(m.headline)}</span></a></li>))}
+            {g.list.length === 0 && <li class="rule-t px-5 py-4 text-ink-2">None on the latest figures.</li>}</ul>
+        </div>))}
+    </div>
+    <p class="meta mt-4">Measures where “better” is a matter of political opinion (the size of government, migration, house prices, the cash rate) are left out of this count and shown below without a verdict. <a href={url('methodology/')}>How this is worked out</a></p>
+  </section>
+
+  <section id="promises" class="wrap pt-16">
+    <p class="eyebrow">Commitments</p>
+    <h2 class="h2 mt-2">What the government said it would do</h2>
+    <p class="lede mt-3">Each of these is a measurable commitment the government made itself: an election promise, a law it passed, or a target it signed. The verdict follows a published rule, applied to official figures.</p>
+    <div class="mt-8 grid gap-4">
+      {GOV_TARGETS.map((m, i) => <TargetRow m={m} i={i} />)}
+    </div>
+    <p class="mt-5 text-[16px]"><a href={url('promises/')} class="font-bold">Plus {DELIVERIES.length} promises judged on delivery</a>, from the student debt cut to the urgent care clinics, {DELIVERIES.filter((d) => d.verdict === 'met').length} of which have been met.</p>
+    {official.length > 0 && (
+      <div class="mt-10">
+        <h3 class="h3">An official target that is not the government’s to hit</h3>
+        <p class="mt-1 max-w-[70ch] text-[15px] text-ink-2">The Bank of England is independent and sets interest rates to keep inflation at its 2% target. It is shown here because it matters to every household, but it does not count in the government’s tally.</p>
+        <div class="mt-4 grid gap-4">{official.map((m, i) => <TargetRow m={m} i={i} />)}</div>
+      </div>
+    )}
+  </section>
+
+  <section class="wrap pt-20">
+    <p class="eyebrow">Every measure</p>
+    <h2 class="h2 mt-2">The figures, topic by topic</h2>
+    <p class="lede mt-3">The latest official figure for each measure, how it has moved since the government took office, and how it moved over the past year.</p>
+    <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13.5px] text-ink-2">
+      <span class="inline-flex items-center gap-2"><span class="pill pill-good"><Icon name="up" size={13} />Better</span><span class="pill pill-bad"><Icon name="down" size={13} />Worse</span> used only where nearly everyone agrees which way is good</span>
+      <span class="inline-flex items-center gap-2"><span class="pill pill-neutral"><Icon name="up" size={13} />Rising</span> used where that’s a matter of political opinion</span>
+    </div>
+    {groups.map((g) => (
+      <div class="mt-12">
+        <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-rule-strong pb-2">
+          <h3 class="font-display text-[23px] font-semibold">{g.title}</h3>
+          <p class="meta">{g.blurb}</p>
+        </div>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {g.items.map((m, i) => <MeasureCard m={m} i={i} />)}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section class="wrap pt-20">
+    <div class="grid gap-4 md:grid-cols-3">
+      {[
+        { href: 'promises/', eyebrow: 'The promises', h: 'Kept, broken, still open', p: 'Every measurable commitment the government made, judged against official figures under a published rule.' },
+        { href: 'learn/', eyebrow: 'Plain English', h: 'Learn how it works', p: 'Deficit or debt? Who sets interest rates? Short, interactive explainers with no jargon.' },
+        { href: 'briefing/', eyebrow: '3D model', h: 'Every measure, mapped', p: 'Each topic is a sphere and each measure a moon, coloured by whether it is better or worse than when the government took office.' },
+      ].map((c, i) => (
+        <a href={url(c.href)} class="card card-link card-pad rise flex flex-col" style={`--i:${i}`}>
+          <p class="eyebrow">{c.eyebrow}</p>
+          <p class="mt-2 font-display text-[23px] font-semibold leading-tight">{c.h}</p>
+          <p class="mt-2 text-[15px] text-ink-2">{c.p}</p>
+          <p class="mt-5 inline-flex items-center gap-1.5 text-[14.5px] font-bold text-brand">Open <Icon name="arrow" size={15} /></p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap pt-20">
+    <div class="card grid gap-6 bg-brand-tint p-7 md:grid-cols-[1fr_auto] md:items-center md:p-10" style="border-color:transparent">
+      <div>
+        <h2 class="h2">Know when the numbers change</h2>
+        <p class="mt-2 max-w-[60ch] text-[16px] text-ink-2">A short email when a new figure lands or a verdict changes. No opinion, no spin, unsubscribe any time.</p>
+      </div>
+      <a class="btn btn-primary" href={url('subscribe/')}><Icon name="bell" />Get email updates</a>
+    </div>
+  </section>
+</Base>

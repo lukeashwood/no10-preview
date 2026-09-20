@@ -1,0 +1,22 @@
+---
+/* Build-time sparkline: last ~5 years, recessive stroke, emphasised endpoint. Drawn to one scale, no JS. */
+import type { Point } from '../lib/types';
+interface Props { points: Point[]; width?: number; height?: number; band?: { lo: number; hi: number } | null; label: string }
+const { points, width = 140, height = 40, band = null, label } = Astro.props;
+const pts = points.slice(-Math.min(points.length, 64));
+const xs = pts.map((p) => Date.parse(p[0])), ys = pts.map((p) => p[1]);
+let lo = Math.min(...ys, band ? band.lo : Infinity), hi = Math.max(...ys, band ? band.hi : -Infinity);
+if (hi === lo) { hi += 1; lo -= 1; }
+const pad = 4, x0 = xs[0], x1 = xs[xs.length - 1] || x0 + 1;
+const X = (t: number) => pad + ((t - x0) / (x1 - x0 || 1)) * (width - pad * 2 - 3);
+const Y = (v: number) => height - pad - ((v - lo) / (hi - lo)) * (height - pad * 2);
+const d = pts.map((p, i) => `${i ? 'L' : 'M'}${X(xs[i]).toFixed(1)} ${Y(p[1]).toFixed(1)}`).join('');
+const last = pts[pts.length - 1];
+---
+{pts.length > 1 && (
+  <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} role="img" aria-label={label} class="block max-w-full">
+    {band && <rect x={pad} y={Y(band.hi)} width={width - pad * 2} height={Math.max(1, Y(band.lo) - Y(band.hi))} fill="var(--good-tint)" />}
+    <path d={d} fill="none" stroke="var(--ink-3)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" />
+    <circle cx={X(xs[xs.length - 1])} cy={Y(last[1])} r="3.2" fill="var(--brand)" stroke="var(--surface)" stroke-width="1.5" />
+  </svg>
+)}

@@ -1,0 +1,115 @@
+---
+import '../styles/global.css';
+import { SITE, NAV, FOOTER_NAV, url } from '../config/site';
+import Brand from '../components/Brand.astro';
+import '@fontsource/cinzel/500.css';
+import { GENERATED_AT } from '../lib/measures';
+import { fmtStamp } from '../lib/format';
+
+interface Props { title?: string; description?: string; section?: string; jsonld?: Record<string, unknown>; bodyClass?: string; forceDark?: boolean }
+const { title, description = SITE.description, section = '', jsonld, bodyClass, forceDark = false } = Astro.props;
+const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name} | ${SITE.tagline}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const preview = import.meta.env.PUBLIC_PREVIEW === '1';
+---
+<!doctype html>
+<html lang="en-GB" data-force-dark={forceDark ? '' : undefined}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script is:inline>
+    (function (d) { var t; try { t = localStorage.getItem('sc_theme'); } catch (e) {} if (d.hasAttribute('data-force-dark')) t = 'dark'; if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t); d.classList.add('js'); })(document.documentElement);
+  </script>
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+  <meta name="theme-color" content="#0b0b0d" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:title" content={title ?? SITE.name} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary" />
+  {preview && <meta name="robots" content="noindex, nofollow" />}
+  <link rel="sitemap" href={url('sitemap-index.xml')} />
+  {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+</head>
+<body class={bodyClass}>
+  <a class="skip" href="#main">Skip to content</a>
+  {preview && <p class="no-print bg-ink px-4 py-1.5 text-center text-[13px] font-semibold text-paper">Private preview. Not launched, not for sharing. Some sections are still being finalised.</p>}
+  <header class="site sticky top-0 z-40 border-b border-rule bg-paper/90 backdrop-blur">
+    <div aria-hidden="true" class="flex h-[3px] w-full"><span class="flex-1" style="background:#012169"></span><span class="w-[14%]" style="background:#fff"></span><span class="flex-1" style="background:#C8102E"></span></div>
+    <div class="wrap flex h-16 items-center gap-4">
+      <a href={url()} class="flex items-center gap-2.5 text-ink no-underline" aria-label={`${SITE.name} home`}>
+        <Brand size={34} />
+        <span class="leading-none">
+          <span class="block font-display text-[19px] font-semibold tracking-tight">{SITE.name}</span>
+          <span class="mono block pt-0.5 text-[10.5px] uppercase tracking-[0.12em] text-ink-3">{SITE.edition}</span>
+        </span>
+      </a>
+      <nav class="ml-auto hidden items-center gap-1 lg:flex" aria-label="Main">
+        {NAV.map((n) => (
+          <a href={url(n.href)} aria-current={section === n.href ? 'page' : undefined}
+             class="rounded-lg px-3 py-2 text-[14.5px] font-semibold text-ink-2 no-underline transition-colors hover:bg-panel hover:text-ink aria-[current=page]:bg-brand-tint aria-[current=page]:text-brand">{n.label}</a>
+        ))}
+      </nav>
+      <div class="ml-auto flex items-center gap-2 lg:ml-2">
+        <a href={url('subscribe/')} class="btn btn-primary btn-sm hidden sm:inline-flex">Get updates</a>
+        <button type="button" id="theme-btn" class="btn btn-ghost btn-sm w-9 !px-0" aria-label="Switch between light and dark">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
+        </button>
+        <button type="button" id="menu-btn" class="btn btn-ghost btn-sm w-9 !px-0 lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="border-t border-rule bg-paper lg:hidden" aria-label="Main (mobile)" hidden>
+      <div class="wrap grid gap-1 py-3">
+        {NAV.map((n) => <a href={url(n.href)} aria-current={section === n.href ? 'page' : undefined} class="rounded-lg px-3 py-3 text-[16px] font-semibold text-ink no-underline aria-[current=page]:bg-brand-tint aria-[current=page]:text-brand">{n.label}</a>)}
+        <a href={url('subscribe/')} class="btn btn-primary mt-2">Get updates</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1" class="outline-none"><slot /></main>
+
+  <footer class="site mt-24 border-t border-rule bg-panel">
+    <div class="wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div class="max-w-md">
+        <p class="flex items-center gap-3 font-display text-[22px] font-semibold"><Brand size={30} flag={false} />{SITE.name}</p>
+        <p class="mt-2 text-[14.5px] text-ink-2">Official UK figures, sourced line by line and checked against the release they came from. Verdicts are given only where the government made a measurable commitment. Everything else is shown as it is.</p>
+        <p class="meta mt-4">Data last checked <span class="mono">{fmtStamp(GENERATED_AT)}</span> · Rating rules v{SITE.rulesVersion}</p>
+      </div>
+      <div>
+        <p class="eyebrow mb-3">Explore</p>
+        <ul class="grid gap-2 text-[14.5px]">{NAV.map((n) => <li><a class="text-ink-2 no-underline hover:text-ink hover:underline" href={url(n.href)}>{n.label}</a></li>)}</ul>
+      </div>
+      <div>
+        <p class="eyebrow mb-3">Trust</p>
+        <ul class="grid gap-2 text-[14.5px]">{FOOTER_NAV.map((n) => <li><a class="text-ink-2 no-underline hover:text-ink hover:underline" href={url(n.href)}>{n.label}</a></li>)}</ul>
+      </div>
+    </div>
+    <div class="border-t border-rule">
+      <div class="wrap flex flex-wrap items-center justify-between gap-3 py-5 text-[13px] text-ink-3">
+        <p>Figures from the ONS, the Bank of England and government departments are used under the Open Government Licence. Verdicts and explanations are this site’s own, made under the published rules.</p>
+        <p>{SITE.publisher ? SITE.publisher.authorisation : <a class="text-ink-3" href={url('about/')}>Publisher and authorisation details: to be stated before launch.</a>} · <a class="text-ink-3" href={url('corrections/')}>Spotted a mistake? Tell us.</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    (function () {
+      var root = document.documentElement, tb = document.getElementById('theme-btn'), mb = document.getElementById('menu-btn'), mn = document.getElementById('mobile-nav');
+      tb && tb.addEventListener('click', function () {
+        var cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        var next = cur === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next); try { localStorage.setItem('sc_theme', next); } catch (e) {}
+        document.dispatchEvent(new CustomEvent('themechange', { detail: next }));
+      });
+      mb && mb.addEventListener('click', function () { var open = mn.hidden; mn.hidden = !open; mb.setAttribute('aria-expanded', String(open)); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && mn && !mn.hidden) { mn.hidden = true; mb.setAttribute('aria-expanded', 'false'); mb.focus(); } });
+    })();
+  </script>
+</body>
+</html>
