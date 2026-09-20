@@ -79,7 +79,11 @@ function direction(m: RawMetric): Direction | null {
 function sinceElectionFromBaseline(m: RawMetric) {
   const ed = EDITORIAL[m.id];
   const base = m.baseline;
-  if (!ed || !base || typeof base.value !== 'number' || !Number.isFinite(base.value) || base.value === 0) return null;
+  // Opt-in only. Most hand-checked measures carry a baseline that is simply the previous year, which is not the same
+  // thing as the position at the election: 2023-24 ended before polling day. Labelling one of those "since the
+  // government took office" would be plainly wrong, so a measure has to declare that its baseline IS the election.
+  if (!ed?.sinceFromBaseline) return null;
+  if (!base || typeof base.value !== 'number' || !Number.isFinite(base.value) || base.value === 0) return null;
   const unit = base.unit ?? m.headline.unit ?? '';
   const isRate = unit === '%' || unit === 'pts', isMoney = isMoneyUnit(unit);
   const to = m.headline.value, from = base.value;

@@ -26,7 +26,7 @@ const { kind } = Astro.props;
       if (!bad && em && em.value && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value)) bad = em;
       if (bad) { st.textContent = bad.type === 'email' ? 'That email address doesn’t look right.' : 'Please fill in the highlighted field.'; st.style.color = 'var(--bad)'; bad.focus(); return; }
       if (data._gotcha) return;
-      data.form_type = f.dataset.kind; data._subject = 'The Scorecard: ' + f.dataset.kind; data.page = location.pathname;
+      data.form_type = f.dataset.kind; data._subject = 'No. 10 Report Card: ' + f.dataset.kind; data.page = location.pathname;
       btn.disabled = true; st.style.color = 'var(--ink-2)'; st.textContent = 'Sending…';
       fetch(f.dataset.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) })
         .then(function (r) { if (!r.ok) throw new Error(); f.reset(); st.style.color = 'var(--good)'; st.textContent = f.dataset.kind === 'signup' ? 'You’re on the list. Thank you.' : 'Received. Thank you: we read every report.'; })

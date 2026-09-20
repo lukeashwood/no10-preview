@@ -101,7 +101,7 @@ const base = url();
       </div>
       <div>
         <h2>Go further</h2>
-        <p>See <a href={url('#record')}>the record since the 2024 election</a>, the <a href={url('promises/')}>promises kept and broken</a>, or open any measure for its chart, sources and how much control Canberra has over it.</p>
+        <p>See <a href={url('#record')}>the record since the 2024 election</a>, the <a href={url('promises/')}>promises kept and broken</a>, or open any measure for its chart, sources and how much control the government has over it.</p>
       </div>
     </div>
   </section>
@@ -117,8 +117,8 @@ const base = url();
   <script is:inline define:vars={{ data, base }}>
     window.SCORECARD = data; window.SCORECARD_BASE = base;
     window.Charts = { fmtNum: function (v, unit, decimals, opts) { opts = opts || {}; if (v == null || isNaN(v)) return '–'; var d = decimals == null ? 1 : decimals, abs = Math.abs(v), s;
-      if (opts.compact && abs >= 1e6) s = (abs / 1e6).toFixed(abs >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M'; else if (opts.compact && abs >= 1e4) s = Math.round(abs / 1e3).toLocaleString('en-AU') + 'k'; else s = abs.toLocaleString('en-AU', { minimumFractionDigits: d, maximumFractionDigits: d });
-      var sign = v < 0 ? '−' : (opts.signed && v > 0 ? '+' : ''); if (unit === '$') return sign + '$' + s; if (unit === '%') return sign + s + '%'; return sign + s; } };
+      if (opts.compact && abs >= 1e6) s = (abs / 1e6).toFixed(abs >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M'; else if (opts.compact && abs >= 1e4) s = Math.round(abs / 1e3).toLocaleString('en-GB') + 'k'; else s = abs.toLocaleString('en-GB', { minimumFractionDigits: d, maximumFractionDigits: d });
+      var sign = v < 0 ? '−' : (opts.signed && v > 0 ? '+' : ''); if (unit && unit.charAt(0) === '£') return sign + '£' + s + unit.slice(1); if (unit === '%') return sign + s + '%'; return sign + s; } };
     (function () { // text version (also the no-WebGL fallback), built from the same data as the model
       var D = window.SCORECARD, root = document.getElementById('tv-body'), grid = document.createElement('div'); grid.className = 'tv-grid';
       var el = function (t, txt) { var n = document.createElement(t); if (txt != null) n.textContent = txt; return n; };
