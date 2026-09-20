@@ -13,28 +13,38 @@ export function signed(v: number, d = 0): string {
   return (v > 0 ? '+' : MINUS) + s;
 }
 
-/** Format a value in a chart/headline unit: "%", "$", "$bn", "$'000", "index", "people", "homes", "" … */
+/** Format a value in a chart/headline unit: "%", "pts", "£", "£bn", "£'000", "index", "people", "homes", "" …
+    A money unit that isn't handled here used to fall through to the default and print the number with no currency
+    symbol at all — £123.8bn of borrowing rendered as "123.8". Anything starting with £ is now handled explicitly. */
 export function withUnit(v: number, unit = '', d = 0, opts: { signed?: boolean; compact?: boolean } = {}): string {
   if (!Number.isFinite(v)) return '–';
   const f = (x: number, dd = d) => (opts.signed ? signed(x, dd) : num(x, dd));
   switch (unit) {
     case '%': return f(v) + '%';
-    case '$': return money(v, d, opts.signed);
-    case '$bn': return money(v, d, opts.signed) + 'bn';
-    case "$'000": return money(v * 1000, 0, opts.signed, true);
+    case 'pts': return f(v) + ' pts';
+    case '£': return money(v, d, opts.signed);
+    case '£bn': return money(v, d, opts.signed) + 'bn';
+    case '£m': return money(v, d, opts.signed) + 'm';
+    case "£'000": return money(v * 1000, 0, opts.signed, true);
     case 'index': return f(v);
     case '': return f(v);
     default:
+      // A unit we don't know: keep the label rather than silently dropping it.
+      if (unit.startsWith('£')) return money(v, d, opts.signed) + unit.slice(1);
       if (opts.compact && Math.abs(v) >= 10000) return compact(v, opts.signed);
       return f(v);
   }
 }
+/** True for any money unit. A money series is compared in pounds, never as a percentage: borrowing can cross zero,
+    and a percentage of a figure that is near zero or negative is meaningless. */
+export const isMoneyUnit = (unit = '') => unit.startsWith('£');
+
 function money(v: number, d = 0, sign = false, compactBig = false): string {
   const a = Math.abs(v);
   const pre = v < 0 ? MINUS : sign && v > 0 ? '+' : '';
-  if (compactBig && a >= 1e6) return `${pre}$${(a / 1e6).toLocaleString(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}m`;
-  if (compactBig && a >= 1e3) return `${pre}$${Math.round(a / 1e3).toLocaleString(LOCALE)}k`;
-  return `${pre}$${a.toLocaleString(LOCALE, { minimumFractionDigits: d, maximumFractionDigits: d })}`;
+  if (compactBig && a >= 1e6) return `${pre}£${(a / 1e6).toLocaleString(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}m`;
+  if (compactBig && a >= 1e3) return `${pre}£${Math.round(a / 1e3).toLocaleString(LOCALE)}k`;
+  return `${pre}£${a.toLocaleString(LOCALE, { minimumFractionDigits: d, maximumFractionDigits: d })}`;
 }
 export function compact(v: number, sign = false): string {
   const a = Math.abs(v); const pre = v < 0 ? MINUS : sign && v > 0 ? '+' : '';
@@ -76,8 +86,9 @@ export function inferFreq(points: [string, number][], hint?: 'q' | 'fy'): 'q' | 
 export function headlineText(h: { value: number; unit?: string; decimals?: number; prefix?: string | boolean; suffix?: string; signed?: boolean }): string {
   const d = h.decimals ?? 0; const unit = h.unit ?? '';
   let body: string;
-  if (unit === '$') body = Math.abs(h.value) >= 1e6 ? money(h.value, 0, !!h.signed, true) : money(h.value, d, !!h.signed);
-  else if (unit === '%') body = (h.signed ? signed(h.value, d) : num(h.value, d)) + '%';
-  else body = h.signed ? signed(h.value, d) : num(h.value, d);
+  // Plain pounds get the compact treatment for very large values; every other unit goes through withUnit, so a unit
+  // this function doesn't recognise is still printed rather than silently dropped.
+  if (unit === '£') body = Math.abs(h.value) >= 1e6 ? money(h.value, 0, !!h.signed, true) : money(h.value, d, !!h.signed);
+  else body = withUnit(h.value, unit, d, { signed: !!h.signed });
   return body + (h.suffix ?? '');
 }

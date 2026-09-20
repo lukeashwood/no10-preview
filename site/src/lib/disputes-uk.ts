@@ -6,8 +6,8 @@ import type { Controversy } from './controversies';
 export const UK_DISPUTES: Controversy[] = [
   {
     id: 'rayner-stamp-duty', featured: true, date: '2026-05-14', type: 'conduct', category: 'Ministers’ conduct',
-    title: 'The Deputy Prime Minister who resigned over stamp duty, then was cleared by HMRC',
-    minister: 'Angela Rayner', portfolio: 'then Deputy Prime Minister and Housing Secretary',
+    title: 'The Deputy Prime Minister who resigned over stamp duty, was cleared by HMRC, and returned to Cabinet',
+    minister: 'Angela Rayner', portfolio: 'Housing Secretary; then Deputy Prime Minister and Housing Secretary',
     summary: 'In September 2025 Angela Rayner admitted underpaying about £40,000 of stamp duty on an £800,000 flat in Hove, bought in May 2025 through arrangements involving a trust for her disabled son. The Prime Minister’s Independent Adviser on Ministerial Standards found she had breached the Ministerial Code, while accepting she had acted in good faith, and she resigned from all her posts. Eight months later HMRC concluded its own investigation and cleared her, with no penalty.',
     points: [
       { heading: 'What the ethics adviser found', standing: 'established',
@@ -17,9 +17,13 @@ export const UK_DISPUTES: Controversy[] = [
       { heading: 'What the tax authority found', standing: 'established',
         body: 'On 14 May 2026 Rayner said HMRC had completed its investigation and cleared her of wrongdoing, with no fine or penalty. She said she had been “horrified” at the suggestion she had not paid the right tax and “welcomed” the finding. The two outcomes are not contradictory: the ethics adviser was judging conduct against the Ministerial Code, while HMRC was deciding whether the underpayment was careless or deliberate.',
         sources: [{ title: 'ITV News: Angela Rayner cleared by HMRC after stamp duty row, 14 May 2026', url: 'https://www.itv.com/news/2026-05-14/angela-rayner-says-she-has-been-cleared-by-hmrc-after-stamp-duty-row' }] },
+      { heading: 'What happened next', standing: 'established',
+        body: 'Rayner returned to the Cabinet on 20 July 2026 as Secretary of State for Housing, Communities and Local Government, in the first Cabinet formed by Andy Burnham after he succeeded Keir Starmer as Prime Minister. She did not get the Deputy Prime Minister title back; there is no Deputy Prime Minister in the present government, and the senior deputy role of First Secretary of State is held by Louise Haigh. A minister who has resigned over a breach of the Ministerial Code may be reappointed: nothing in the Code prevents it, and the decision is the Prime Minister’s alone.',
+        sources: [{ title: 'Ministerial appointments: July 2026', url: 'https://www.gov.uk/government/news/ministerial-appointments-july-2026' },
+                  { title: 'GOV.UK: The Rt Hon Angela Rayner MP', url: 'https://www.gov.uk/government/people/angela-rayner' }] },
     ],
     response: 'Rayner apologised at the time, referred herself to the Independent Adviser, accepted the finding and resigned. After the HMRC decision she said she welcomed being cleared and that she had always intended to pay the correct amount.',
-    outcome: 'Resigned from government in September 2025. Cleared by HMRC in May 2026 with no penalty, having paid the tax owed.',
+    outcome: 'Resigned from government in September 2025. Cleared by HMRC in May 2026 with no penalty, having paid the tax owed. Returned to the Cabinet as Housing Secretary on 20 July 2026.',
     status: 'resolved',
     sources: [{ title: 'Independent Adviser on Ministerial Standards: annual report 2025–26', url: 'https://www.gov.uk/government/publications/independent-adviser-on-ministerial-standards-annual-report-2025-2026/independent-adviser-on-ministerial-standards-annual-report-2025-2026-html' }],
     verified_on: '2026-09-21',

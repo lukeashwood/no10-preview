@@ -82,7 +82,7 @@ export interface Editorial {
   /** Leave this measure out of since-office comparisons (e.g. an unadjusted quarterly series, where comparing a June
       quarter with a March quarter would mostly measure the season). */
   noSince?: boolean;
-  /** An honest note about the starting point in mid-2022, shown beside every since-office comparison. */
+  /** An honest note about the starting point at the 2024 election, shown beside every since-office comparison. */
   baselineNote?: string;
   /** Context lines from the data feed that are dropped because they argue rather than inform. */
   dropContext?: RegExp[];

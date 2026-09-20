@@ -22,7 +22,7 @@ const pts = (rs?.points ?? []).filter((p) => !m.chart.estimateFrom || p[0] < m.c
   </div>
   <div class="mt-auto grid gap-1.5 pt-1">
     <div class="flex flex-wrap items-center justify-between gap-2">
-      {m.sinceElection ? <DirectionBadge change={{ trend: m.sinceElection.trend, tone: m.sinceElection.tone, label: m.sinceElection.label }} prefix="Since the election" /> : <span class="meta">No mid-2022 figure to compare</span>}
+      {m.sinceElection ? <DirectionBadge change={{ trend: m.sinceElection.trend, tone: m.sinceElection.tone, label: m.sinceElection.label }} prefix="Since the election" /> : <span class="meta">No comparable figure from July 2024</span>}
       <InfluenceChip influence={m.ed.influence} />
     </div>
     {m.direction && <DirectionBadge quiet prefix="Past year" change={{ trend: m.direction.trend, tone: m.direction.tone, label: m.direction.changeLabel }} />}

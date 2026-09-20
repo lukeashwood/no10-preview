@@ -14,6 +14,10 @@ import type { Measure } from '../../lib/types';
 export function getStaticPaths() { return MEASURES.map((m) => ({ params: { id: m.id }, props: { m } })); }
 const { m } = Astro.props as { m: Measure };
 const t = m.ed.target; const fr = freshness(m); const rs = ratedSeries(m);
+// A measure published as a few periods rather than a running series has no rated series, so the since-election
+// figures are formatted from the headline's own unit instead.
+const sinceUnit = rs?.unit ?? m.headline.unit ?? '';
+const sinceDecimals = rs?.decimals ?? m.headline.decimals ?? 0;
 const idx = MEASURES.findIndex((x) => x.id === m.id);
 const prev = MEASURES[(idx - 1 + MEASURES.length) % MEASURES.length], next = MEASURES[(idx + 1) % MEASURES.length];
 const related = MEASURES.filter((x) => x.id !== m.id && (x.ed.supports === m.id || m.ed.supports === x.id || x.section === m.section)).slice(0, 3);
@@ -48,7 +52,7 @@ const jsonld = {
       </div>
       <div class="bg-surface p-5">
         <dt class="eyebrow">Since the government took office</dt>
-        <dd class="mt-3">{m.sinceElection ? <><DirectionBadge change={{ trend: m.sinceElection.trend, tone: m.sinceElection.tone, label: m.sinceElection.label }} /><span class="meta mt-2 block">{withUnit(m.sinceElection.from[1], rs!.unit, rs!.decimals)} → {withUnit(m.sinceElection.to[1], rs!.unit, rs!.decimals)} ({m.sinceElection.periodLabel})</span>{m.ed.baselineNote && <span class="meta mt-1.5 block"><b class="text-ink-2">Starting point:</b> {m.ed.baselineNote}</span>}{m.ed.betterNote && <span class="meta mt-1 block">{m.ed.betterNote}</span>}</> : <span class="meta">No comparable figure from mid-2022.</span>}</dd>
+        <dd class="mt-3">{m.sinceElection ? <><DirectionBadge change={{ trend: m.sinceElection.trend, tone: m.sinceElection.tone, label: m.sinceElection.label }} /><span class="meta mt-2 block">{withUnit(m.sinceElection.from[1], sinceUnit, sinceDecimals)} → {withUnit(m.sinceElection.to[1], sinceUnit, sinceDecimals)} ({m.sinceElection.periodLabel})</span>{m.ed.baselineNote && <span class="meta mt-1.5 block"><b class="text-ink-2">Starting point:</b> {m.ed.baselineNote}</span>}{m.ed.betterNote && <span class="meta mt-1 block">{m.ed.betterNote}</span>}</> : <span class="meta">No comparable figure from July 2024.</span>}</dd>
       </div>
       <div class="bg-surface p-5">
         <dt class="eyebrow">Over the past year</dt>

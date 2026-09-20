@@ -8,13 +8,13 @@ import { MEASURES, SECTIONS, CONTEXT } from '../../lib/measures';
 import { headlineText } from '../../lib/format';
 const groups = SECTIONS.map((s) => ({ ...s, items: MEASURES.filter((m) => m.section === s.id && m.ed.group !== 'context') })).filter((g) => g.items.length);
 ---
-<Base title="All measures" description="Every official figure the site tracks, by topic, with its latest value, its direction over the past year and how much control the federal government has over it." section="measures/">
+<Base title="All measures" description="Every official figure the site tracks, by topic, with its latest value, its direction over the past year and how much control the government has over it." section="measures/">
   <div class="wrap pt-10 md:pt-14">
     <p class="eyebrow">Measures</p>
     <h1 class="display mt-2 text-[clamp(34px,4.6vw,52px)]">Every figure we track</h1>
     <p class="lede mt-3">{MEASURES.length} official series, grouped by topic. Open any one for the full chart, its sources, and a plain-English explanation.</p>
-    <div class="no-print mt-6 flex flex-wrap gap-2" role="group" aria-label="Filter by federal control" id="filters">
-      {[['all', 'All'], ['direct', 'Direct federal control'], ['shared', 'Shared control'], ['indirect', 'Indirect influence']].map(([v, l]) => <button type="button" class="btn btn-sm btn-ghost" data-filter={v} aria-pressed={v === 'all' ? 'true' : 'false'}>{l}</button>)}
+    <div class="no-print mt-6 flex flex-wrap gap-2" role="group" aria-label="Filter by how much control the government has" id="filters">
+      {[['all', 'All'], ['direct', 'Direct government control'], ['shared', 'Shared control'], ['indirect', 'Indirect influence']].map(([v, l]) => <button type="button" class="btn btn-sm btn-ghost" data-filter={v} aria-pressed={v === 'all' ? 'true' : 'false'}>{l}</button>)}
     </div>
     {groups.map((g) => (
       <section class="mt-12" data-group>

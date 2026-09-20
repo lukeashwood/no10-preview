@@ -5,7 +5,7 @@ import { SITE } from '../config/site';
 /** The last observation before the government took office: the yardstick for 'since the election'. */
 const ELECTION_BASE = '2024-06-30';
 import { EDITORIAL } from './editorial';
-import { daysBetween, fmtPeriod, inferFreq, signed, withUnit } from './format';
+import { daysBetween, fmtPeriod, inferFreq, isMoneyUnit, signed, withUnit } from './format';
 import type { Direction, Measure, Point, RawMetric, Trend, Verdict } from './types';
 
 const data = raw as unknown as {
@@ -42,7 +42,13 @@ function nearest(pts: Point[], target: string, maxDays: number): Point | null {
 function direction(m: RawMetric): Direction | null {
   const ed = EDITORIAL[m.id]; const rs = ratedSeries(m);
   if (!ed || ed.group === 'context' || !rs) return null;
-  const pts = actuals(m, rs.points);
+  let pts = actuals(m, rs.points);
+  // A seasonal monthly count is headlined as a rolling 12-month total, so the yearly change must be read off the same
+  // rolling total. Comparing one July with the July before it set a single month against a twelve-month headline.
+  if (ed.rollingSince && pts.length > ed.rollingSince) {
+    const n = ed.rollingSince;
+    pts = pts.map((p, i) => (i >= n - 1 ? [p[0], pts.slice(i - n + 1, i + 1).reduce((a, b) => a + b[1], 0)] as Point : null)).filter(Boolean) as Point[];
+  }
   if (pts.length < 2) return null;
   const latest = pts[pts.length - 1];
   const freq = inferFreq(pts, m.chart.freq);
@@ -50,24 +56,49 @@ function direction(m: RawMetric): Direction | null {
   const yearAgo = new Date(Date.UTC(+latest[0].slice(0, 4) - 1, +latest[0].slice(5, 7) - 1, +latest[0].slice(8, 10))).toISOString().slice(0, 10);
   const prior = freq === 'fy' ? pts[pts.length - 2] : nearest(pts.slice(0, -1), yearAgo, freq === 'q' ? 50 : 20);
   if (!prior) return null;
-  const isRate = rs.unit === '%', isMoney = rs.unit === '$bn';
+  const isRate = rs.unit === '%' || rs.unit === 'pts', isMoney = isMoneyUnit(rs.unit);
   const change = isRate || isMoney ? latest[1] - prior[1] : prior[1] !== 0 ? ((latest[1] - prior[1]) / Math.abs(prior[1])) * 100 : 0;
   // "Steady" band: a fifth of a percentage point for rates, 1% for levels and indexes. Dollar series (which can be
-  // negative, like the budget balance) are compared in dollars, never as a percentage of a negative number.
+  // negative, like public sector net borrowing) are compared in pounds, never as a percentage of a negative number.
   const band = isRate ? 0.2 : isMoney ? Math.max(0.5, Math.abs(prior[1]) * 0.01) : 1;
   const trend: Trend = Math.abs(change) < band ? 'steady' : change > 0 ? 'up' : 'down';
   const tone = trend === 'steady' || ed.better === 'none' ? 'neutral' : (trend === 'up') === (ed.better === 'higher') ? 'good' : 'bad';
   const d = isRate ? (Math.abs(change) < 1 ? 2 : 1) : 1;
   return {
     trend, tone, latest, prior, change,
-    changeLabel: isRate ? `${signed(change, m.chart.decimals >= 2 ? 2 : d)} pts` : isMoney ? withUnit(change, '$bn', 1, { signed: true }) : `${signed(change, 1)}%`,
-    periodLabel: `${fmtPeriod(prior[0], freq)} → ${fmtPeriod(latest[0], freq)}`,
+    changeLabel: isRate ? `${signed(change, m.chart.decimals >= 2 ? 2 : d)} pts` : isMoney ? withUnit(change, rs.unit, 1, { signed: true }) : `${signed(change, 1)}%`,
+    periodLabel: ed.rollingSince
+      ? `12 months to ${fmtPeriod(prior[0], freq)} → 12 months to ${fmtPeriod(latest[0], freq)}`
+      : `${fmtPeriod(prior[0], freq)} → ${fmtPeriod(latest[0], freq)}`,
+  };
+}
+
+/* Some measures are published as a handful of periods rather than a running series (a bar chart, not a line). They
+   still have a stated starting point at the election, so the comparison is real — it just can't be read off a series.
+   Where the hand-checked figure supplies one, use it, and label both ends with the periods the source itself names. */
+function sinceElectionFromBaseline(m: RawMetric) {
+  const ed = EDITORIAL[m.id];
+  const base = m.baseline;
+  if (!ed || !base || typeof base.value !== 'number' || !Number.isFinite(base.value) || base.value === 0) return null;
+  const unit = base.unit ?? m.headline.unit ?? '';
+  const isRate = unit === '%' || unit === 'pts', isMoney = isMoneyUnit(unit);
+  const to = m.headline.value, from = base.value;
+  const change = isRate || isMoney ? to - from : ((to - from) / Math.abs(from)) * 100;
+  const band = isRate ? 0.2 : isMoney ? Math.max(0.5, Math.abs(from) * 0.01) : 1;
+  const trend: Trend = Math.abs(change) < band ? 'steady' : change > 0 ? 'up' : 'down';
+  const tone = trend === 'steady' || ed.better === 'none' ? 'neutral' : (trend === 'up') === (ed.better === 'higher') ? 'good' : 'bad';
+  const label = isRate ? `${signed(change, 1)} pts` : isMoney ? withUnit(change, unit, 1, { signed: true }) : `${signed(change, 1)}%`;
+  return {
+    from: [base.label ?? '', from] as Point, to: [m.headline.period ?? '', to] as Point,
+    change, trend, tone, label,
+    periodLabel: `${base.label ?? 'at the election'} → ${m.headline.period ?? 'latest'}`,
   };
 }
 
 function sinceElection(m: RawMetric) {
   const ed = EDITORIAL[m.id]; const rs = ratedSeries(m);
-  if (!ed || ed.group === 'context' || ed.noSince || !rs) return null;
+  if (!ed || ed.group === 'context' || ed.noSince) return null;
+  if (!rs) return sinceElectionFromBaseline(m);
   let pts = actuals(m, rs.points);
   // Seasonal monthly counts are compared as rolling totals, so a summer month is never set against a winter one.
   if (ed.rollingSince && pts.length > ed.rollingSince) {
@@ -81,12 +112,12 @@ function sinceElection(m: RawMetric) {
   const anchor = ELECTION_BASE;
   const from = nearest(pts, anchor, freq === 'fy' ? 10 : 50); const to = pts[pts.length - 1];
   if (!from || from[0] === to[0]) return null;
-  const isRate = rs.unit === '%', isMoney = rs.unit === '$bn';
+  const isRate = rs.unit === '%' || rs.unit === 'pts', isMoney = isMoneyUnit(rs.unit);
   const change = isRate || isMoney ? to[1] - from[1] : from[1] !== 0 ? ((to[1] - from[1]) / Math.abs(from[1])) * 100 : 0;
   const band = isRate ? 0.2 : isMoney ? Math.max(0.5, Math.abs(from[1]) * 0.01) : 1;
   const trend: Trend = Math.abs(change) < band ? 'steady' : change > 0 ? 'up' : 'down';
   const tone = trend === 'steady' || ed.better === 'none' ? 'neutral' : (trend === 'up') === (ed.better === 'higher') ? 'good' : 'bad';
-  const label = isRate ? `${signed(change, m.chart.decimals >= 2 ? 2 : 1)} pts` : isMoney ? withUnit(change, '$bn', 1, { signed: true }) : `${signed(change, 1)}%`;
+  const label = isRate ? `${signed(change, m.chart.decimals >= 2 ? 2 : 1)} pts` : isMoney ? withUnit(change, rs.unit, 1, { signed: true }) : `${signed(change, 1)}%`;
   const periodLabel = ed.rollingSince
     ? `12 months to ${fmtPeriod(from[0], freq)} → 12 months to ${fmtPeriod(to[0], freq)}`
     : `${fmtPeriod(from[0], freq)} → ${fmtPeriod(to[0], freq)}`;
