@@ -1,7 +1,20 @@
 {
   "corrections": [],
   "rules": [
-    { "date": "2026-09-21", "version": "1.1", "summary": "Clean power by 2030: while the only published figure on the government's own definition is the 2024 starting point, the promise is shown as in progress rather than on track. 2024 is the year the target was set and mostly falls before this government, so measuring the starting point against itself scored the promise on nothing." },
-    { "date": "2026-09-21", "version": "1.0", "summary": "First published rules. Verdicts are given only on measurable commitments the government itself made. Every other measure shows its direction since the 2024 general election, with no verdict. Each measure states how much control the government has over it. A change of Prime Minister inside the same parliament is marked on the charts but does not restart the record." }
+    {
+      "date": "2026-09-21",
+      "version": "1.2",
+      "summary": "Clean power by 2030 is now judged on the 2025 figure DESNZ published on 2 April 2026 (73.3%), against a 2024 starting point revised from 73.8% to 73.7%. The share fell in the first full calendar year of this government, so the promise moves from no verdict to at risk. Measures published as a few periods rather than a running series now show a since-the-election comparison only where the stated baseline really is the position at the election."
+    },
+    {
+      "date": "2026-09-21",
+      "version": "1.1",
+      "summary": "Clean power by 2030: while the only published figure on the government's own definition is the 2024 starting point, the promise is shown as in progress rather than on track. 2024 is the year the target was set and mostly falls before this government, so measuring the starting point against itself scored the promise on nothing."
+    },
+    {
+      "date": "2026-09-21",
+      "version": "1.0",
+      "summary": "First published rules. Verdicts are given only on measurable commitments the government itself made. Every other measure shows its direction since the 2024 general election, with no verdict. Each measure states how much control the government has over it. A change of Prime Minister inside the same parliament is marked on the charts but does not restart the record."
+    }
   ]
 }

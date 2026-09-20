@@ -75,14 +75,16 @@ export const EDITORIAL: Record<string, Editorial> = {
       owner: 'government', ownerLabel: 'Manifesto and Clean Power 2030 Action Plan', deadline: '2030-12-31',
       commitment: 'Get at least 95% of Great Britain’s electricity from clean sources by 2030.',
       sourceLabel: 'Clean Power 2030 Action Plan', sourceUrl: 'https://www.gov.uk/government/publications/clean-power-2030-action-plan',
-      rule: 'Judged on the latest official clean-power share against the straight-line path from the 2024 starting point to 95% in 2030: on track if at or above that path, at risk within 5 percentage points, off track below that. While the only published figure is the 2024 starting point itself, no verdict is earned: 2024 is the year the target was set and is mostly before this government, so comparing it with itself would score the promise on nothing.',
+      rule: 'Judged on the latest official clean-power share against the straight-line path from the 2024 starting point (73.7%) to 95% in 2030: on track if at or above that path, at risk within 5 percentage points of it, off track below that. No verdict is given while the only published figure is the 2024 starting point itself, because comparing it with itself would score the promise on nothing. The figure is published once a year, so it can be some months old.',
       rate: (m) => {
-        const startYear = 2024, startVal = 73.8, endYear = 2030, endVal = 95;
+        const startYear = 2024, startVal = 73.7, endYear = 2030, endVal = 95;
         const year = Number((m.headline.period ?? '2024').slice(0, 4));
         if (year <= startYear)
           return v('in_progress', `${m.headline.value}% of electricity was clean in ${year}. That is the starting point the target was set from, and no figure covering a full year of this government has been published on this definition yet, so there is nothing to judge progress against.`);
         const path = startVal + ((endVal - startVal) * (year - startYear)) / (endYear - startYear);
-        const txt = `${m.headline.value}% of electricity was clean in ${year}, against about ${path.toFixed(1)}% on a straight line from 73.8% in 2024 to 95% in 2030.`;
+        const base = m.baseline?.value;
+        const moved = typeof base === 'number' ? (m.headline.value < base ? `down from ${base}% in ${startYear}` : m.headline.value > base ? `up from ${base}% in ${startYear}` : `unchanged on ${startYear}`) : '';
+        const txt = `${m.headline.value}% of electricity was clean in ${year}${moved ? `, ${moved}` : ''}, against about ${path.toFixed(1)}% on a straight line from ${startVal}% in ${startYear} to 95% in 2030.`;
         return m.headline.value >= path ? v('on_track', txt) : m.headline.value >= path - 5 ? v('at_risk', txt) : v('off_track', txt);
       },
     },

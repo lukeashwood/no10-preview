@@ -1,196 +1,454 @@
 {
- "_readme": "Hand-read figures that have no machine-readable feed. Every value must be read from the cited source, with the date it was checked and the date it should be checked again. The pipeline adds these to the automated metrics unchanged.",
- "metrics": [
-  {
-   "id": "homes",
-   "section": "housing",
-   "title": "1.5 million new homes",
-   "question": "Is England on course for 1.5 million new homes this parliament?",
-   "headline": {"value": 208600, "unit": "", "decimals": 0, "period": "2024–25", "caption": "homes added to England's housing stock in the latest full financial year"},
-   "benchmark": {"label": "Pace needed", "text": "about 300,000 a year"},
-   "baseline": {"label": "2023–24", "value": 221000, "unit": ""},
-   "context": [
-    "The pledge counts net additional dwellings: new builds, plus conversions and changes of use, minus demolitions.",
-    "208,600 homes were added in 2024–25, fewer than the year before.",
-    "Reaching 1.5 million over a five-year parliament needs about 300,000 a year, roughly half as much again as the latest figure.",
-    "Housing is devolved, so the target covers England only.",
-    "On 13 September 2026 the Housing Secretary, Angela Rayner, said there was a “slim chance” of hitting the target but that she was “definitely not giving it up”, blaming construction costs and international headwinds."
-   ],
-   "chart": {
-    "kind": "hbar", "unit": "", "decimals": 0,
-    "bars": [
-     {"name": "Pace needed each year", "value": 300000, "role": "accent"},
-     {"name": "Added 2024–25", "value": 208600, "role": "primary"},
-     {"name": "Added 2023–24", "value": 221000, "role": "muted"}
-    ],
-    "note": "Net additional dwellings in England, financial years. The 2024–25 figure covers a few months of the previous government."
-   },
-   "sources": [
-    {"publisher": "Ministry of Housing, Communities and Local Government", "title": "Housing supply: net additional dwellings, England", "url": "https://www.gov.uk/government/collections/net-supply-of-housing", "series": ["Net additional dwellings, England, 2024-25"], "published": "2024-25"},
-    {"publisher": "Full Fact", "title": "Is the government on track to deliver 1.5 million new homes?", "url": "https://fullfact.org/government-tracker/1-5-million-homes/", "published": "2026-09-14"}
-   ],
-   "method": "Net additional dwellings in England, as published by MHCLG and compiled by Full Fact's government tracker. The pace needed is 1.5 million divided across the five years of a parliament.",
-   "explainer": {"what": "The number of homes added to England's housing stock in a year, counting conversions and demolitions as well as new builds.", "why": "Housing supply is the main lever on housing costs over time, and 1.5 million homes was one of the government's six headline milestones."},
-   "verified_on": "2026-09-21",
-   "recheck_by": "2026-12-01"
-  },
-  {
-   "id": "nhs_18_weeks",
-   "section": "health",
-   "title": "NHS 18-week waits",
-   "question": "Are NHS patients in England being treated within 18 weeks?",
-   "headline": {"value": 65.8, "unit": "%", "decimals": 1, "period": "June 2026", "caption": "of patients waiting less than 18 weeks for planned treatment"},
-   "benchmark": {"label": "The NHS standard", "text": "92% by March 2029"},
-   "baseline": {"label": "When the government took office", "value": 58.9, "unit": "%"},
-   "context": [
-    "The standard is that 92% of patients should wait no more than 18 weeks from referral to treatment. It has not been met since 2015.",
-    "65.8% of patients were within 18 weeks at the end of June 2026.",
-    "The government set an interim goal of 65% by March 2026, which it met.",
-    "The waiting list covers England. Health is devolved elsewhere in the UK."
-   ],
-   "chart": {
-    "kind": "hbar", "unit": "%", "decimals": 1,
-    "bars": [
-     {"name": "The standard (by March 2029)", "value": 92, "role": "accent"},
-     {"name": "June 2026", "value": 65.8, "role": "primary"},
-     {"name": "Interim goal (March 2026)", "value": 65, "role": "muted"}
-    ],
-    "note": "Share of patients on the referral-to-treatment waiting list who have been waiting less than 18 weeks, England."
-   },
-   "sources": [
-    {"publisher": "NHS England", "title": "Referral to treatment waiting times statistics, June 2026", "url": "https://www.gov.uk/government/statistics/referral-to-treatment-waiting-times-statistics-for-consultant-led-elective-care-for-june-2026", "published": "2026-08-13"},
-    {"publisher": "Full Fact", "title": "Is the government on course to meet the NHS 18-week standard?", "url": "https://fullfact.org/government-tracker/cut-waiting-times-18-week-standard/", "published": "2026-09-02"}
-   ],
-   "method": "NHS England referral-to-treatment statistics: the percentage of incomplete pathways waiting under 18 weeks, as published monthly and compiled by Full Fact's government tracker.",
-   "explainer": {"what": "The share of people waiting for planned hospital treatment in England who have waited less than 18 weeks since being referred.", "why": "It is the official measure of hospital waiting times and the one the government chose for its own milestone."},
-   "verified_on": "2026-09-21",
-   "recheck_by": "2026-11-01"
-  },
-  {
-   "id": "neighbourhood_police",
-   "section": "crime",
-   "title": "13,000 neighbourhood police",
-   "question": "Are there more police in neighbourhood roles?",
-   "headline": {"value": 3123, "unit": "", "decimals": 0, "period": "28 February 2026", "caption": "additional officers, PCSOs and special constables in neighbourhood roles"},
-   "benchmark": {"label": "The commitment", "text": "13,000 by the end of the parliament"},
-   "baseline": {"label": "31 March 2025 (the baseline used)", "value": 0, "unit": ""},
-   "context": [
-    "The milestone counts police officers, police community support officers and special constables working in neighbourhood roles in England and Wales.",
-    "3,123 more were in post by 28 February 2026, about a quarter of the 13,000 promised.",
-    "That was ahead of the government's own first-year goal of 2,972.",
-    "The figures are Home Office management information, not accredited official statistics, and the baseline is March 2025 rather than the election."
-   ],
-   "chart": {
-    "kind": "hbar", "unit": "", "decimals": 0,
-    "bars": [
-     {"name": "The commitment", "value": 13000, "role": "accent"},
-     {"name": "In post by Feb 2026", "value": 3123, "role": "primary"},
-     {"name": "First-year goal", "value": 2972, "role": "muted"}
-    ],
-    "note": "Additional officers, PCSOs and special constables in neighbourhood roles, England and Wales, against a baseline of 31 March 2025."
-   },
-   "sources": [
-    {"publisher": "Home Office", "title": "Neighbourhood policing guarantee", "url": "https://www.gov.uk/government/publications/neighbourhood-policing-guarantee", "series": ["Neighbourhood policing management information"]},
-    {"publisher": "Full Fact", "title": "Is the government on track for 13,000 neighbourhood police?", "url": "https://fullfact.org/government-tracker/13000-neighbourhood-police/", "published": "2026-06-23"}
-   ],
-   "method": "Home Office management information on neighbourhood policing numbers, as compiled by Full Fact's government tracker, measured against the 31 March 2025 baseline the government itself uses.",
-   "explainer": {"what": "Extra police officers, PCSOs and special constables assigned to neighbourhood policing teams.", "why": "Visible local policing is what most people mean by 'police on the beat', and the government set a specific number."},
-   "verified_on": "2026-09-21",
-   "recheck_by": "2026-12-01"
-  },
-  {
-   "id": "school_readiness",
-   "section": "education",
-   "title": "Children ready for school",
-   "question": "Are more five-year-olds starting school ready to learn?",
-   "headline": {"value": 68.3, "unit": "%", "decimals": 1, "period": "2024–25", "caption": "of five-year-olds reaching a good level of development"},
-   "benchmark": {"label": "The milestone", "text": "75% by 2028"},
-   "baseline": {"label": "2023–24", "value": 67.7, "unit": "%"},
-   "context": [
-    "The measure is the share of children reaching a 'good level of development' in the Early Years Foundation Stage Profile, assessed by teachers at the end of reception.",
-    "68.3% reached that standard in 2024–25.",
-    "The milestone is 75% by 2028, which would be a record.",
-    "The assessment covers England only."
-   ],
-   "chart": {
-    "kind": "hbar", "unit": "%", "decimals": 1,
-    "bars": [
-     {"name": "The milestone (2028)", "value": 75, "role": "accent"},
-     {"name": "2024–25", "value": 68.3, "role": "primary"},
-     {"name": "2023–24", "value": 67.7, "role": "muted"}
-    ],
-    "note": "Share of children reaching a good level of development at the end of reception, England."
-   },
-   "sources": [
-    {"publisher": "Department for Education", "title": "Early years foundation stage profile results", "url": "https://explore-education-statistics.service.gov.uk/find-statistics/early-years-foundation-stage-profile-results", "series": ["Good level of development, England"]},
-    {"publisher": "Full Fact", "title": "Is the government on track for 75% of children ready to learn?", "url": "https://fullfact.org/government-tracker/75-percent-ready-to-learn/", "published": "2026-07-13"}
-   ],
-   "method": "Department for Education Early Years Foundation Stage Profile results: the percentage of children achieving a good level of development, as compiled by Full Fact's government tracker.",
-   "explainer": {"what": "Teachers assess every child at the end of reception across communication, physical development, literacy, maths and personal development.", "why": "Children who start school behind tend to stay behind, so this is an early indicator of how the school system will perform for years afterwards."},
-   "verified_on": "2026-09-21",
-   "recheck_by": "2026-12-01"
-  },
-  {
-   "id": "clean_power",
-   "section": "energy",
-   "title": "Clean power by 2030",
-   "question": "How much of Britain's electricity is now low-carbon?",
-   "headline": {"value": 73.8, "unit": "%", "decimals": 1, "period": "2024", "caption": "of Great Britain's electricity from clean sources"},
-   "benchmark": {"label": "The commitment", "text": "at least 95% by 2030"},
-   "baseline": {"label": "2024 (first official figure)", "value": 73.8, "unit": "%"},
-   "context": [
-    "'Clean power' counts renewables and nuclear, measured against the government's own Clean Power 2030 definition.",
-    "The first official figure on that definition was 73.8% in 2024.",
-    "The commitment is at least 95% by 2030, alongside enough capacity to meet demand.",
-    "Electricity generation is measured for Great Britain; Northern Ireland is part of a separate grid."
-   ],
-   "chart": {
-    "kind": "hbar", "unit": "%", "decimals": 1,
-    "bars": [
-     {"name": "The commitment (2030)", "value": 95, "role": "accent"},
-     {"name": "2024", "value": 73.8, "role": "primary"}
-    ],
-    "note": "Share of Great Britain's electricity generation from clean sources, on the government's Clean Power 2030 definition."
-   },
-   "sources": [
-    {"publisher": "Department for Energy Security and Net Zero", "title": "Clean Power 2030 Action Plan", "url": "https://www.gov.uk/government/publications/clean-power-2030-action-plan", "published": "2024-12-13"},
-    {"publisher": "House of Commons Library", "title": "Clean power by 2030", "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10182/"}
-   ],
-   "method": "Share of Great Britain's electricity generation from clean sources on the government's own Clean Power 2030 definition, as reported by the House of Commons Library from DESNZ Energy Trends.",
-   "explainer": {"what": "The proportion of the electricity Britain generates that comes from renewables and nuclear rather than gas and coal.", "why": "It decides how exposed household bills are to world gas prices, and it is the government's central energy commitment."},
-   "verified_on": "2026-09-21",
-   "recheck_by": "2026-12-31"
-  },
-  {
-   "id": "net_migration",
-   "section": "borders",
-   "title": "Net migration",
-   "question": "How many more people are coming to live in the UK than leaving?",
-   "headline": {"value": 171000, "unit": "", "decimals": 0, "period": "Year to December 2025", "caption": "net long-term international migration"},
-   "benchmark": {"label": "Year to December 2024", "text": "331,000"},
-   "baseline": {"label": "Year to June 2024", "value": 740000, "unit": ""},
-   "context": [
-    "Net migration was 171,000 in the year to December 2025, down from 331,000 the year before.",
-    "It peaked at about 900,000 in the year to June 2023 and has fallen sharply since.",
-    "Net migration counts everyone arriving for a year or more, minus everyone leaving: students, workers, family and people arriving on humanitarian routes.",
-    "The government did not set a numerical target, so this is shown as a fact rather than a promise to be scored."
-   ],
-   "chart": {
-    "kind": "hbar", "unit": "", "decimals": 0,
-    "bars": [
-     {"name": "Year to Dec 2025", "value": 171000, "role": "primary"},
-     {"name": "Year to Dec 2024", "value": 331000, "role": "muted"},
-     {"name": "Year to Jun 2024", "value": 740000, "role": "muted"}
-    ],
-    "note": "Net long-term international migration to the UK, ONS estimates. Figures are revised as more data arrives."
-   },
-   "sources": [
-    {"publisher": "Office for National Statistics", "title": "Long-term international migration, provisional: year ending December 2025", "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/longterminternationalmigrationprovisional/yearendingdecember2025", "published": "2025-12-31"}
-   ],
-   "method": "ONS provisional estimates of long-term international migration. These are estimates and are revised, sometimes substantially, as more administrative data becomes available.",
-   "explainer": {"what": "The number of people arriving to live in the UK for at least a year, minus the number leaving.", "why": "It drives population growth, and therefore demand for housing, schools and health services."},
-   "verified_on": "2026-09-21",
-   "recheck_by": "2026-12-01"
-  }
- ]
+  "_readme": "Hand-read figures that have no machine-readable feed. Every value must be read from the cited source, with the date it was checked and the date it should be checked again. The pipeline adds these to the automated metrics unchanged.",
+  "metrics": [
+    {
+      "id": "homes",
+      "section": "housing",
+      "title": "1.5 million new homes",
+      "question": "Is England on course for 1.5 million new homes this parliament?",
+      "headline": {
+        "value": 208600,
+        "unit": "",
+        "decimals": 0,
+        "period": "2024–25",
+        "caption": "homes added to England's housing stock in the latest full financial year"
+      },
+      "benchmark": {
+        "label": "Pace needed",
+        "text": "about 300,000 a year"
+      },
+      "baseline": {
+        "label": "2023–24",
+        "value": 221000,
+        "unit": ""
+      },
+      "context": [
+        "The pledge counts net additional dwellings: new builds, plus conversions and changes of use, minus demolitions.",
+        "208,600 homes were added in 2024–25, fewer than the year before.",
+        "Reaching 1.5 million over a five-year parliament needs about 300,000 a year, roughly half as much again as the latest figure.",
+        "Housing is devolved, so the target covers England only.",
+        "On 13 September 2026 the Housing Secretary, Angela Rayner, said there was a “slim chance” of hitting the target but that she was “definitely not giving it up”, blaming construction costs and international headwinds."
+      ],
+      "chart": {
+        "kind": "hbar",
+        "unit": "",
+        "decimals": 0,
+        "bars": [
+          {
+            "name": "Pace needed each year",
+            "value": 300000,
+            "role": "accent"
+          },
+          {
+            "name": "Added 2024–25",
+            "value": 208600,
+            "role": "primary"
+          },
+          {
+            "name": "Added 2023–24",
+            "value": 221000,
+            "role": "muted"
+          }
+        ],
+        "note": "Net additional dwellings in England, financial years. The 2024–25 figure covers a few months of the previous government."
+      },
+      "sources": [
+        {
+          "publisher": "Ministry of Housing, Communities and Local Government",
+          "title": "Housing supply: net additional dwellings, England",
+          "url": "https://www.gov.uk/government/collections/net-supply-of-housing",
+          "series": [
+            "Net additional dwellings, England, 2024-25"
+          ],
+          "published": "2024-25"
+        },
+        {
+          "publisher": "Full Fact",
+          "title": "Is the government on track to deliver 1.5 million new homes?",
+          "url": "https://fullfact.org/government-tracker/1-5-million-homes/",
+          "published": "2026-09-14"
+        }
+      ],
+      "method": "Net additional dwellings in England, as published by MHCLG and compiled by Full Fact's government tracker. The pace needed is 1.5 million divided across the five years of a parliament.",
+      "explainer": {
+        "what": "The number of homes added to England's housing stock in a year, counting conversions and demolitions as well as new builds.",
+        "why": "Housing supply is the main lever on housing costs over time, and 1.5 million homes was one of the government's six headline milestones."
+      },
+      "verified_on": "2026-09-21",
+      "recheck_by": "2026-12-01"
+    },
+    {
+      "id": "nhs_18_weeks",
+      "section": "health",
+      "title": "NHS 18-week waits",
+      "question": "Are NHS patients in England being treated within 18 weeks?",
+      "headline": {
+        "value": 65.8,
+        "unit": "%",
+        "decimals": 1,
+        "period": "June 2026",
+        "caption": "of patients waiting less than 18 weeks for planned treatment"
+      },
+      "benchmark": {
+        "label": "The NHS standard",
+        "text": "92% by March 2029"
+      },
+      "baseline": {
+        "label": "When the government took office",
+        "value": 58.9,
+        "unit": "%"
+      },
+      "context": [
+        "The standard is that 92% of patients should wait no more than 18 weeks from referral to treatment. It has not been met since 2015.",
+        "65.8% of patients were within 18 weeks at the end of June 2026.",
+        "The government set an interim goal of 65% by March 2026, which it met.",
+        "The waiting list covers England. Health is devolved elsewhere in the UK."
+      ],
+      "chart": {
+        "kind": "hbar",
+        "unit": "%",
+        "decimals": 1,
+        "bars": [
+          {
+            "name": "The standard (by March 2029)",
+            "value": 92,
+            "role": "accent"
+          },
+          {
+            "name": "June 2026",
+            "value": 65.8,
+            "role": "primary"
+          },
+          {
+            "name": "Interim goal (March 2026)",
+            "value": 65,
+            "role": "muted"
+          }
+        ],
+        "note": "Share of patients on the referral-to-treatment waiting list who have been waiting less than 18 weeks, England."
+      },
+      "sources": [
+        {
+          "publisher": "NHS England",
+          "title": "Referral to treatment waiting times statistics, June 2026",
+          "url": "https://www.gov.uk/government/statistics/referral-to-treatment-waiting-times-statistics-for-consultant-led-elective-care-for-june-2026",
+          "published": "2026-08-13"
+        },
+        {
+          "publisher": "Full Fact",
+          "title": "Is the government on course to meet the NHS 18-week standard?",
+          "url": "https://fullfact.org/government-tracker/cut-waiting-times-18-week-standard/",
+          "published": "2026-09-02"
+        }
+      ],
+      "method": "NHS England referral-to-treatment statistics: the percentage of incomplete pathways waiting under 18 weeks, as published monthly and compiled by Full Fact's government tracker.",
+      "explainer": {
+        "what": "The share of people waiting for planned hospital treatment in England who have waited less than 18 weeks since being referred.",
+        "why": "It is the official measure of hospital waiting times and the one the government chose for its own milestone."
+      },
+      "verified_on": "2026-09-21",
+      "recheck_by": "2026-11-01"
+    },
+    {
+      "id": "neighbourhood_police",
+      "section": "crime",
+      "title": "13,000 neighbourhood police",
+      "question": "Are there more police in neighbourhood roles?",
+      "headline": {
+        "value": 3123,
+        "unit": "",
+        "decimals": 0,
+        "period": "28 February 2026",
+        "caption": "additional officers, PCSOs and special constables in neighbourhood roles"
+      },
+      "benchmark": {
+        "label": "The commitment",
+        "text": "13,000 by the end of the parliament"
+      },
+      "baseline": {
+        "label": "31 March 2025 (the baseline used)",
+        "value": 0,
+        "unit": ""
+      },
+      "context": [
+        "The milestone counts police officers, police community support officers and special constables working in neighbourhood roles in England and Wales.",
+        "3,123 more were in post by 28 February 2026, about a quarter of the 13,000 promised.",
+        "That was ahead of the government's own first-year goal of 2,972.",
+        "The figures are Home Office management information, not accredited official statistics, and the baseline is March 2025 rather than the election."
+      ],
+      "chart": {
+        "kind": "hbar",
+        "unit": "",
+        "decimals": 0,
+        "bars": [
+          {
+            "name": "The commitment",
+            "value": 13000,
+            "role": "accent"
+          },
+          {
+            "name": "In post by Feb 2026",
+            "value": 3123,
+            "role": "primary"
+          },
+          {
+            "name": "First-year goal",
+            "value": 2972,
+            "role": "muted"
+          }
+        ],
+        "note": "Additional officers, PCSOs and special constables in neighbourhood roles, England and Wales, against a baseline of 31 March 2025."
+      },
+      "sources": [
+        {
+          "publisher": "Home Office",
+          "title": "Neighbourhood policing guarantee",
+          "url": "https://www.gov.uk/government/publications/neighbourhood-policing-guarantee",
+          "series": [
+            "Neighbourhood policing management information"
+          ]
+        },
+        {
+          "publisher": "Full Fact",
+          "title": "Is the government on track for 13,000 neighbourhood police?",
+          "url": "https://fullfact.org/government-tracker/13000-neighbourhood-police/",
+          "published": "2026-06-23"
+        }
+      ],
+      "method": "Home Office management information on neighbourhood policing numbers, as compiled by Full Fact's government tracker, measured against the 31 March 2025 baseline the government itself uses.",
+      "explainer": {
+        "what": "Extra police officers, PCSOs and special constables assigned to neighbourhood policing teams.",
+        "why": "Visible local policing is what most people mean by 'police on the beat', and the government set a specific number."
+      },
+      "verified_on": "2026-09-21",
+      "recheck_by": "2026-12-01"
+    },
+    {
+      "id": "school_readiness",
+      "section": "education",
+      "title": "Children ready for school",
+      "question": "Are more five-year-olds starting school ready to learn?",
+      "headline": {
+        "value": 68.3,
+        "unit": "%",
+        "decimals": 1,
+        "period": "2024–25",
+        "caption": "of five-year-olds reaching a good level of development"
+      },
+      "benchmark": {
+        "label": "The milestone",
+        "text": "75% by 2028"
+      },
+      "baseline": {
+        "label": "2023–24",
+        "value": 67.7,
+        "unit": "%"
+      },
+      "context": [
+        "The measure is the share of children reaching a 'good level of development' in the Early Years Foundation Stage Profile, assessed by teachers at the end of reception.",
+        "68.3% reached that standard in 2024–25.",
+        "The milestone is 75% by 2028, which would be a record.",
+        "The assessment covers England only."
+      ],
+      "chart": {
+        "kind": "hbar",
+        "unit": "%",
+        "decimals": 1,
+        "bars": [
+          {
+            "name": "The milestone (2028)",
+            "value": 75,
+            "role": "accent"
+          },
+          {
+            "name": "2024–25",
+            "value": 68.3,
+            "role": "primary"
+          },
+          {
+            "name": "2023–24",
+            "value": 67.7,
+            "role": "muted"
+          }
+        ],
+        "note": "Share of children reaching a good level of development at the end of reception, England."
+      },
+      "sources": [
+        {
+          "publisher": "Department for Education",
+          "title": "Early years foundation stage profile results",
+          "url": "https://explore-education-statistics.service.gov.uk/find-statistics/early-years-foundation-stage-profile-results",
+          "series": [
+            "Good level of development, England"
+          ]
+        },
+        {
+          "publisher": "Full Fact",
+          "title": "Is the government on track for 75% of children ready to learn?",
+          "url": "https://fullfact.org/government-tracker/75-percent-ready-to-learn/",
+          "published": "2026-07-13"
+        }
+      ],
+      "method": "Department for Education Early Years Foundation Stage Profile results: the percentage of children achieving a good level of development, as compiled by Full Fact's government tracker.",
+      "explainer": {
+        "what": "Teachers assess every child at the end of reception across communication, physical development, literacy, maths and personal development.",
+        "why": "Children who start school behind tend to stay behind, so this is an early indicator of how the school system will perform for years afterwards."
+      },
+      "verified_on": "2026-09-21",
+      "recheck_by": "2026-12-01"
+    },
+    {
+      "id": "clean_power",
+      "section": "energy",
+      "title": "Clean power by 2030",
+      "question": "How much of Britain's electricity is now low-carbon?",
+      "headline": {
+        "value": 73.3,
+        "unit": "%",
+        "decimals": 1,
+        "period": "2025",
+        "caption": "of Great Britain's electricity from clean sources"
+      },
+      "benchmark": {
+        "label": "The commitment",
+        "text": "at least 95% by 2030"
+      },
+      "baseline": {
+        "label": "2024 (revised)",
+        "value": 73.7,
+        "unit": "%"
+      },
+      "context": [
+        "‘Clean power’ is the government’s own definition: generation from nuclear and renewables, in Great Britain, excluding energy from waste and combined heat and power.",
+        "The share fell in 2025, from a revised 73.7% to 73.3%. DESNZ attributes the fall to a lower nuclear share and more gas generation covering a drop in imported electricity.",
+        "That is a fall in the first full calendar year of this government, against a commitment to reach at least 95% by 2030.",
+        "The 2024 figure was first published as 73.8% and has since been revised to 73.7%.",
+        "There is no 2026 figure on this definition: DESNZ publishes the metric once a year, and 2026 data is due in March 2027.",
+        "In September 2026 the National Audit Office found that delivering the grid upgrades the target depends on by 2030 ‘will be very challenging’, and that none of the projects the system operator flagged for acceleration had been significantly accelerated.",
+        "Electricity generation is measured for Great Britain; Northern Ireland is part of a separate grid."
+      ],
+      "chart": {
+        "kind": "hbar",
+        "unit": "%",
+        "decimals": 1,
+        "bars": [
+          {
+            "name": "The commitment (2030)",
+            "value": 95,
+            "role": "accent"
+          },
+          {
+            "name": "2025",
+            "value": 73.3,
+            "role": "primary"
+          },
+          {
+            "name": "2024 (revised)",
+            "value": 73.7,
+            "role": "muted"
+          }
+        ],
+        "note": "Share of Great Britain's electricity generation from clean sources on the government's Clean Power 2030 definition (DESNZ metric 1b)."
+      },
+      "sources": [
+        {
+          "publisher": "Department for Energy Security and Net Zero",
+          "title": "Clean Power 2030 metrics (2025 data published 2 April 2026)",
+          "url": "https://www.gov.uk/government/statistics/clean-power-2030-metrics",
+          "published": "2026-04-02"
+        },
+        {
+          "publisher": "Department for Energy Security and Net Zero",
+          "title": "Annual Report and Accounts 2025 to 2026: performance report",
+          "url": "https://www.gov.uk/government/publications/desnz-annual-report-and-accounts-2025-to-2026/performance-report",
+          "published": "2026-08-19"
+        },
+        {
+          "publisher": "Department for Energy Security and Net Zero",
+          "title": "Clean Power 2030 Action Plan",
+          "url": "https://www.gov.uk/government/publications/clean-power-2030-action-plan",
+          "published": "2024-12-13"
+        },
+        {
+          "publisher": "National Audit Office",
+          "title": "Upgrading the electricity transmission network",
+          "url": "https://www.nao.org.uk/reports/upgrading-the-electricity-transmission-network/",
+          "published": "2026-09-11"
+        }
+      ],
+      "method": "DESNZ Clean Power 2030 metric 1b: clean generation as a share of all Great Britain generation, where clean is nuclear plus renewables, excluding energy from waste and combined heat and power. Published once a year as accredited official statistics. Not comparable with the Energy Trends low-carbon share, which covers the whole UK and uses a wider definition.",
+      "explainer": {
+        "what": "The proportion of the electricity Britain generates that comes from renewables and nuclear rather than gas and coal.",
+        "why": "It decides how exposed household bills are to world gas prices, and it is the government's central energy commitment."
+      },
+      "verified_on": "2026-09-21",
+      "recheck_by": "2027-03-31"
+    },
+    {
+      "id": "net_migration",
+      "section": "borders",
+      "title": "Net migration",
+      "question": "How many more people are coming to live in the UK than leaving?",
+      "headline": {
+        "value": 171000,
+        "unit": "",
+        "decimals": 0,
+        "period": "Year to December 2025",
+        "caption": "net long-term international migration"
+      },
+      "benchmark": {
+        "label": "Year to December 2024",
+        "text": "331,000"
+      },
+      "baseline": {
+        "label": "Year to June 2024",
+        "value": 740000,
+        "unit": ""
+      },
+      "context": [
+        "Net migration was 171,000 in the year to December 2025, down from 331,000 the year before.",
+        "It peaked at about 900,000 in the year to June 2023 and has fallen sharply since.",
+        "Net migration counts everyone arriving for a year or more, minus everyone leaving: students, workers, family and people arriving on humanitarian routes.",
+        "The government did not set a numerical target, so this is shown as a fact rather than a promise to be scored."
+      ],
+      "chart": {
+        "kind": "hbar",
+        "unit": "",
+        "decimals": 0,
+        "bars": [
+          {
+            "name": "Year to Dec 2025",
+            "value": 171000,
+            "role": "primary"
+          },
+          {
+            "name": "Year to Dec 2024",
+            "value": 331000,
+            "role": "muted"
+          },
+          {
+            "name": "Year to Jun 2024",
+            "value": 740000,
+            "role": "muted"
+          }
+        ],
+        "note": "Net long-term international migration to the UK, ONS estimates. Figures are revised as more data arrives."
+      },
+      "sources": [
+        {
+          "publisher": "Office for National Statistics",
+          "title": "Long-term international migration, provisional: year ending December 2025",
+          "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/longterminternationalmigrationprovisional/yearendingdecember2025",
+          "published": "2025-12-31"
+        }
+      ],
+      "method": "ONS provisional estimates of long-term international migration. These are estimates and are revised, sometimes substantially, as more administrative data becomes available.",
+      "explainer": {
+        "what": "The number of people arriving to live in the UK for at least a year, minus the number leaving.",
+        "why": "It drives population growth, and therefore demand for housing, schools and health services."
+      },
+      "verified_on": "2026-09-21",
+      "recheck_by": "2026-12-01"
+    }
+  ]
 }

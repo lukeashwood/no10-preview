@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated_at": "2026-09-20T17:21:35+00:00",
+  "generated_at": "2026-09-20T17:44:45+00:00",
   "checks_total": 15,
   "checks_passed": 15,
   "checks_warn": 0,
@@ -674,7 +674,7 @@
      "series": [
       "CPI annual rate and CPI index, all items (D7G7, D7BT)"
      ],
-     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "retrieved_at": "2026-09-20T17:44:45+00:00",
      "automated": true
     }
    ],
@@ -684,7 +684,7 @@
     "why": "The Bank of England is required to keep inflation at 2%. When pay rises more slowly than prices, households are worse off even though wages are going up."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:21:35+00:00"
+   "updated_at": "2026-09-20T17:44:45+00:00"
   },
   {
    "id": "real_wages",
@@ -1298,7 +1298,7 @@
      "series": [
       "AWE whole economy, real terms level, regular pay, seasonally adjusted (A3WX)"
      ],
-     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "retrieved_at": "2026-09-20T17:44:45+00:00",
      "automated": true
     }
    ],
@@ -1308,7 +1308,7 @@
     "why": "This is the clearest measure of whether working people are better or worse off than they were."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:21:35+00:00"
+   "updated_at": "2026-09-20T17:44:45+00:00"
   },
   {
    "id": "homes",
@@ -1993,7 +1993,7 @@
      "series": [
       "Unemployment rate, employment rate and inactivity rate, seasonally adjusted (MGSX, LF24, LF2S)"
      ],
-     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "retrieved_at": "2026-09-20T17:44:45+00:00",
      "automated": true
     }
    ],
@@ -2003,7 +2003,7 @@
     "why": "It is the clearest measure of whether the jobs market is getting easier or harder, though it misses people who have stopped looking."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:21:35+00:00"
+   "updated_at": "2026-09-20T17:44:45+00:00"
   },
   {
    "id": "gdp_vs_capita",
@@ -2427,7 +2427,7 @@
      "series": [
       "Gross domestic product and GDP per head, chained volume measures, seasonally adjusted (ABMI, IHXW)"
      ],
-     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "retrieved_at": "2026-09-20T17:44:45+00:00",
      "automated": true
     }
    ],
@@ -2437,7 +2437,7 @@
     "why": "Total GDP can grow simply because there are more people. GDP per person is the better guide to living standards."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:21:35+00:00"
+   "updated_at": "2026-09-20T17:44:45+00:00"
   },
   {
    "id": "productivity",
@@ -2673,7 +2673,7 @@
      "series": [
       "UK whole economy output per hour worked, seasonally adjusted (LZVB)"
      ],
-     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "retrieved_at": "2026-09-20T17:44:45+00:00",
      "automated": true
     }
    ],
@@ -2683,7 +2683,7 @@
     "why": "Sustained pay rises and better public services ultimately depend on producing more per hour. UK productivity has grown slowly since the financial crisis."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:21:35+00:00"
+   "updated_at": "2026-09-20T17:44:45+00:00"
   },
   {
    "id": "bank_rate",
@@ -3861,7 +3861,7 @@
       "IUMBV34",
       "IUMTLMV"
      ],
-     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "retrieved_at": "2026-09-20T17:44:45+00:00",
      "automated": true
     }
    ],
@@ -3871,7 +3871,7 @@
     "why": "It is the main tool for controlling inflation, and it decides what mortgages cost. The government does not set it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:21:35+00:00"
+   "updated_at": "2026-09-20T17:44:45+00:00"
   },
   {
    "id": "borrowing",
@@ -4341,7 +4341,7 @@
      "series": [
       "Public sector net borrowing excluding public sector banks, £ million (J5II)"
      ],
-     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "retrieved_at": "2026-09-20T17:44:45+00:00",
      "automated": true
     }
    ],
@@ -4351,7 +4351,7 @@
     "why": "Every pound borrowed is added to the national debt and has to be serviced out of future taxes."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:21:35+00:00"
+   "updated_at": "2026-09-20T17:44:45+00:00"
   },
   {
    "id": "debt",
@@ -5202,7 +5202,7 @@
      "series": [
       "Public sector net debt excluding public sector banks, as a share of GDP (HF6X)"
      ],
-     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "retrieved_at": "2026-09-20T17:44:45+00:00",
      "automated": true
     }
    ],
@@ -5212,7 +5212,7 @@
     "why": "Interest on this debt is paid before anything else. The larger it is relative to the economy, the more of each year's taxes go to servicing it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:21:35+00:00"
+   "updated_at": "2026-09-20T17:44:45+00:00"
   },
   {
    "id": "nhs_18_weeks",
@@ -5774,7 +5774,7 @@
      "series": [
       "Migrants detected crossing the English Channel in small boats — daily time series (SB_01)"
      ],
-     "retrieved_at": "2026-09-20T17:21:35+00:00",
+     "retrieved_at": "2026-09-20T17:44:45+00:00",
      "automated": true
     }
    ],
@@ -5784,7 +5784,7 @@
     "why": "It is the most visible measure of control of the border, and the figure most often cited in the debate about asylum. It is published weekly, so it is unusually current."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:21:35+00:00"
+   "updated_at": "2026-09-20T17:44:45+00:00"
   },
   {
    "id": "clean_power",
@@ -5792,10 +5792,10 @@
    "title": "Clean power by 2030",
    "question": "How much of Britain's electricity is now low-carbon?",
    "headline": {
-    "value": 73.8,
+    "value": 73.3,
     "unit": "%",
     "decimals": 1,
-    "period": "2024",
+    "period": "2025",
     "caption": "of Great Britain's electricity from clean sources"
    },
    "benchmark": {
@@ -5803,14 +5803,17 @@
     "text": "at least 95% by 2030"
    },
    "baseline": {
-    "label": "2024 (first official figure)",
-    "value": 73.8,
+    "label": "2024 (revised)",
+    "value": 73.7,
     "unit": "%"
    },
    "context": [
-    "'Clean power' counts renewables and nuclear, measured against the government's own Clean Power 2030 definition.",
-    "The first official figure on that definition was 73.8% in 2024.",
-    "The commitment is at least 95% by 2030, alongside enough capacity to meet demand.",
+    "‘Clean power’ is the government’s own definition: generation from nuclear and renewables, in Great Britain, excluding energy from waste and combined heat and power.",
+    "The share fell in 2025, from a revised 73.7% to 73.3%. DESNZ attributes the fall to a lower nuclear share and more gas generation covering a drop in imported electricity.",
+    "That is a fall in the first full calendar year of this government, against a commitment to reach at least 95% by 2030.",
+    "The 2024 figure was first published as 73.8% and has since been revised to 73.7%.",
+    "There is no 2026 figure on this definition: DESNZ publishes the metric once a year, and 2026 data is due in March 2027.",
+    "In September 2026 the National Audit Office found that delivering the grid upgrades the target depends on by 2030 ‘will be very challenging’, and that none of the projects the system operator flagged for acceleration had been significantly accelerated.",
     "Electricity generation is measured for Great Britain; Northern Ireland is part of a separate grid."
    ],
    "chart": {
@@ -5824,14 +5827,31 @@
       "role": "accent"
      },
      {
-      "name": "2024",
-      "value": 73.8,
+      "name": "2025",
+      "value": 73.3,
       "role": "primary"
+     },
+     {
+      "name": "2024 (revised)",
+      "value": 73.7,
+      "role": "muted"
      }
     ],
-    "note": "Share of Great Britain's electricity generation from clean sources, on the government's Clean Power 2030 definition."
+    "note": "Share of Great Britain's electricity generation from clean sources on the government's Clean Power 2030 definition (DESNZ metric 1b)."
    },
    "sources": [
+    {
+     "publisher": "Department for Energy Security and Net Zero",
+     "title": "Clean Power 2030 metrics (2025 data published 2 April 2026)",
+     "url": "https://www.gov.uk/government/statistics/clean-power-2030-metrics",
+     "published": "2026-04-02"
+    },
+    {
+     "publisher": "Department for Energy Security and Net Zero",
+     "title": "Annual Report and Accounts 2025 to 2026: performance report",
+     "url": "https://www.gov.uk/government/publications/desnz-annual-report-and-accounts-2025-to-2026/performance-report",
+     "published": "2026-08-19"
+    },
     {
      "publisher": "Department for Energy Security and Net Zero",
      "title": "Clean Power 2030 Action Plan",
@@ -5839,18 +5859,19 @@
      "published": "2024-12-13"
     },
     {
-     "publisher": "House of Commons Library",
-     "title": "Clean power by 2030",
-     "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10182/"
+     "publisher": "National Audit Office",
+     "title": "Upgrading the electricity transmission network",
+     "url": "https://www.nao.org.uk/reports/upgrading-the-electricity-transmission-network/",
+     "published": "2026-09-11"
     }
    ],
-   "method": "Share of Great Britain's electricity generation from clean sources on the government's own Clean Power 2030 definition, as reported by the House of Commons Library from DESNZ Energy Trends.",
+   "method": "DESNZ Clean Power 2030 metric 1b: clean generation as a share of all Great Britain generation, where clean is nuclear plus renewables, excluding energy from waste and combined heat and power. Published once a year as accredited official statistics. Not comparable with the Energy Trends low-carbon share, which covers the whole UK and uses a wider definition.",
    "explainer": {
     "what": "The proportion of the electricity Britain generates that comes from renewables and nuclear rather than gas and coal.",
     "why": "It decides how exposed household bills are to world gas prices, and it is the government's central energy commitment."
    },
    "verified_on": "2026-09-21",
-   "recheck_by": "2026-12-31",
+   "recheck_by": "2027-03-31",
    "automated": false
   },
   {
