@@ -118,6 +118,9 @@ export const EDITORIAL: Record<string, Editorial> = {
   bank_rate: { group: 'condition', influence: 'indirect', better: 'none', betterNote: 'A higher or lower Bank Rate is a tool, not a goal, so its direction is not coloured.', labels: ['UK', 'Policy rate'], influenceNote: 'Set by the Bank of England’s Monetary Policy Committee, not by ministers.' },
   small_boats: { group: 'condition', influence: 'direct', better: 'lower', rollingSince: 12, labels: ['UK', 'Detected arrivals'], baselineNote: 'Crossings are strongly seasonal and depend on weather, so single months move sharply for reasons no government controls.', influenceNote: 'Border enforcement, the asylum system and deals with France are the government’s own responsibility, but crossings also follow weather, smuggling networks and conditions abroad.' },
   /* ------------------------------------------------------------ social cohesion */
+  asylum_backlog: { group: 'condition', influence: 'direct', better: 'lower', labels: ['UK', 'End of quarter'],
+    influenceNote: 'How fast claims are decided is a matter of Home Office staffing and process. How many claims arrive is not.' },
+
   asylum_hotels: { group: 'condition', influence: 'direct', better: 'lower', labels: ['UK', 'End of quarter'],
     baselineNote: 'Hotel numbers rose after the election before falling, so the two end points hide the shape of the series. The chart shows it in full.',
     betterNote: 'Lower is treated as better because the government and its critics both want hotel use to end. What replaces it — dispersal accommodation in towns and cities — is itself disputed, and is not measured here.',

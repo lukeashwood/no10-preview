@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T18:02:41+00:00",
+ "generated_at": "2026-09-20T18:34:07+00:00",
  "checks": [
   {
    "metric": "inflation",
@@ -131,7 +131,21 @@
    "metric": "returns",
    "check": "plausible range",
    "status": "pass",
-   "detail": "returns over 12 months = 59251 within [0, 500000]",
+   "detail": "returns over 12 months = 40605 within [0, 500000]",
+   "critical": false
+  },
+  {
+   "metric": "asylum_backlog",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-06-30 (83 days old)",
+   "critical": false
+  },
+  {
+   "metric": "asylum_backlog",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "claims awaiting an initial decision = 40168 within [0, 500000]",
    "critical": false
   },
   {

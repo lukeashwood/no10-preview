@@ -717,8 +717,12 @@ def returns():
         pts = sorted(d.items())
         return [[pts[i][0], int(sum(v for _, v in pts[i - 3:i + 1]))] for i in range(3, len(pts))]
 
-    total = {k: sum(g.get(k, 0) for g in groups.values()) for k in groups["Enforced return"]}
-    tot_r, enf_r, vol_r = roll4(total), roll4(groups["Enforced return"]), roll4(groups["Voluntary return"])
+    # The Home Office's headline "returns" figure is enforced plus voluntary. People refused entry at the border who
+    # then left are counted and published separately, and folding them in inflates the total by about half again,
+    # which is why press figures often fail to reconcile with the bulletin. The headline here matches the bulletin.
+    port = groups["Refused entry at port and subsequently departed"]
+    total = {k: groups["Enforced return"].get(k, 0) + groups["Voluntary return"].get(k, 0) for k in groups["Enforced return"]}
+    tot_r, enf_r, vol_r, port_r = roll4(total), roll4(groups["Enforced return"]), roll4(groups["Voluntary return"]), roll4(port)
     d, v = tot_r[-1]
     check_fresh(mid, d, 130)
     check_range(mid, "returns over 12 months", v, 0, 500000)
@@ -733,23 +737,87 @@ def returns():
         "context": [
             f"{v:,} people were returned in the 12 months to {period_label(d, 'm')}, against {base[1]:,} in the 12 months to the election: "
             f"a change of {pct(base[1], v):+.1f}%.",
-            f"Of the latest 12 months, {enf_r[-1][1]:,} were enforced returns and {vol_r[-1][1]:,} were voluntary. "
-            "The rest were people refused entry at the border who then left.",
-            "Enforced returns are the smallest of the three groups, and the one ministers are usually asked about.",
+            f"Of those, {enf_r[-1][1]:,} were enforced returns and {vol_r[-1][1]:,} were voluntary. "
+            "Enforced returns are much the smaller share, and the one ministers are usually asked about.",
+            f"A further {port_r[-1][1]:,} people were refused entry at the border and subsequently left. The Home Office counts "
+            "these separately and they are not in the headline figure, which is why totals quoted elsewhere are sometimes much higher.",
             "A return is not the same as a deportation, which is a specific power used mainly after a criminal conviction.",
         ],
         "chart": {"kind": "line", "unit": "", "decimals": 0, "freq": "q",
                   "series": [{"name": "All returns", "role": "primary", "points": since(tot_r, "2014-01-01")},
                              {"name": "Enforced returns", "role": "muted", "points": since(enf_r, "2014-01-01")},
-                             {"name": "Voluntary returns", "role": "muted", "points": since(vol_r, "2014-01-01")}],
-                  "note": "Home Office returns data (table Ret_D02), as rolling four-quarter totals so the seasonal pattern does not distort the trend."},
+                             {"name": "Voluntary returns", "role": "muted", "points": since(vol_r, "2014-01-01")},
+                             {"name": "Refused entry at the border", "role": "muted", "points": since(port_r, "2014-01-01")}],
+                  "note": "Home Office returns data (table Ret_D02), as rolling four-quarter totals so the seasonal pattern does not distort the trend. 'All returns' is the Home Office headline measure: enforced plus voluntary. People refused entry at the border are shown separately and are not included in it."},
         "sources": [{"publisher": "Home Office", "title": "Immigration system statistics: returns from the UK (Ret_D02)",
                      "url": "https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables",
                      "data_url": url, "series": ["Returns from the UK by return destination and return type (Ret_D02)"],
                      "retrieved_at": NOW.isoformat(timespec="seconds"), "automated": True}],
-        "method": "Home Office quarterly returns dataset Ret_D02, summed across destinations into rolling four-quarter totals. 'Returns' covers enforced returns, voluntary returns and people refused entry at the border who subsequently left.",
+        "method": "Home Office quarterly returns dataset Ret_D02, summed across destinations into rolling four-quarter totals. The headline follows the Home Office's own definition of a return: enforced returns plus voluntary returns. People refused entry at the border who subsequently departed are a separate published category and are charted separately rather than added in.",
         "explainer": {"what": "The number of people leaving the UK who had no right to remain, whether removed by the Home Office or leaving voluntarily.",
                       "why": "Arrivals get the attention, but a system's credibility rests on whether people refused permission to stay actually leave. Governments of both parties are judged on this figure."},
+    }
+
+
+@metric
+def asylum_backlog():
+    mid = "asylum_backlog"
+    url = home_office_table(r"asylum-claims-awaiting-decision-datasets-[a-z]{3}-\d{4}\.xlsx")
+    blob = get(url, binary=True)
+    months = {"Mar": "03-31", "Jun": "06-30", "Sep": "09-30", "Dec": "12-31"}
+    pending, long_wait = {}, {}
+    for i, cells in enumerate(xlsx_rows(blob, "Data_Asy_D03")):
+        if i < 2 or len(cells) < 8:
+            continue
+        key = months.get(cells[0].strip()[3:6])
+        if not key:
+            continue
+        iso = f"{cells[0].strip()[-4:]}-{key}"
+        try:
+            n = float(cells[7])
+        except ValueError:
+            continue
+        pending[iso] = pending.get(iso, 0) + n
+        # Duration buckets are "Less than 3 months", "3 months to less than 6 months",
+        # "6 months to less than 12 months" and "12 months or more".
+        if cells[6].startswith("6 months") or cells[6].startswith("12 months"):
+            long_wait[iso] = long_wait.get(iso, 0) + n
+    if not pending:
+        raise RuntimeError("asylum backlog: no rows parsed")
+    points = [[iso, int(n)] for iso, n in sorted(pending.items())]
+    d, v = points[-1]
+    check_fresh(mid, d, 130)
+    check_range(mid, "claims awaiting an initial decision", v, 0, 500000)
+    peak = max(points, key=lambda p: p[1])
+    base = at(points, BASE_Q)
+    over6 = [[iso, int(n)] for iso, n in sorted(long_wait.items())]
+    return {
+        "id": mid, "section": "cohesion", "title": "Asylum backlog",
+        "question": "How many people are waiting for a first decision on an asylum claim?",
+        "headline": {"value": v, "unit": "", "decimals": 0, "period": period_label(d, "q"),
+                     "caption": "people awaiting an initial decision on an asylum claim"},
+        "benchmark": {"label": "Peak", "text": f"{peak[1]:,} ({period_label(peak[0], 'q')})"},
+        "baseline": {"label": "At the election", "value": base[1], "unit": ""},
+        "context": [
+            f"{v:,} people were waiting for a first decision at {period_label(d, 'q')}, against {base[1]:,} at the election: "
+            f"{pct(base[1], v):+.1f}%.",
+            f"The highest figure in this series is {peak[1]:,}, in {period_label(peak[0], 'q')}, under the previous government.",
+            "The backlog and hotel use move together: people waiting on a decision are the people who need accommodation, "
+            "so deciding claims faster is the main way hotel numbers come down.",
+            "This counts claims awaiting an initial Home Office decision. It does not count appeals, which are heard by the courts "
+            "and have a backlog of their own.",
+        ],
+        "chart": {"kind": "line", "unit": "", "decimals": 0, "freq": "q",
+                  "series": [{"name": "Awaiting an initial decision", "role": "primary", "points": points}]
+                            + ([{"name": "Waiting more than six months", "role": "muted", "points": over6}] if len(over6) > 4 else []),
+                  "note": "Home Office quarterly asylum data (table Asy_D03), people awaiting an initial decision at the end of each quarter."},
+        "sources": [{"publisher": "Home Office", "title": "Immigration system statistics: asylum claims awaiting a decision (Asy_D03)",
+                     "url": "https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables",
+                     "data_url": url, "series": ["Asylum claims awaiting an initial decision or further review (Asy_D03)"],
+                     "retrieved_at": NOW.isoformat(timespec="seconds"), "automated": True}],
+        "method": "Home Office quarterly dataset Asy_D03: people with a claim awaiting an initial decision at the end of each quarter, summed across nationalities. The published bulletin also reports a lower figure counting cases rather than people, because one case can cover a family.",
+        "explainer": {"what": "The number of people who have claimed asylum and are still waiting to be told whether they can stay.",
+                      "why": "Almost everything else follows from it. People waiting are people the state houses and supports, so the backlog drives the cost, the hotels and the local tension around them."},
     }
 
 
