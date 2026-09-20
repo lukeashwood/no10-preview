@@ -14,7 +14,7 @@ Sources
 
 Run: python3 pipeline/update.py
 """
-import csv, datetime as dt, io, json, os, re, ssl, sys, urllib.error, urllib.request, zipfile
+import csv, datetime as dt, io, json, os, re, ssl, sys, time, urllib.error, urllib.request, zipfile
 from xml.etree import ElementTree as ET
 
 
@@ -54,7 +54,9 @@ def log(metric, check, status, detail, critical=False):
 
 def get(url, key=None, binary=False):
     req = urllib.request.Request(url, headers=UA)
-    for attempt in range(3):
+    # Back off between attempts. A run makes dozens of requests to the same few hosts, and without a pause a
+    # rate-limited blip drops the metric from the site entirely rather than just being retried.
+    for attempt in range(4):
         try:
             with urllib.request.urlopen(req, timeout=60, context=SSL) as r:
                 raw = r.read()
@@ -62,8 +64,9 @@ def get(url, key=None, binary=False):
                 SOURCES[key] = NOW.isoformat(timespec="seconds")
             return raw if binary else raw.decode("utf-8-sig", errors="replace")
         except (urllib.error.URLError, TimeoutError) as e:
-            if attempt == 2:
+            if attempt == 3:
                 raise RuntimeError(f"could not fetch {url}: {e}")
+            time.sleep(3 * (attempt + 1) ** 2)
 
 
 # --------------------------------------------------------------------------- dates
@@ -1125,7 +1128,7 @@ def main():
             results.append(m)
         except Exception as e:
             failed.append(name)
-            log(name, "fetch", "fail", str(e)[:200], critical=True)
+            log(name, "fetch", "fail", str(e)[:400], critical=True)
 
     manual_path = os.path.join(HERE, "manual.json")
     manual = json.load(open(manual_path, encoding="utf-8")) if os.path.exists(manual_path) else {"metrics": []}
