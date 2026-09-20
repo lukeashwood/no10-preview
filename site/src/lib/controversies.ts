@@ -1,5 +1,6 @@
 import disputes from '../data/disputes.json';
 import { UK_DISPUTES } from './disputes-uk';
+import { COHESION_DISPUTES } from './disputes-cohesion';
 
 export interface Src { title: string; url: string }
 /** One strand of a disputed policy: what is claimed, by whom, and what the record shows. */
@@ -10,7 +11,7 @@ export interface Controversy {
   points?: Point[]; figures?: { label: string; value: string; note: string }[]; sources: Src[]; verified_on: string;
 }
 
-export const CONTROVERSIES: Controversy[] = [...UK_DISPUTES, ...(disputes.items as Controversy[])].sort((a, b) => Number(!!b.featured) - Number(!!a.featured) || b.date.localeCompare(a.date));
+export const CONTROVERSIES: Controversy[] = [...COHESION_DISPUTES, ...UK_DISPUTES, ...(disputes.items as Controversy[])].sort((a, b) => Number(!!b.featured) - Number(!!a.featured) || b.date.localeCompare(a.date));
 export const STATUS_LABEL = { ongoing: 'Ongoing', resolved: 'Resolved', 'no-finding': 'No inquiry or finding' } as const;
 export const TYPE_LABEL = { policy: 'Policy or decision in dispute', conduct: 'Ministerial conduct' } as const;
 export const STANDING_LABEL = { established: 'Established', contested: 'Contested', unverified: 'Not supported by the record' } as const;
