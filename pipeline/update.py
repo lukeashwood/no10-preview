@@ -566,6 +566,7 @@ SECTIONS = [
     {"id": "borders", "title": "Borders and migration", "blurb": "Who is arriving, and how."},
     {"id": "energy", "title": "Energy", "blurb": "Bills and where power comes from."},
     {"id": "crime", "title": "Crime and policing", "blurb": "Police numbers and public safety."},
+    {"id": "cohesion", "title": "Social cohesion", "blurb": "Whether communities hold together: trust, integration, asylum accommodation and public order."},
     {"id": "education", "title": "Schools", "blurb": "How children are doing."},
 ]
 

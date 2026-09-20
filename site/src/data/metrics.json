@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated_at": "2026-09-20T17:44:45+00:00",
+  "generated_at": "2026-09-20T17:52:49+00:00",
   "checks_total": 15,
   "checks_passed": 15,
   "checks_warn": 0,
@@ -53,6 +53,11 @@
    "id": "crime",
    "title": "Crime and policing",
    "blurb": "Police numbers and public safety."
+  },
+  {
+   "id": "cohesion",
+   "title": "Social cohesion",
+   "blurb": "Whether communities hold together: trust, integration, asylum accommodation and public order."
   },
   {
    "id": "education",
@@ -674,7 +679,7 @@
      "series": [
       "CPI annual rate and CPI index, all items (D7G7, D7BT)"
      ],
-     "retrieved_at": "2026-09-20T17:44:45+00:00",
+     "retrieved_at": "2026-09-20T17:52:49+00:00",
      "automated": true
     }
    ],
@@ -684,7 +689,7 @@
     "why": "The Bank of England is required to keep inflation at 2%. When pay rises more slowly than prices, households are worse off even though wages are going up."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:44:45+00:00"
+   "updated_at": "2026-09-20T17:52:49+00:00"
   },
   {
    "id": "real_wages",
@@ -1298,7 +1303,7 @@
      "series": [
       "AWE whole economy, real terms level, regular pay, seasonally adjusted (A3WX)"
      ],
-     "retrieved_at": "2026-09-20T17:44:45+00:00",
+     "retrieved_at": "2026-09-20T17:52:49+00:00",
      "automated": true
     }
    ],
@@ -1308,7 +1313,7 @@
     "why": "This is the clearest measure of whether working people are better or worse off than they were."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:44:45+00:00"
+   "updated_at": "2026-09-20T17:52:49+00:00"
   },
   {
    "id": "homes",
@@ -1993,7 +1998,7 @@
      "series": [
       "Unemployment rate, employment rate and inactivity rate, seasonally adjusted (MGSX, LF24, LF2S)"
      ],
-     "retrieved_at": "2026-09-20T17:44:45+00:00",
+     "retrieved_at": "2026-09-20T17:52:49+00:00",
      "automated": true
     }
    ],
@@ -2003,7 +2008,7 @@
     "why": "It is the clearest measure of whether the jobs market is getting easier or harder, though it misses people who have stopped looking."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:44:45+00:00"
+   "updated_at": "2026-09-20T17:52:49+00:00"
   },
   {
    "id": "gdp_vs_capita",
@@ -2427,7 +2432,7 @@
      "series": [
       "Gross domestic product and GDP per head, chained volume measures, seasonally adjusted (ABMI, IHXW)"
      ],
-     "retrieved_at": "2026-09-20T17:44:45+00:00",
+     "retrieved_at": "2026-09-20T17:52:49+00:00",
      "automated": true
     }
    ],
@@ -2437,7 +2442,7 @@
     "why": "Total GDP can grow simply because there are more people. GDP per person is the better guide to living standards."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:44:45+00:00"
+   "updated_at": "2026-09-20T17:52:49+00:00"
   },
   {
    "id": "productivity",
@@ -2673,7 +2678,7 @@
      "series": [
       "UK whole economy output per hour worked, seasonally adjusted (LZVB)"
      ],
-     "retrieved_at": "2026-09-20T17:44:45+00:00",
+     "retrieved_at": "2026-09-20T17:52:49+00:00",
      "automated": true
     }
    ],
@@ -2683,7 +2688,7 @@
     "why": "Sustained pay rises and better public services ultimately depend on producing more per hour. UK productivity has grown slowly since the financial crisis."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:44:45+00:00"
+   "updated_at": "2026-09-20T17:52:49+00:00"
   },
   {
    "id": "bank_rate",
@@ -3861,7 +3866,7 @@
       "IUMBV34",
       "IUMTLMV"
      ],
-     "retrieved_at": "2026-09-20T17:44:45+00:00",
+     "retrieved_at": "2026-09-20T17:52:49+00:00",
      "automated": true
     }
    ],
@@ -3871,7 +3876,7 @@
     "why": "It is the main tool for controlling inflation, and it decides what mortgages cost. The government does not set it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:44:45+00:00"
+   "updated_at": "2026-09-20T17:52:49+00:00"
   },
   {
    "id": "borrowing",
@@ -4341,7 +4346,7 @@
      "series": [
       "Public sector net borrowing excluding public sector banks, £ million (J5II)"
      ],
-     "retrieved_at": "2026-09-20T17:44:45+00:00",
+     "retrieved_at": "2026-09-20T17:52:49+00:00",
      "automated": true
     }
    ],
@@ -4351,7 +4356,7 @@
     "why": "Every pound borrowed is added to the national debt and has to be serviced out of future taxes."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:44:45+00:00"
+   "updated_at": "2026-09-20T17:52:49+00:00"
   },
   {
    "id": "debt",
@@ -5202,7 +5207,7 @@
      "series": [
       "Public sector net debt excluding public sector banks, as a share of GDP (HF6X)"
      ],
-     "retrieved_at": "2026-09-20T17:44:45+00:00",
+     "retrieved_at": "2026-09-20T17:52:49+00:00",
      "automated": true
     }
    ],
@@ -5212,7 +5217,7 @@
     "why": "Interest on this debt is paid before anything else. The larger it is relative to the economy, the more of each year's taxes go to servicing it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:44:45+00:00"
+   "updated_at": "2026-09-20T17:52:49+00:00"
   },
   {
    "id": "nhs_18_weeks",
@@ -5774,7 +5779,7 @@
      "series": [
       "Migrants detected crossing the English Channel in small boats — daily time series (SB_01)"
      ],
-     "retrieved_at": "2026-09-20T17:44:45+00:00",
+     "retrieved_at": "2026-09-20T17:52:49+00:00",
      "automated": true
     }
    ],
@@ -5784,7 +5789,7 @@
     "why": "It is the most visible measure of control of the border, and the figure most often cited in the debate about asylum. It is published weekly, so it is unusually current."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:44:45+00:00"
+   "updated_at": "2026-09-20T17:52:49+00:00"
   },
   {
    "id": "clean_power",
