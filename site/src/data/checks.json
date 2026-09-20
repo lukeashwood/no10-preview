@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T17:57:25+00:00",
+ "generated_at": "2026-09-20T18:00:11+00:00",
  "checks": [
   {
    "metric": "inflation",
@@ -104,6 +104,20 @@
    "check": "freshness",
    "status": "pass",
    "detail": "latest observation 2026-09-17 (4 days old)",
+   "critical": false
+  },
+  {
+   "metric": "returns",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-06-30 (83 days old)",
+   "critical": false
+  },
+  {
+   "metric": "returns",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "returns over 12 months = 59251 within [0, 500000]",
    "critical": false
   },
   {

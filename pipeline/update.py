@@ -9,7 +9,8 @@ Sources
   ONS        www.ons.gov.uk time series (JSON)          inflation, wages, jobs, GDP, productivity, public finances
   Bank of England  IADB CSV                              Bank Rate, mortgage rates
   Home Office  small boats time series (ODS)             small boat arrivals
-  manual.json  hand-read figures that have no feed       Plan for Change milestones, net migration, house prices
+  Home Office  immigration system statistics (XLSX)       asylum accommodation, returns and removals
+  manual.json  hand-read figures that have no feed       Plan for Change milestones, net migration
 
 Run: python3 pipeline/update.py
 """
@@ -596,6 +597,69 @@ def small_boat_arrivals():
         "method": "Home Office transparency data: daily counts of people detected arriving in the UK in small boats, summed by calendar month. The series begins in 2018 and is updated weekly. The incomplete current month is excluded. These figures count arrivals detected by Border Force, and are not the same as asylum claims or as total irregular migration.",
         "explainer": {"what": "The number of people detected crossing the English Channel in small boats and arriving in the UK.",
                       "why": "It is the most visible measure of control of the border, and the figure most often cited in the debate about asylum. It is published weekly, so it is unusually current."},
+    }
+
+
+@metric
+def returns():
+    mid = "returns"
+    url = home_office_table(r"returns-datasets-[a-z]{3}-\d{4}\.xlsx")
+    blob = get(url, binary=True)
+    qe = {"Q1": "03-31", "Q2": "06-30", "Q3": "09-30", "Q4": "12-31"}
+    groups = {"Enforced return": {}, "Voluntary return": {}, "Refused entry at port and subsequently departed": {}}
+    for i, cells in enumerate(xlsx_rows(blob, "Data_Ret_D02")):
+        if i < 2 or len(cells) < 7:
+            continue
+        q, group = cells[1].strip(), cells[4]
+        if group not in groups or q[-2:] not in qe:
+            continue
+        try:
+            n = float(cells[6])
+        except ValueError:
+            continue
+        iso = f"{q[:4]}-{qe[q[-2:]]}"
+        groups[group][iso] = groups[group].get(iso, 0) + n
+    if not groups["Enforced return"]:
+        raise RuntimeError("returns: no rows parsed")
+
+    def roll4(d):
+        """Four-quarter rolling total, so a quarterly series reads as an annual one."""
+        pts = sorted(d.items())
+        return [[pts[i][0], int(sum(v for _, v in pts[i - 3:i + 1]))] for i in range(3, len(pts))]
+
+    total = {k: sum(g.get(k, 0) for g in groups.values()) for k in groups["Enforced return"]}
+    tot_r, enf_r, vol_r = roll4(total), roll4(groups["Enforced return"]), roll4(groups["Voluntary return"])
+    d, v = tot_r[-1]
+    check_fresh(mid, d, 130)
+    check_range(mid, "returns over 12 months", v, 0, 500000)
+    base = at(tot_r, BASE_Q)
+    return {
+        "id": mid, "section": "borders", "title": "Returns and removals",
+        "question": "How many people with no right to be in the UK are actually leaving?",
+        "headline": {"value": v, "unit": "", "decimals": 0, "period": f"12 months to {period_label(d, 'm')}",
+                     "caption": "people returned from the UK over the past 12 months"},
+        "benchmark": {"label": "At the election", "text": f"{base[1]:,}"},
+        "baseline": {"label": "12 months to the election", "value": base[1], "unit": ""},
+        "context": [
+            f"{v:,} people were returned in the 12 months to {period_label(d, 'm')}, against {base[1]:,} in the 12 months to the election: "
+            f"a change of {pct(base[1], v):+.1f}%.",
+            f"Of the latest 12 months, {enf_r[-1][1]:,} were enforced returns and {vol_r[-1][1]:,} were voluntary. "
+            "The rest were people refused entry at the border who then left.",
+            "Enforced returns are the smallest of the three groups, and the one ministers are usually asked about.",
+            "A return is not the same as a deportation, which is a specific power used mainly after a criminal conviction.",
+        ],
+        "chart": {"kind": "line", "unit": "", "decimals": 0, "freq": "q",
+                  "series": [{"name": "All returns", "role": "primary", "points": since(tot_r, "2014-01-01")},
+                             {"name": "Enforced returns", "role": "muted", "points": since(enf_r, "2014-01-01")},
+                             {"name": "Voluntary returns", "role": "muted", "points": since(vol_r, "2014-01-01")}],
+                  "note": "Home Office returns data (table Ret_D02), as rolling four-quarter totals so the seasonal pattern does not distort the trend."},
+        "sources": [{"publisher": "Home Office", "title": "Immigration system statistics: returns from the UK (Ret_D02)",
+                     "url": "https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables",
+                     "data_url": url, "series": ["Returns from the UK by return destination and return type (Ret_D02)"],
+                     "retrieved_at": NOW.isoformat(timespec="seconds"), "automated": True}],
+        "method": "Home Office quarterly returns dataset Ret_D02, summed across destinations into rolling four-quarter totals. 'Returns' covers enforced returns, voluntary returns and people refused entry at the border who subsequently left.",
+        "explainer": {"what": "The number of people leaving the UK who had no right to remain, whether removed by the Home Office or leaving voluntarily.",
+                      "why": "Arrivals get the attention, but a system's credibility rests on whether people refused permission to stay actually leave. Governments of both parties are judged on this figure."},
     }
 
 

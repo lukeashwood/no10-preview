@@ -1,11 +1,11 @@
 {
  "summary": {
-  "generated_at": "2026-09-20T17:57:25+00:00",
-  "checks_total": 17,
-  "checks_passed": 17,
+  "generated_at": "2026-09-20T18:00:11+00:00",
+  "checks_total": 19,
+  "checks_passed": 19,
   "checks_warn": 0,
   "checks_failed": 0,
-  "metrics_total": 16
+  "metrics_total": 17
  },
  "election": "2024-07-04",
  "sections": [
@@ -679,7 +679,7 @@
      "series": [
       "CPI annual rate and CPI index, all items (D7G7, D7BT)"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -689,7 +689,7 @@
     "why": "The Bank of England is required to keep inflation at 2%. When pay rises more slowly than prices, households are worse off even though wages are going up."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "real_wages",
@@ -1303,7 +1303,7 @@
      "series": [
       "AWE whole economy, real terms level, regular pay, seasonally adjusted (A3WX)"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -1313,7 +1313,7 @@
     "why": "This is the clearest measure of whether working people are better or worse off than they were."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "homes",
@@ -1998,7 +1998,7 @@
      "series": [
       "Unemployment rate, employment rate and inactivity rate, seasonally adjusted (MGSX, LF24, LF2S)"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -2008,7 +2008,7 @@
     "why": "It is the clearest measure of whether the jobs market is getting easier or harder, though it misses people who have stopped looking."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "gdp_vs_capita",
@@ -2432,7 +2432,7 @@
      "series": [
       "Gross domestic product and GDP per head, chained volume measures, seasonally adjusted (ABMI, IHXW)"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -2442,7 +2442,7 @@
     "why": "Total GDP can grow simply because there are more people. GDP per person is the better guide to living standards."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "productivity",
@@ -2678,7 +2678,7 @@
      "series": [
       "UK whole economy output per hour worked, seasonally adjusted (LZVB)"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -2688,7 +2688,7 @@
     "why": "Sustained pay rises and better public services ultimately depend on producing more per hour. UK productivity has grown slowly since the financial crisis."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "bank_rate",
@@ -3866,7 +3866,7 @@
       "IUMBV34",
       "IUMTLMV"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -3876,7 +3876,7 @@
     "why": "It is the main tool for controlling inflation, and it decides what mortgages cost. The government does not set it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "borrowing",
@@ -4346,7 +4346,7 @@
      "series": [
       "Public sector net borrowing excluding public sector banks, £ million (J5II)"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -4356,7 +4356,7 @@
     "why": "Every pound borrowed is added to the national debt and has to be serviced out of future taxes."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "debt",
@@ -5207,7 +5207,7 @@
      "series": [
       "Public sector net debt excluding public sector banks, as a share of GDP (HF6X)"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -5217,7 +5217,7 @@
     "why": "Interest on this debt is paid before anything else. The larger it is relative to the economy, the more of each year's taxes go to servicing it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "nhs_18_weeks",
@@ -5358,6 +5358,681 @@
    "verified_on": "2026-09-21",
    "recheck_by": "2026-12-01",
    "automated": false
+  },
+  {
+   "id": "returns",
+   "section": "borders",
+   "title": "Returns and removals",
+   "question": "How many people with no right to be in the UK are actually leaving?",
+   "headline": {
+    "value": 59251,
+    "unit": "",
+    "decimals": 0,
+    "period": "12 months to Jun 2026",
+    "caption": "people returned from the UK over the past 12 months"
+   },
+   "benchmark": {
+    "label": "At the election",
+    "text": "55,019"
+   },
+   "baseline": {
+    "label": "12 months to the election",
+    "value": 55019,
+    "unit": ""
+   },
+   "context": [
+    "59,251 people were returned in the 12 months to Jun 2026, against 55,019 in the 12 months to the election: a change of +7.7%.",
+    "Of the latest 12 months, 9,669 were enforced returns and 30,936 were voluntary. The rest were people refused entry at the border who then left.",
+    "Enforced returns are the smallest of the three groups, and the one ministers are usually asked about.",
+    "A return is not the same as a deportation, which is a specific power used mainly after a criminal conviction."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "",
+    "decimals": 0,
+    "freq": "q",
+    "series": [
+     {
+      "name": "All returns",
+      "role": "primary",
+      "points": [
+       [
+        "2014-03-31",
+        61399
+       ],
+       [
+        "2014-06-30",
+        59771
+       ],
+       [
+        "2014-09-30",
+        58845
+       ],
+       [
+        "2014-12-31",
+        57915
+       ],
+       [
+        "2015-03-31",
+        57379
+       ],
+       [
+        "2015-06-30",
+        58408
+       ],
+       [
+        "2015-09-30",
+        59494
+       ],
+       [
+        "2015-12-31",
+        61213
+       ],
+       [
+        "2016-03-31",
+        61810
+       ],
+       [
+        "2016-06-30",
+        61626
+       ],
+       [
+        "2016-09-30",
+        60449
+       ],
+       [
+        "2016-12-31",
+        58293
+       ],
+       [
+        "2017-03-31",
+        57061
+       ],
+       [
+        "2017-06-30",
+        54368
+       ],
+       [
+        "2017-09-30",
+        52955
+       ],
+       [
+        "2017-12-31",
+        51240
+       ],
+       [
+        "2018-03-31",
+        48991
+       ],
+       [
+        "2018-06-30",
+        47535
+       ],
+       [
+        "2018-09-30",
+        45566
+       ],
+       [
+        "2018-12-31",
+        44593
+       ],
+       [
+        "2019-03-31",
+        43376
+       ],
+       [
+        "2019-06-30",
+        42157
+       ],
+       [
+        "2019-09-30",
+        40132
+       ],
+       [
+        "2019-12-31",
+        38236
+       ],
+       [
+        "2020-03-31",
+        35080
+       ],
+       [
+        "2020-06-30",
+        27344
+       ],
+       [
+        "2020-09-30",
+        22893
+       ],
+       [
+        "2020-12-31",
+        18528
+       ],
+       [
+        "2021-03-31",
+        16030
+       ],
+       [
+        "2021-06-30",
+        21880
+       ],
+       [
+        "2021-09-30",
+        25785
+       ],
+       [
+        "2021-12-31",
+        28909
+       ],
+       [
+        "2022-03-31",
+        33006
+       ],
+       [
+        "2022-06-30",
+        34566
+       ],
+       [
+        "2022-09-30",
+        36187
+       ],
+       [
+        "2022-12-31",
+        38351
+       ],
+       [
+        "2023-03-31",
+        41395
+       ],
+       [
+        "2023-06-30",
+        44887
+       ],
+       [
+        "2023-09-30",
+        48530
+       ],
+       [
+        "2023-12-31",
+        51579
+       ],
+       [
+        "2024-03-31",
+        53463
+       ],
+       [
+        "2024-06-30",
+        55019
+       ],
+       [
+        "2024-09-30",
+        56552
+       ],
+       [
+        "2024-12-31",
+        58215
+       ],
+       [
+        "2025-03-31",
+        59049
+       ],
+       [
+        "2025-06-30",
+        58399
+       ],
+       [
+        "2025-09-30",
+        58000
+       ],
+       [
+        "2025-12-31",
+        58069
+       ],
+       [
+        "2026-03-31",
+        57966
+       ],
+       [
+        "2026-06-30",
+        59251
+       ]
+      ]
+     },
+     {
+      "name": "Enforced returns",
+      "role": "muted",
+      "points": [
+       [
+        "2014-03-31",
+        14593
+       ],
+       [
+        "2014-06-30",
+        14033
+       ],
+       [
+        "2014-09-30",
+        13822
+       ],
+       [
+        "2014-12-31",
+        13541
+       ],
+       [
+        "2015-03-31",
+        13301
+       ],
+       [
+        "2015-06-30",
+        13265
+       ],
+       [
+        "2015-09-30",
+        12990
+       ],
+       [
+        "2015-12-31",
+        12921
+       ],
+       [
+        "2016-03-31",
+        12580
+       ],
+       [
+        "2016-06-30",
+        12327
+       ],
+       [
+        "2016-09-30",
+        12126
+       ],
+       [
+        "2016-12-31",
+        11903
+       ],
+       [
+        "2017-03-31",
+        12181
+       ],
+       [
+        "2017-06-30",
+        12007
+       ],
+       [
+        "2017-09-30",
+        11974
+       ],
+       [
+        "2017-12-31",
+        11741
+       ],
+       [
+        "2018-03-31",
+        11229
+       ],
+       [
+        "2018-06-30",
+        10708
+       ],
+       [
+        "2018-09-30",
+        9978
+       ],
+       [
+        "2018-12-31",
+        9236
+       ],
+       [
+        "2019-03-31",
+        8460
+       ],
+       [
+        "2019-06-30",
+        7894
+       ],
+       [
+        "2019-09-30",
+        7465
+       ],
+       [
+        "2019-12-31",
+        7198
+       ],
+       [
+        "2020-03-31",
+        6674
+       ],
+       [
+        "2020-06-30",
+        5236
+       ],
+       [
+        "2020-09-30",
+        4394
+       ],
+       [
+        "2020-12-31",
+        3383
+       ],
+       [
+        "2021-03-31",
+        2447
+       ],
+       [
+        "2021-06-30",
+        2939
+       ],
+       [
+        "2021-09-30",
+        2861
+       ],
+       [
+        "2021-12-31",
+        2788
+       ],
+       [
+        "2022-03-31",
+        3265
+       ],
+       [
+        "2022-06-30",
+        3273
+       ],
+       [
+        "2022-09-30",
+        3524
+       ],
+       [
+        "2022-12-31",
+        3806
+       ],
+       [
+        "2023-03-31",
+        4116
+       ],
+       [
+        "2023-06-30",
+        4878
+       ],
+       [
+        "2023-09-30",
+        5464
+       ],
+       [
+        "2023-12-31",
+        6362
+       ],
+       [
+        "2024-03-31",
+        7034
+       ],
+       [
+        "2024-06-30",
+        7251
+       ],
+       [
+        "2024-09-30",
+        7717
+       ],
+       [
+        "2024-12-31",
+        8171
+       ],
+       [
+        "2025-03-31",
+        8594
+       ],
+       [
+        "2025-06-30",
+        9077
+       ],
+       [
+        "2025-09-30",
+        9389
+       ],
+       [
+        "2025-12-31",
+        9908
+       ],
+       [
+        "2026-03-31",
+        9735
+       ],
+       [
+        "2026-06-30",
+        9669
+       ]
+      ]
+     },
+     {
+      "name": "Voluntary returns",
+      "role": "muted",
+      "points": [
+       [
+        "2014-03-31",
+        31845
+       ],
+       [
+        "2014-06-30",
+        30490
+       ],
+       [
+        "2014-09-30",
+        29214
+       ],
+       [
+        "2014-12-31",
+        27815
+       ],
+       [
+        "2015-03-31",
+        27090
+       ],
+       [
+        "2015-06-30",
+        27876
+       ],
+       [
+        "2015-09-30",
+        29120
+       ],
+       [
+        "2015-12-31",
+        30210
+       ],
+       [
+        "2016-03-31",
+        30770
+       ],
+       [
+        "2016-06-30",
+        30562
+       ],
+       [
+        "2016-09-30",
+        29724
+       ],
+       [
+        "2016-12-31",
+        28474
+       ],
+       [
+        "2017-03-31",
+        26982
+       ],
+       [
+        "2017-06-30",
+        24790
+       ],
+       [
+        "2017-09-30",
+        22820
+       ],
+       [
+        "2017-12-31",
+        20979
+       ],
+       [
+        "2018-03-31",
+        19277
+       ],
+       [
+        "2018-06-30",
+        18044
+       ],
+       [
+        "2018-09-30",
+        16784
+       ],
+       [
+        "2018-12-31",
+        15702
+       ],
+       [
+        "2019-03-31",
+        14686
+       ],
+       [
+        "2019-06-30",
+        14241
+       ],
+       [
+        "2019-09-30",
+        13373
+       ],
+       [
+        "2019-12-31",
+        12574
+       ],
+       [
+        "2020-03-31",
+        11140
+       ],
+       [
+        "2020-06-30",
+        8436
+       ],
+       [
+        "2020-09-30",
+        6737
+       ],
+       [
+        "2020-12-31",
+        5009
+       ],
+       [
+        "2021-03-31",
+        3550
+       ],
+       [
+        "2021-06-30",
+        5032
+       ],
+       [
+        "2021-09-30",
+        6129
+       ],
+       [
+        "2021-12-31",
+        7352
+       ],
+       [
+        "2022-03-31",
+        8853
+       ],
+       [
+        "2022-06-30",
+        9263
+       ],
+       [
+        "2022-09-30",
+        9982
+       ],
+       [
+        "2022-12-31",
+        11014
+       ],
+       [
+        "2023-03-31",
+        13028
+       ],
+       [
+        "2023-06-30",
+        15512
+       ],
+       [
+        "2023-09-30",
+        18159
+       ],
+       [
+        "2023-12-31",
+        20475
+       ],
+       [
+        "2024-03-31",
+        22312
+       ],
+       [
+        "2024-06-30",
+        23901
+       ],
+       [
+        "2024-09-30",
+        25441
+       ],
+       [
+        "2024-12-31",
+        26851
+       ],
+       [
+        "2025-03-31",
+        27987
+       ],
+       [
+        "2025-06-30",
+        28407
+       ],
+       [
+        "2025-09-30",
+        28806
+       ],
+       [
+        "2025-12-31",
+        29807
+       ],
+       [
+        "2026-03-31",
+        30467
+       ],
+       [
+        "2026-06-30",
+        30936
+       ]
+      ]
+     }
+    ],
+    "note": "Home Office returns data (table Ret_D02), as rolling four-quarter totals so the seasonal pattern does not distort the trend."
+   },
+   "sources": [
+    {
+     "publisher": "Home Office",
+     "title": "Immigration system statistics: returns from the UK (Ret_D02)",
+     "url": "https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables",
+     "data_url": "https://assets.publishing.service.gov.uk/media/6a85c4f754bcee010d514572/returns-datasets-jun-2026.xlsx",
+     "series": [
+      "Returns from the UK by return destination and return type (Ret_D02)"
+     ],
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
+     "automated": true
+    }
+   ],
+   "method": "Home Office quarterly returns dataset Ret_D02, summed across destinations into rolling four-quarter totals. 'Returns' covers enforced returns, voluntary returns and people refused entry at the border who subsequently left.",
+   "explainer": {
+    "what": "The number of people leaving the UK who had no right to remain, whether removed by the Home Office or leaving voluntarily.",
+    "why": "Arrivals get the attention, but a system's credibility rests on whether people refused permission to stay actually leave. Governments of both parties are judged on this figure."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "small_boats",
@@ -5779,7 +6454,7 @@
      "series": [
       "Migrants detected crossing the English Channel in small boats — daily time series (SB_01)"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -5789,7 +6464,7 @@
     "why": "It is the most visible measure of control of the border, and the figure most often cited in the debate about asylum. It is published weekly, so it is unusually current."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "clean_power",
@@ -6067,7 +6742,7 @@
      "series": [
       "Asylum seekers in receipt of Home Office support, by accommodation type (Asy_D09)"
      ],
-     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "retrieved_at": "2026-09-20T18:00:11+00:00",
      "automated": true
     }
    ],
@@ -6077,7 +6752,7 @@
     "why": "Hotels are the most visible form of asylum accommodation, the most expensive per person, and the focus of local protest. Both the government and its critics use this figure, so it is worth seeing in full."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:57:25+00:00"
+   "updated_at": "2026-09-20T18:00:11+00:00"
   },
   {
    "id": "school_readiness",

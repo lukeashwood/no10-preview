@@ -122,6 +122,10 @@ export const EDITORIAL: Record<string, Editorial> = {
     baselineNote: 'Hotel numbers rose after the election before falling, so the two end points hide the shape of the series. The chart shows it in full.',
     betterNote: 'Lower is treated as better because the government and its critics both want hotel use to end. What replaces it — dispersal accommodation in towns and cities — is itself disputed, and is not measured here.',
     influenceNote: 'Asylum accommodation is contracted and paid for by the Home Office, so this is about as directly in the government’s hands as a measure gets. The number of people needing it depends on arrivals and on how fast claims are decided.' },
+  returns: { group: 'condition', influence: 'direct', better: 'none', labels: ['UK', 'Rolling 12 months'],
+    baselineNote: 'Every point on this chart is a total of the previous four quarters, so the two figures compared are twelve-month totals rather than single quarters.',
+    betterNote: 'Whether more returns is good depends on what you think the rules should be and how they should be enforced, so the direction is not coloured. The figures and their split are shown in full.',
+    influenceNote: 'Enforcement, detention capacity and returns agreements are the Home Office’s own. Returns also depend on other countries accepting their nationals back, and on the courts.' },
   net_migration: { group: 'condition', influence: 'direct', better: 'none', sinceFromBaseline: true, betterNote: 'The right level of migration is a political judgement, so the direction is not coloured.', labels: ['UK', 'ONS estimate, revised'], influenceNote: 'Visa rules are set by ministers. Departures, returning British citizens and world events are not controlled by anyone.' },
 };
 
