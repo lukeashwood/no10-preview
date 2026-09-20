@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T17:52:49+00:00",
+ "generated_at": "2026-09-20T17:57:25+00:00",
  "checks": [
   {
    "metric": "inflation",
@@ -104,6 +104,20 @@
    "check": "freshness",
    "status": "pass",
    "detail": "latest observation 2026-09-17 (4 days old)",
+   "critical": false
+  },
+  {
+   "metric": "asylum_hotels",
+   "check": "freshness",
+   "status": "pass",
+   "detail": "latest observation 2026-06-30 (83 days old)",
+   "critical": false
+  },
+  {
+   "metric": "asylum_hotels",
+   "check": "plausible range",
+   "status": "pass",
+   "detail": "asylum seekers in hotels = 16021 within [0, 200000]",
    "critical": false
   }
  ]

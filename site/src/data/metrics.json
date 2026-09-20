@@ -1,11 +1,11 @@
 {
  "summary": {
-  "generated_at": "2026-09-20T17:52:49+00:00",
-  "checks_total": 15,
-  "checks_passed": 15,
+  "generated_at": "2026-09-20T17:57:25+00:00",
+  "checks_total": 17,
+  "checks_passed": 17,
   "checks_warn": 0,
   "checks_failed": 0,
-  "metrics_total": 15
+  "metrics_total": 16
  },
  "election": "2024-07-04",
  "sections": [
@@ -679,7 +679,7 @@
      "series": [
       "CPI annual rate and CPI index, all items (D7G7, D7BT)"
      ],
-     "retrieved_at": "2026-09-20T17:52:49+00:00",
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
      "automated": true
     }
    ],
@@ -689,7 +689,7 @@
     "why": "The Bank of England is required to keep inflation at 2%. When pay rises more slowly than prices, households are worse off even though wages are going up."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:52:49+00:00"
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "real_wages",
@@ -1303,7 +1303,7 @@
      "series": [
       "AWE whole economy, real terms level, regular pay, seasonally adjusted (A3WX)"
      ],
-     "retrieved_at": "2026-09-20T17:52:49+00:00",
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
      "automated": true
     }
    ],
@@ -1313,7 +1313,7 @@
     "why": "This is the clearest measure of whether working people are better or worse off than they were."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:52:49+00:00"
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "homes",
@@ -1998,7 +1998,7 @@
      "series": [
       "Unemployment rate, employment rate and inactivity rate, seasonally adjusted (MGSX, LF24, LF2S)"
      ],
-     "retrieved_at": "2026-09-20T17:52:49+00:00",
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
      "automated": true
     }
    ],
@@ -2008,7 +2008,7 @@
     "why": "It is the clearest measure of whether the jobs market is getting easier or harder, though it misses people who have stopped looking."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:52:49+00:00"
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "gdp_vs_capita",
@@ -2432,7 +2432,7 @@
      "series": [
       "Gross domestic product and GDP per head, chained volume measures, seasonally adjusted (ABMI, IHXW)"
      ],
-     "retrieved_at": "2026-09-20T17:52:49+00:00",
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
      "automated": true
     }
    ],
@@ -2442,7 +2442,7 @@
     "why": "Total GDP can grow simply because there are more people. GDP per person is the better guide to living standards."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:52:49+00:00"
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "productivity",
@@ -2678,7 +2678,7 @@
      "series": [
       "UK whole economy output per hour worked, seasonally adjusted (LZVB)"
      ],
-     "retrieved_at": "2026-09-20T17:52:49+00:00",
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
      "automated": true
     }
    ],
@@ -2688,7 +2688,7 @@
     "why": "Sustained pay rises and better public services ultimately depend on producing more per hour. UK productivity has grown slowly since the financial crisis."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:52:49+00:00"
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "bank_rate",
@@ -3866,7 +3866,7 @@
       "IUMBV34",
       "IUMTLMV"
      ],
-     "retrieved_at": "2026-09-20T17:52:49+00:00",
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
      "automated": true
     }
    ],
@@ -3876,7 +3876,7 @@
     "why": "It is the main tool for controlling inflation, and it decides what mortgages cost. The government does not set it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:52:49+00:00"
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "borrowing",
@@ -4346,7 +4346,7 @@
      "series": [
       "Public sector net borrowing excluding public sector banks, £ million (J5II)"
      ],
-     "retrieved_at": "2026-09-20T17:52:49+00:00",
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
      "automated": true
     }
    ],
@@ -4356,7 +4356,7 @@
     "why": "Every pound borrowed is added to the national debt and has to be serviced out of future taxes."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:52:49+00:00"
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "debt",
@@ -5207,7 +5207,7 @@
      "series": [
       "Public sector net debt excluding public sector banks, as a share of GDP (HF6X)"
      ],
-     "retrieved_at": "2026-09-20T17:52:49+00:00",
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
      "automated": true
     }
    ],
@@ -5217,7 +5217,7 @@
     "why": "Interest on this debt is paid before anything else. The larger it is relative to the economy, the more of each year's taxes go to servicing it."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:52:49+00:00"
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "nhs_18_weeks",
@@ -5779,7 +5779,7 @@
      "series": [
       "Migrants detected crossing the English Channel in small boats — daily time series (SB_01)"
      ],
-     "retrieved_at": "2026-09-20T17:52:49+00:00",
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
      "automated": true
     }
    ],
@@ -5789,7 +5789,7 @@
     "why": "It is the most visible measure of control of the border, and the figure most often cited in the debate about asylum. It is published weekly, so it is unusually current."
    },
    "automated": true,
-   "updated_at": "2026-09-20T17:52:49+00:00"
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "clean_power",
@@ -5953,6 +5953,131 @@
    "verified_on": "2026-09-21",
    "recheck_by": "2026-12-01",
    "automated": false
+  },
+  {
+   "id": "asylum_hotels",
+   "section": "cohesion",
+   "title": "Asylum seekers in hotels",
+   "question": "How many people claiming asylum are being housed in hotels?",
+   "headline": {
+    "value": 16021,
+    "unit": "",
+    "decimals": 0,
+    "period": "Apr–Jun 2026",
+    "caption": "asylum seekers in hotel accommodation"
+   },
+   "benchmark": {
+    "label": "Peak",
+    "text": "56,018 (Jul–Sep 2023)"
+   },
+   "baseline": {
+    "label": "At the election",
+    "value": 29561,
+    "unit": ""
+   },
+   "context": [
+    "16,021 people supported by the Home Office were living in hotels at Apr–Jun 2026, against 29,561 at the election.",
+    "The number rose after the election before falling, peaking at 38,054 in Oct–Dec 2024.",
+    "The highest figure in this series is 56,018, in Jul–Sep 2023, under the previous government.",
+    "Hotels housed 17% of the 93,293 asylum seekers receiving Home Office support at that date; the rest are in dispersal or initial accommodation, or receive money only.",
+    "Hotel use is the most visible and most contested part of asylum accommodation, and has been the focus of local protests.",
+    "The accommodation breakdown starts at the end of 2022. Earlier support figures exist but do not separate hotels the same way."
+   ],
+   "chart": {
+    "kind": "line",
+    "unit": "",
+    "decimals": 0,
+    "freq": "q",
+    "series": [
+     {
+      "name": "Asylum seekers in hotel accommodation",
+      "role": "primary",
+      "points": [
+       [
+        "2022-12-31",
+        45753
+       ],
+       [
+        "2023-03-31",
+        47490
+       ],
+       [
+        "2023-06-30",
+        50520
+       ],
+       [
+        "2023-09-30",
+        56018
+       ],
+       [
+        "2023-12-31",
+        45744
+       ],
+       [
+        "2024-03-31",
+        34486
+       ],
+       [
+        "2024-06-30",
+        29561
+       ],
+       [
+        "2024-09-30",
+        35628
+       ],
+       [
+        "2024-12-31",
+        38054
+       ],
+       [
+        "2025-03-31",
+        32326
+       ],
+       [
+        "2025-06-30",
+        32041
+       ],
+       [
+        "2025-09-30",
+        36273
+       ],
+       [
+        "2025-12-31",
+        30657
+       ],
+       [
+        "2026-03-31",
+        20885
+       ],
+       [
+        "2026-06-30",
+        16021
+       ]
+      ]
+     }
+    ],
+    "note": "Home Office quarterly asylum support data (table Asy_D09), counting people in contingency hotel accommodation at the end of each quarter."
+   },
+   "sources": [
+    {
+     "publisher": "Home Office",
+     "title": "Immigration system statistics: asylum seekers in receipt of support (Asy_D09)",
+     "url": "https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables",
+     "data_url": "https://assets.publishing.service.gov.uk/media/6a85c2f1c9205b515d421eec/asylum-seekers-receipt-support-datasets-jun-2026.xlsx",
+     "series": [
+      "Asylum seekers in receipt of Home Office support, by accommodation type (Asy_D09)"
+     ],
+     "retrieved_at": "2026-09-20T17:57:25+00:00",
+     "automated": true
+    }
+   ],
+   "method": "Home Office quarterly asylum support dataset Asy_D09. People recorded in 'Contingency Accommodation - Hotel' at the end of each quarter, summed across nationalities and UK regions. Published quarterly, roughly two months after the quarter ends.",
+   "explainer": {
+    "what": "The number of people waiting on an asylum claim who are being housed in hotels at public expense.",
+    "why": "Hotels are the most visible form of asylum accommodation, the most expensive per person, and the focus of local protest. Both the government and its critics use this figure, so it is worth seeing in full."
+   },
+   "automated": true,
+   "updated_at": "2026-09-20T17:57:25+00:00"
   },
   {
    "id": "school_readiness",

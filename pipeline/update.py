@@ -171,6 +171,50 @@ def small_boats():
     return sorted(by_month.items()), last, m.group(0)
 
 
+XL = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
+XL_R = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
+
+
+def xlsx_rows(blob, sheet_name):
+    """Read one sheet of an .xlsx as lists of strings. Stdlib only, so the pipeline keeps no dependencies."""
+    z = zipfile.ZipFile(io.BytesIO(blob))
+    shared = []
+    if "xl/sharedStrings.xml" in z.namelist():
+        for si in ET.fromstring(z.read("xl/sharedStrings.xml")).iter(f"{XL}si"):
+            shared.append("".join(t.text or "" for t in si.iter(f"{XL}t")))
+    rels = {r.get("Id"): r.get("Target") for r in ET.fromstring(z.read("xl/_rels/workbook.xml.rels"))}
+    sheets = {s.get("name"): rels[s.get(f"{XL_R}id")].lstrip("/")
+              for s in ET.fromstring(z.read("xl/workbook.xml")).iter(f"{XL}sheet")}
+    if sheet_name not in sheets:
+        raise RuntimeError(f"sheet {sheet_name!r} not in workbook: {sorted(sheets)}")
+    path = sheets[sheet_name]
+    path = path if path.startswith("xl/") else "xl/" + path
+    for row in ET.fromstring(z.read(path)).iter(f"{XL}row"):
+        cells = []
+        for c in row.iter(f"{XL}c"):
+            v = c.find(f"{XL}v")
+            if v is None:
+                cells.append("")
+            elif c.get("t") == "s":
+                cells.append(shared[int(v.text)])
+            else:
+                cells.append(v.text or "")
+        yield cells
+
+
+def home_office_table(pattern):
+    """Find the newest Home Office immigration data file matching a filename pattern.
+
+    The quarterly release moves to a new URL every time, but the statistical data-set page that lists the files
+    does not, so the file is discovered from that stable page rather than hard-coded and left to rot."""
+    page = get("https://www.gov.uk/api/content/government/statistical-data-sets/immigration-system-statistics-data-tables",
+               "home_office_data_tables")
+    urls = re.findall(r"https://assets\.publishing\.service\.gov\.uk/media/[A-Za-z0-9]+/" + pattern, page)
+    if not urls:
+        raise RuntimeError(f"no Home Office data file matched {pattern!r}")
+    return urls[0]
+
+
 # --------------------------------------------------------------------------- helpers
 def at(series, iso):
     """The observation on or immediately before a date."""
@@ -552,6 +596,67 @@ def small_boat_arrivals():
         "method": "Home Office transparency data: daily counts of people detected arriving in the UK in small boats, summed by calendar month. The series begins in 2018 and is updated weekly. The incomplete current month is excluded. These figures count arrivals detected by Border Force, and are not the same as asylum claims or as total irregular migration.",
         "explainer": {"what": "The number of people detected crossing the English Channel in small boats and arriving in the UK.",
                       "why": "It is the most visible measure of control of the border, and the figure most often cited in the debate about asylum. It is published weekly, so it is unusually current."},
+    }
+
+
+@metric
+def asylum_hotels():
+    mid = "asylum_hotels"
+    url = home_office_table(r"asylum-seekers-receipt-support-datasets-[a-z]{3}-\d{4}\.xlsx")
+    blob = get(url, binary=True)
+    months = {"Mar": "03-31", "Jun": "06-30", "Sep": "09-30", "Dec": "12-31"}
+    hotel, supported = {}, {}
+    for i, cells in enumerate(xlsx_rows(blob, "Data_Asy_D09")):
+        if i < 2 or len(cells) < 7:
+            continue
+        label, accom = cells[0].strip(), cells[4]
+        key = months.get(label[3:6])
+        if not key:
+            continue
+        iso = f"{label[-4:]}-{key}"
+        try:
+            n = float(cells[6])
+        except ValueError:
+            continue
+        supported[iso] = supported.get(iso, 0) + n
+        if "hotel" in accom.lower():
+            hotel[iso] = hotel.get(iso, 0) + n
+    if not hotel:
+        raise RuntimeError("asylum hotels: no rows parsed")
+    points = [[iso, int(n)] for iso, n in sorted(hotel.items())]
+    d, v = points[-1]
+    check_fresh(mid, d, 130)                       # quarterly, published about two months after the quarter ends
+    check_range(mid, "asylum seekers in hotels", v, 0, 200000)
+    peak = max(points, key=lambda p: p[1])
+    base = at(points, BASE_Q)
+    high_since = max((p for p in points if p[0] >= BASE_Q), key=lambda p: p[1])
+    return {
+        "id": mid, "section": "cohesion", "title": "Asylum seekers in hotels",
+        "question": "How many people claiming asylum are being housed in hotels?",
+        "headline": {"value": v, "unit": "", "decimals": 0, "period": period_label(d, "q"),
+                     "caption": "asylum seekers in hotel accommodation"},
+        "benchmark": {"label": "Peak", "text": f"{peak[1]:,} ({period_label(peak[0], 'q')})"},
+        "baseline": {"label": "At the election", "value": base[1], "unit": ""},
+        "context": [
+            f"{v:,} people supported by the Home Office were living in hotels at {period_label(d, 'q')}, "
+            f"against {base[1]:,} at the election.",
+            f"The number rose after the election before falling, peaking at {high_since[1]:,} in {period_label(high_since[0], 'q')}.",
+            f"The highest figure in this series is {peak[1]:,}, in {period_label(peak[0], 'q')}, under the previous government.",
+            f"Hotels housed {v / supported[d] * 100:.0f}% of the {int(supported[d]):,} asylum seekers receiving Home Office support at that date; "
+            "the rest are in dispersal or initial accommodation, or receive money only.",
+            "Hotel use is the most visible and most contested part of asylum accommodation, and has been the focus of local protests.",
+            "The accommodation breakdown starts at the end of 2022. Earlier support figures exist but do not separate hotels the same way.",
+        ],
+        "chart": {"kind": "line", "unit": "", "decimals": 0, "freq": "q",
+                  "series": [{"name": "Asylum seekers in hotel accommodation", "role": "primary", "points": points}],
+                  "note": "Home Office quarterly asylum support data (table Asy_D09), counting people in contingency hotel accommodation at the end of each quarter."},
+        "sources": [{"publisher": "Home Office", "title": "Immigration system statistics: asylum seekers in receipt of support (Asy_D09)",
+                     "url": "https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables",
+                     "data_url": url, "series": ["Asylum seekers in receipt of Home Office support, by accommodation type (Asy_D09)"],
+                     "retrieved_at": NOW.isoformat(timespec="seconds"), "automated": True}],
+        "method": "Home Office quarterly asylum support dataset Asy_D09. People recorded in 'Contingency Accommodation - Hotel' at the end of each quarter, summed across nationalities and UK regions. Published quarterly, roughly two months after the quarter ends.",
+        "explainer": {"what": "The number of people waiting on an asylum claim who are being housed in hotels at public expense.",
+                      "why": "Hotels are the most visible form of asylum accommodation, the most expensive per person, and the focus of local protest. Both the government and its critics use this figure, so it is worth seeing in full."},
     }
 
 
